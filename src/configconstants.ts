@@ -109,6 +109,6 @@ export class CoreConfigConstants {
     static statusbarlighttextremotetheme = true;
     static enableanalytics = false;
     static forceColorScheme = '';
-    static compilationtime = 1589396966358;
-    static lastcommit = '2b6c92858dd2625457589c9f16a5970cfd916c40';
+    static compilationtime = 1589463181501;
+    static lastcommit = '90e1c84da7a6a9ed276449d93fea4aebf33d15a3';
 }
