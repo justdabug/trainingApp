@@ -18,7 +18,7 @@ export class CoreConfigConstants {
     static appname = 'Ichthys Academy Mobile';
     static desktopappname = 'Ichthys Academy Desktop';
     static versioncode = 3820;
-    static versionname = '3.8.2';
+    static versionname = '1.0.0';
     static cache_update_frequency_usually = 420000;
     static cache_update_frequency_often = 1200000;
     static cache_update_frequency_sometimes = 3600000;
@@ -109,6 +109,6 @@ export class CoreConfigConstants {
     static statusbarlighttextremotetheme = true;
     static enableanalytics = false;
     static forceColorScheme = '';
-    static compilationtime = 1589185451724;
-    static lastcommit = 'e1e6b458f675391d17c8ab07d4ee24ceb3604cb7';
+    static compilationtime = 1589396966358;
+    static lastcommit = '2b6c92858dd2625457589c9f16a5970cfd916c40';
 }

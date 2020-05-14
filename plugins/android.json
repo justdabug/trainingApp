@@ -44,6 +44,9 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.moodle.moodlemobile"
     },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.moodle.moodlemobile"
+    },
     "cordova-plugin-globalization": {
       "PACKAGE_NAME": "com.moodle.moodlemobile"
     },
@@ -87,9 +90,6 @@
     "phonegap-plugin-push": {
       "ANDROID_SUPPORT_V13_VERSION": "27.+",
       "FCM_VERSION": "17.0.+",
-      "PACKAGE_NAME": "com.moodle.moodlemobile"
-    },
-    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.moodle.moodlemobile"
     }
   },
