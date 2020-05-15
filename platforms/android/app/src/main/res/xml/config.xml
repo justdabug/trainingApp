@@ -74,9 +74,9 @@
     <feature name="Keyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.IonicKeyboard" />
     </feature>
-    <name>Ichthys Acedemy</name>
-    <description>Ichthys Academy Official app</description>
-    <author email="mobile@maquaponics.online" href="https://aquaponics-online.com">Moodle Mobile team</author>
+    <name>Ichthys Aquaponics Academy</name>
+    <description>Ichthys Aquaponics Academy Official app</description>
+    <author email="mobile@aquaponics.online" href="https://aquaponics-online.com">Ichthys Mobile team</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
