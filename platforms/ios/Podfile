@@ -2,7 +2,7 @@
 
 platform :ios, '10.0'
 
-target 'Ichthys Acedemy' do
-	project 'Ichthys Acedemy.xcodeproj'
+target 'Ichthys Aquaponics Academy' do
+	project 'Ichthys Aquaponics Academy.xcodeproj'
 	pod 'FirebaseMessaging', '~> 2.0.0'
 end

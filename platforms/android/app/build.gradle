@@ -98,11 +98,11 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-android-support-gradle-release/moodlemobile-cordova-android-support-gradle-release.gradle"
-apply from: "../cordova-plugin-badge/moodlemobile-badge.gradle"
-apply from: "../cordova-plugin-local-notification/moodlemobile-localnotification.gradle"
-apply from: "../cordova-support-google-services/moodlemobile-build.gradle"
-apply from: "../phonegap-plugin-multidex/moodlemobile-multidex.gradle"
+apply from: "../cordova-android-support-gradle-release/ichthysmobile-cordova-android-support-gradle-release.gradle"
+apply from: "../cordova-plugin-badge/ichthysmobile-badge.gradle"
+apply from: "../cordova-plugin-local-notification/ichthysmobile-localnotification.gradle"
+apply from: "../cordova-support-google-services/ichthysmobile-build.gradle"
+apply from: "../phonegap-plugin-multidex/ichthysmobile-multidex.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
