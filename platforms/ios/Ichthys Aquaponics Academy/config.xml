@@ -125,9 +125,6 @@
     <config-file parent="FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED" target="*-Info.plist">
         <string>YES</string>
     </config-file>
-    <gap:config-file parent="NSPhotoLibraryUsageDescription" platform="ios">
-        <string>We'd like to access your photo library to let you upload a photo or image to the site.</string>
-    </gap:config-file>
     <resource-file src="GoogleService-Info.plist" />
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />
@@ -218,5 +215,4 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="LoadUrlTimeoutValue" value="60000" />
     <preference name="CustomURLSchemePluginClearsAndroidIntent" value="true" />
-    <preference name="WKWebViewOnly" value="true" />
 </widget>
