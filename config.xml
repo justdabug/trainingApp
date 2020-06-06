@@ -190,8 +190,6 @@
     <config-file parent="FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED" target="*-Info.plist">
         <string>YES</string>
     </config-file>
-    <gap:config-file parent="NSPhotoLibraryUsageDescription" platform="ios">
-        <string>We'd like to access your photo library to let you upload a photo or image to the site.</string>
-    </gap:config-file>
-    <preference name="WKWebViewOnly" value="true" />
+    <engine name="android" spec="8.0.0" />
+    <engine name="ios" spec="5.0.1" />
 </widget>
