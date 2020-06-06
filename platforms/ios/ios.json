@@ -32,6 +32,14 @@
       },
       "*-Info.plist": {
         "parents": {
+          "NSPhotoLibraryUsageDescription": [
+            {
+              "xml": "<string>Need to take a photo of you for your profile</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ],
           "NSLocationWhenInUseUsageDescription": [
             {
               "xml": "<string>We need your location so you can attach it as part of your submissions.</string>",

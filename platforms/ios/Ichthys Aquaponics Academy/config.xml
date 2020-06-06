@@ -125,6 +125,9 @@
     <config-file parent="FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED" target="*-Info.plist">
         <string>YES</string>
     </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+        <string>Need to take a photo of you for your profile</string>
+    </edit-config>
     <resource-file src="GoogleService-Info.plist" />
     <icon height="57" src="resources/ios/icon/icon.png" width="57" />
     <icon height="114" src="resources/ios/icon/icon@2x.png" width="114" />

@@ -50,6 +50,8 @@
 	</dict>
 	<key>UILaunchStoryboardName</key>
 	<string>CDVLaunchScreen</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to take a photo of you for your profile</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location so you can attach it as part of your submissions.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
