@@ -144,7 +144,7 @@
           "FIREBASE_ANALYTICS_COLLECTION_DEACTIVATED": [
             {
               "xml": "<string>YES</string>",
-              "count": 8,
+              "count": 1,
               "id": "config.xml"
             }
           ]

@@ -82,7 +82,7 @@
     "multisitesdisplay": "",
     "skipssoconfirmation": false,
     "forcedefaultlanguage": false,
-    "privacypolicy": "https://moodle.net/moodle-app-privacy",
+    "privacypolicy": "https:\/\/moodle.net\/moodle-app-privacy\/",
     "notificoncolor": "#f98012",
     "statusbarbg": false,
     "statusbarlighttext": false,
