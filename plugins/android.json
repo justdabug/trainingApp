@@ -91,6 +91,23 @@
       "ANDROID_SUPPORT_V13_VERSION": "27.+",
       "FCM_VERSION": "17.0.+",
       "PACKAGE_NAME": "com.ichthys.ichthysmobile"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.ichthys.ichthysmobile"
+    },
+    "cordova-plugin-advanced-http": {
+      "OKHTTP_VERSION": "3.10.0",
+      "PACKAGE_NAME": "com.ichthys.ichthysmobile"
+    },
+    "cordova-plugin-wkwebview-cookies": {
+      "PACKAGE_NAME": "com.ichthys.ichthysmobile"
+    },
+    "cordova-plugin-qrscanner": {
+      "PACKAGE_NAME": "com.ichthys.ichthysmobile"
+    },
+    "cordova-plugin-chooser": {
+      "PACKAGE_NAME": "com.ichthys.ichthysmobile"
     }
   },
   "dependent_plugins": {

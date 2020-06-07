@@ -108,7 +108,16 @@ export class CoreConfigConstants {
     static statusbarbgremotetheme = '#000000';
     static statusbarlighttextremotetheme = true;
     static enableanalytics = false;
+    static enableonboarding = true;
     static forceColorScheme = '';
-    static compilationtime = 1591459919975;
-    static lastcommit = '4a35c9a2b9ab0586d3ec89950d20d30ea02988b2';
+    static ioswebviewscheme = 'moodleappfs';
+    static appstores: any = {
+        android: 'com.moodle.moodlemobile',
+        ios: 'id633359593',
+        windows: 'moodle-desktop/9p9bwvhdc8c8',
+        mac: 'id1255924440',
+        linux: 'https://download.moodle.org/desktop/download.php?platform=linux&arch=64'
+    };
+    static compilationtime = 1591525605111;
+    static lastcommit = '7d16f1b2f429c36ec9c0b861ea387abf6a0984fa';
 }
