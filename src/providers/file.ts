@@ -14,13 +14,15 @@
 
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { File, FileEntry, DirectoryEntry } from '@ionic-native/file';
+import { File, FileEntry, DirectoryEntry, Entry, Metadata } from '@ionic-native/file';
 
 import { CoreAppProvider } from './app';
 import { CoreLoggerProvider } from './logger';
 import { CoreMimetypeUtilsProvider } from './utils/mimetype';
 import { CoreTextUtilsProvider } from './utils/text';
+import { CoreConfigConstants } from '../configconstants';
 import { Zip } from '@ionic-native/zip';
+import { makeSingleton } from '@singletons/core.singletons';
 
 /**
  * Progress event used when writing a file data into a file.
@@ -43,6 +45,11 @@ export interface CoreFileProgressEvent {
 }
 
 /**
+ * Progress function.
+ */
+export type CoreFileProgressFunction = (event: CoreFileProgressEvent) => void;
+
+/**
  * Factory to interact with the file system.
  */
 @Injectable()
@@ -58,14 +65,21 @@ export class CoreFileProvider {
     static SITESFOLDER = 'sites';
     static TMPFOLDER = 'tmp';
 
+    static CHUNK_SIZE = 1048576; // 1 MB. Same chunk size as Ionic Native.
+
     protected logger;
     protected initialized = false;
     protected basePath = '';
     protected isHTMLAPI = false;
-    protected CHUNK_SIZE = 10485760; // 10 MB.
 
-    constructor(logger: CoreLoggerProvider, private platform: Platform, private file: File, private appProvider: CoreAppProvider,
-            private textUtils: CoreTextUtilsProvider, private zip: Zip, private mimeUtils: CoreMimetypeUtilsProvider) {
+    constructor(logger: CoreLoggerProvider,
+            protected platform: Platform,
+            protected file: File,
+            protected appProvider: CoreAppProvider,
+            protected textUtils: CoreTextUtilsProvider,
+            protected zip: Zip,
+            protected mimeUtils: CoreMimetypeUtilsProvider) {
+
         this.logger = logger.getInstance('CoreFileProvider');
 
         if (platform.is('android') && !Object.getOwnPropertyDescriptor(FileReader.prototype, 'onloadend')) {
@@ -543,7 +557,7 @@ export class CoreFileProvider {
 
             reader.onloadend = (evt): void => {
                 const target = <any> evt.target; // Convert to <any> to be able to use non-standard properties.
-                if (target.result !== undefined || target.result !== null) {
+                if (target.result !== undefined && target.result !== null) {
                     if (format == CoreFileProvider.FORMATJSON) {
                         // Convert to object.
                         const parsed = this.textUtils.parseJSON(target.result, null);
@@ -556,7 +570,7 @@ export class CoreFileProvider {
                     } else {
                         resolve(target.result);
                     }
-                } else if (target.error !== undefined || target.error !== null) {
+                } else if (target.error !== undefined && target.error !== null) {
                     reject(target.error);
                 } else {
                     reject({ code: null, message: 'READER_ONLOADEND_ERR' });
@@ -600,7 +614,7 @@ export class CoreFileProvider {
      * @param append Whether to append the data to the end of the file.
      * @return Promise to be resolved when the file is written.
      */
-    writeFile(path: string, data: any, append?: boolean): Promise<any> {
+    writeFile(path: string, data: any, append?: boolean): Promise<FileEntry> {
         return this.init().then(() => {
             // Remove basePath if it's in the path.
             path = this.removeStartingSlash(path.replace(this.basePath, ''));
@@ -625,6 +639,7 @@ export class CoreFileProvider {
     /**
      * Write some file data into a filesystem file.
      * It's done in chunks to prevent crashing the app for big files.
+     * Please notice Ionic Native writeFile function already splits by chunks, but it doesn't have an onProgress function.
      *
      * @param file The data to write.
      * @param path Path where to store the data.
@@ -633,16 +648,18 @@ export class CoreFileProvider {
      * @param append Whether to append the data to the end of the file.
      * @return Promise resolved when done.
      */
-    writeFileDataInFile(file: any, path: string, onProgress?: (event: CoreFileProgressEvent) => any, offset: number = 0,
-            append?: boolean): Promise<any> {
+    async writeFileDataInFile(file: Blob, path: string, onProgress?: CoreFileProgressFunction, offset: number = 0,
+            append?: boolean): Promise<FileEntry> {
 
         offset = offset || 0;
 
-        // Get the chunk to read.
-        const blob = file.slice(offset, Math.min(offset + this.CHUNK_SIZE, file.size));
+        try {
+            // Get the chunk to write.
+            const chunk = file.slice(offset, Math.min(offset + CoreFileProvider.CHUNK_SIZE, file.size));
 
-        return this.writeFileDataInFileChunk(blob, path, append).then((fileEntry) => {
-            offset += this.CHUNK_SIZE;
+            const fileEntry = await this.writeFile(path, chunk, append);
+
+            offset += CoreFileProvider.CHUNK_SIZE;
 
             onProgress && onProgress({
                 lengthComputable: true,
@@ -657,23 +674,14 @@ export class CoreFileProvider {
 
             // Read the next chunk.
             return this.writeFileDataInFile(file, path, onProgress, offset, true);
-        });
-    }
+        } catch (error) {
+            if (error && error.target && error.target.error) {
+                // Error returned by the writer, get the "real" error.
+                error = error.target.error;
+            }
 
-    /**
-     * Write a chunk of data into a file.
-     *
-     * @param chunkData The chunk of data.
-     * @param path Path where to store the data.
-     * @param append Whether to append the data to the end of the file.
-     * @return Promise resolved when done.
-     */
-    protected writeFileDataInFileChunk(chunkData: any, path: string, append?: boolean): Promise<any> {
-        // Read the chunk data.
-        return this.readFileData(chunkData, CoreFileProvider.FORMATARRAYBUFFER).then((fileData) => {
-            // Write the data in the file.
-            return this.writeFile(path, fileData, append);
-        });
+            throw error;
+        }
     }
 
     /**
@@ -931,7 +939,7 @@ export class CoreFileProvider {
      * path/            -> directory: 'path', name: ''
      * path             -> directory: '', name: 'path'
      */
-    getFileAndDirectoryFromPath(path: string): any {
+    getFileAndDirectoryFromPath(path: string): {directory: string, name: string} {
         const file = {
             directory: '',
             name: ''
@@ -945,6 +953,7 @@ export class CoreFileProvider {
 
     /**
      * Get the internal URL of a file.
+     * Please notice that with WKWebView these URLs no longer work in mobile. Use fileEntry.toURL() along with convertFileSrc.
      *
      * @param fileEntry File Entry.
      * @return Internal URL.
@@ -1050,7 +1059,7 @@ export class CoreFileProvider {
      * @param fileEntry FileEntry retrieved from getFile or similar.
      * @return Promise resolved with metadata.
      */
-    getMetadata(fileEntry: Entry): Promise<any> {
+    getMetadata(fileEntry: Entry): Promise<Metadata> {
         if (!fileEntry || !fileEntry.getMetadata) {
             return Promise.reject(null);
         }
@@ -1269,4 +1278,33 @@ export class CoreFileProvider {
 
         return window.location.href;
     }
+
+    /**
+     * Helper function to call Ionic WebView convertFileSrc only in the needed platforms.
+     * This is needed to make files work with the Ionic WebView plugin.
+     *
+     * @param src Source to convert.
+     * @return Converted src.
+     */
+    convertFileSrc(src: string): string {
+        return this.appProvider.isMobile() ? (<any> window).Ionic.WebView.convertFileSrc(src) : src;
+    }
+
+    /**
+     * Undo the conversion of convertFileSrc.
+     *
+     * @param src Source to unconvert.
+     * @return Unconverted src.
+     */
+    unconvertFileSrc(src: string): string {
+        if (!this.appProvider.isMobile()) {
+            return src;
+        }
+
+        const scheme = this.platform.is('ios') ? CoreConfigConstants.ioswebviewscheme : 'http';
+
+        return src.replace(scheme + '://localhost/_app_file_', 'file://');
+    }
 }
+
+export class CoreFile extends makeSingleton(CoreFileProvider) {}

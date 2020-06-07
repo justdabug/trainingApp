@@ -14,18 +14,20 @@
 
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { CoreLoginSiteErrorPage } from './site-error';
+import { CoreLoginSiteOnboardingPage } from './site-onboarding';
 import { TranslateModule } from '@ngx-translate/core';
 import { CoreDirectivesModule } from '@directives/directives.module';
+import { CoreComponentsModule } from '@components/components.module';
 
 @NgModule({
     declarations: [
-        CoreLoginSiteErrorPage
+        CoreLoginSiteOnboardingPage
     ],
     imports: [
+        CoreComponentsModule,
         CoreDirectivesModule,
-        IonicPageModule.forChild(CoreLoginSiteErrorPage),
-        TranslateModule.forChild()
+        IonicPageModule.forChild(CoreLoginSiteOnboardingPage),
+        TranslateModule.forChild(),
     ]
 })
-export class CoreLoginSiteErrorPageModule {}
+export class CoreLoginSiteOnboardingPageModule {}

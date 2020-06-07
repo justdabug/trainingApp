@@ -16,11 +16,13 @@ import { Injectable } from '@angular/core';
 import { ActionSheetController, ActionSheet, Platform, Loading } from 'ionic-angular';
 import { MediaFile } from '@ionic-native/media-capture';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Chooser, ChooserResult } from '@ionic-native/chooser';
 import { TranslateService } from '@ngx-translate/core';
 import { CoreAppProvider } from '@providers/app';
 import { CoreFileProvider, CoreFileProgressEvent } from '@providers/file';
 import { CoreLoggerProvider } from '@providers/logger';
 import { CoreDomUtilsProvider } from '@providers/utils/dom';
+import { CoreMimetypeUtils } from '@providers/utils/mimetype';
 import { CoreTextUtilsProvider } from '@providers/utils/text';
 import { CoreUtilsProvider, PromiseDefer } from '@providers/utils/utils';
 import { CoreFileUploaderProvider, CoreFileUploaderOptions } from './fileuploader';
@@ -36,12 +38,47 @@ export class CoreFileUploaderHelperProvider {
     protected filePickerDeferred: PromiseDefer;
     protected actionSheet: ActionSheet;
 
-    constructor(logger: CoreLoggerProvider, private appProvider: CoreAppProvider, private translate: TranslateService,
-            private fileUploaderProvider: CoreFileUploaderProvider, private domUtils: CoreDomUtilsProvider,
-            private textUtils: CoreTextUtilsProvider, private fileProvider: CoreFileProvider, private utils: CoreUtilsProvider,
-            private actionSheetCtrl: ActionSheetController, private uploaderDelegate: CoreFileUploaderDelegate,
-            private camera: Camera, private platform: Platform) {
+    constructor(logger: CoreLoggerProvider,
+            protected appProvider: CoreAppProvider,
+            protected translate: TranslateService,
+            protected fileUploaderProvider: CoreFileUploaderProvider,
+            protected domUtils: CoreDomUtilsProvider,
+            protected textUtils: CoreTextUtilsProvider,
+            protected fileProvider: CoreFileProvider,
+            protected utils: CoreUtilsProvider,
+            protected actionSheetCtrl: ActionSheetController,
+            protected uploaderDelegate: CoreFileUploaderDelegate,
+            protected camera: Camera,
+            protected platform: Platform,
+            protected fileChooser: Chooser) {
         this.logger = logger.getInstance('CoreFileUploaderProvider');
+    }
+
+    /**
+     * Choose any type of file and upload it.
+     *
+     * @param maxSize Max size of the upload. -1 for no max size.
+     * @param upload True if the file should be uploaded, false to return the picked file.
+     * @param mimetypes List of supported mimetypes. If undefined, all mimetypes supported.
+     * @return Promise resolved when done.
+     */
+    async chooseAndUploadFile(maxSize: number, upload?: boolean, mimetypes?: string[]): Promise<any> {
+
+        const result = await this.fileChooser.getFile(mimetypes ? mimetypes.join(',') : undefined);
+
+        if (!result) {
+            // User canceled.
+            throw this.domUtils.createCanceledError();
+        }
+
+        if (result.name == 'File') {
+            // In some Android 4.4 devices the file name cannot be retrieved. Try to use the one from the URI.
+            result.name = this.getChosenFileNameFromPath(result) || result.name;
+        }
+
+        const options = this.fileUploaderProvider.getFileUploadOptions(result.uri, result.name, result.mediaType, true);
+
+        return this.uploadFile(result.uri, maxSize, true, options);
     }
 
     /**
@@ -106,7 +143,7 @@ export class CoreFileUploaderHelperProvider {
             this.logger.error('Error reading file to upload.', error);
             modal.dismiss();
 
-            return Promise.reject(this.translate.instant('core.fileuploader.errorreadingfile'));
+            return Promise.reject(error);
         }).then((fileEntry) => {
             modal.dismiss();
 
@@ -184,9 +221,7 @@ export class CoreFileUploaderHelperProvider {
             }
         });
 
-        this.domUtils.showErrorModal(errorMessage);
-
-        return Promise.reject(null);
+        return Promise.reject(errorMessage);
     }
 
     /**
@@ -213,6 +248,33 @@ export class CoreFileUploaderHelperProvider {
         if (this.actionSheet) {
             this.actionSheet.dismiss();
         }
+    }
+
+    /**
+     * Given the result of choosing a file, try to get its file name from the path.
+     *
+     * @param result Chosen file data.
+     * @return File name, undefined if cannot get it.
+     */
+    protected getChosenFileNameFromPath(result: ChooserResult): string {
+        const nameAndDir = this.fileProvider.getFileAndDirectoryFromPath(result.uri);
+
+        if (!nameAndDir.name) {
+            return;
+        }
+
+        let extension = CoreMimetypeUtils.instance.getFileExtension(nameAndDir.name);
+
+        if (!extension) {
+            // The URI doesn't have an extension, add it now.
+            extension = CoreMimetypeUtils.instance.getExtension(result.mediaType);
+
+            if (extension) {
+                nameAndDir.name += '.' + extension;
+            }
+        }
+
+        return decodeURIComponent(nameAndDir.name);
     }
 
     /**
@@ -319,9 +381,7 @@ export class CoreFileUploaderHelperProvider {
                         // Success uploading or picking, return the result.
                         this.fileUploaded(result);
                     }).catch((error) => {
-                        if (error) {
-                            this.domUtils.showErrorModal(error);
-                        }
+                        this.domUtils.showErrorModalDefault(error, this.translate.instant('core.fileuploader.errorreadingfile'));
                     });
 
                     // Do not close the action sheet, it will be closed if success.
@@ -404,7 +464,7 @@ export class CoreFileUploaderHelperProvider {
 
                     return Promise.reject(message);
                 } else {
-                    this.logger.debug('Cancelled');
+                    return Promise.reject(this.domUtils.createCanceledError());
                 }
             }
         }
@@ -423,20 +483,18 @@ export class CoreFileUploaderHelperProvider {
         // Cancelled or error.
         if (error) {
             if (typeof error == 'string') {
-                if (error.toLowerCase().indexOf('error') > -1 || error.toLowerCase().indexOf('unable') > -1) {
-                    this.logger.error('Error getting image: ' + error);
-
-                    return Promise.reject(error);
-                } else {
+                if (error.toLowerCase().indexOf('no image selected') > -1) {
                     // User cancelled.
-                    this.logger.debug('Cancelled');
+                    return Promise.reject(this.domUtils.createCanceledError());
                 }
             } else {
                 return Promise.reject(this.translate.instant(defaultMessage));
             }
         }
 
-        return Promise.reject(null);
+        this.logger.error('Error getting image: ', error);
+
+        return Promise.reject(error);
     }
 
     /**
@@ -627,7 +685,7 @@ export class CoreFileUploaderHelperProvider {
      * @param siteId Site ID. If not defined, current site.
      * @return Promise resolved if the file is uploaded, rejected otherwise.
      */
-    protected uploadFile(path: string, maxSize: number, checkSize: boolean, options: CoreFileUploaderOptions, siteId?: string)
+    uploadFile(path: string, maxSize: number, checkSize: boolean, options: CoreFileUploaderOptions, siteId?: string)
             : Promise<any> {
 
         const errorStr = this.translate.instant('core.error'),
@@ -644,7 +702,7 @@ export class CoreFileUploaderHelperProvider {
                         this.fileProvider.removeExternalFile(path);
                     }
 
-                    return Promise.reject(null);
+                    return Promise.reject(this.domUtils.createCanceledError());
                 });
             };
 

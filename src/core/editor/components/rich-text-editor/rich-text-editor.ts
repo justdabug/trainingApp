@@ -15,6 +15,7 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterContentInit, OnDestroy, Optional }
     from '@angular/core';
 import { TextInput, Content, Platform, Slides } from 'ionic-angular';
+import { CoreApp } from '@providers/app';
 import { CoreSitesProvider } from '@providers/sites';
 import { CoreFilepoolProvider } from '@providers/filepool';
 import { CoreDomUtilsProvider } from '@providers/utils/dom';
@@ -95,6 +96,8 @@ export class CoreEditorRichTextEditorComponent implements AfterContentInit, OnDe
         ol: 'false',
     };
     infoMessage: string;
+    canScanQR: boolean;
+
     protected isCurrentView = true;
     protected toolbarButtonWidth = 40;
     protected toolbarArrowWidth = 28;
@@ -119,6 +122,7 @@ export class CoreEditorRichTextEditorComponent implements AfterContentInit, OnDe
         this.contentChanged = new EventEmitter<string>();
         this.element = elementRef.nativeElement as HTMLDivElement;
         this.pageInstance = 'app_' + Date.now(); // Generate a "unique" ID based on timestamp.
+        this.canScanQR = this.utils.canScanQR();
     }
 
     /**
@@ -649,8 +653,8 @@ export class CoreEditorRichTextEditorComponent implements AfterContentInit, OnDe
      */
     mouseDownAction(event: Event): void {
         const selection = window.getSelection().toString();
-        // When RTE is focused with a range selection the stopBubble will not fire click.
-        if (!this.rteEnabled || document.activeElement != this.editorElement || selection == '') {
+        // When RTE is focused with a whole paragraph in desktop the stopBubble will not fire click.
+        if (CoreApp.instance.isMobile() || !this.rteEnabled || document.activeElement != this.editorElement || selection == '') {
             this.stopBubble(event);
         }
     }
@@ -863,6 +867,24 @@ export class CoreEditorRichTextEditorComponent implements AfterContentInit, OnDe
             this.hideMessageTimeout = null;
             this.infoMessage = null;
         }, timeout);
+    }
+
+    /**
+     * Scan a QR code and put its text in the editor.
+     *
+     * @param $event Event data
+     */
+    scanQR($event: any): void {
+        this.stopBubble($event);
+
+        // Scan for a QR code.
+        this.utils.scanQR().then((text) => {
+            if (text) {
+                document.execCommand('insertText', false, text);
+            }
+
+            this.content.resize(); // Resize content, otherwise the content height becomes 1 for some reason.
+        });
     }
 
     /**

@@ -46,19 +46,6 @@ ion-app.app-root {
     text-transform: none;
   }
 
-  @include media-breakpoint-up(sm) {
-    .core-center-view .scroll-content {
-      display: flex!important;
-      align-content: center !important;
-      align-items: center !important;
-      > * {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 600px;
-      }
-    }
-  }
-
   @include media-breakpoint-down(sm) {
     .hidden-phone {
       display: none !important;
@@ -666,11 +653,12 @@ ion-app.app-root {
       overflow: auto;
   }
 
-  .action-sheet-wrapper {
+  ion-action-sheet .action-sheet-wrapper .action-sheet-container {
     .action-sheet-button.action-sheet-cancel {
       color: $core-action-sheet-cancel-color;
       @include darkmode() {
         color: $core-dark-action-sheet-cancel-color;
+        background-color: $black;
       }
     }
     .action-sheet-selected {
@@ -1284,6 +1272,24 @@ ion-app.app-root {
   a.item-ios:not([detail-none]) .item-inner {
     [item-end] {
       @include safe-area-margin-horizontal(($item-ios-padding-start / 2), ($item-ios-padding-end / 2));
+    }
+  }
+}
+
+// QR scan. The scanner is at the background of the app, we need to hide the elements that overlay it.
+.core-scanning-qr {
+  ion-app.app-root {
+    background-color: transparent;
+
+    .ion-page {
+      background-color: transparent;
+    }
+    ion-content, ion-backdrop, ion-modal:not(.core-modal-fullscreen), core-ion-tabs {
+      display: none;
+    }
+
+    &.ios .ion-page.show-page~.nav-decor {
+      display: none;
     }
   }
 }

@@ -15,7 +15,7 @@
 import { Injectable } from '@angular/core';
 import { CoreEventsProvider } from '@providers/events';
 import { CoreFileProvider } from '@providers/file';
-import { CoreFilepoolProvider } from '@providers/filepool';
+import { CoreFilepoolProvider, CoreFilepoolComponentFileEventData } from '@providers/filepool';
 import { CoreLoggerProvider } from '@providers/logger';
 import { CoreSitesProvider, CoreSiteSchema } from '@providers/sites';
 import { CoreTimeUtilsProvider } from '@providers/utils/time';
@@ -276,6 +276,15 @@ export class CoreCourseModulePrefetchDelegate extends CoreDelegate {
         eventsProvider.on(CoreEventsProvider.PACKAGE_STATUS_CHANGED, (data) => {
             this.updateStatusCache(data.status, data.component, data.componentId);
         }, this.sitesProvider.getCurrentSiteId());
+
+        // If a file inside a module is downloaded/deleted, clear the corresponding cache.
+        eventsProvider.on(CoreEventsProvider.COMPONENT_FILE_ACTION, (data: CoreFilepoolComponentFileEventData) => {
+            if (!this.filepoolProvider.isFileEventDownloadedOrDeleted(data)) {
+                return;
+            }
+
+            this.statusCache.invalidate(this.filepoolProvider.getPackageId(data.component, data.componentId));
+        }, this.sitesProvider.getCurrentSiteId());
     }
 
     /**
@@ -393,6 +402,25 @@ export class CoreCourseModulePrefetchDelegate extends CoreDelegate {
         }
 
         return status;
+    }
+
+    /**
+     * Download a module.
+     *
+     * @param module Module to download.
+     * @param courseId Course ID the module belongs to.
+     * @param dirPath Path of the directory where to store all the content files.
+     * @return Promise resolved when finished.
+     */
+    async downloadModule(module: any, courseId: number, dirPath?: string): Promise<void> {
+        const handler = this.getPrefetchHandlerFor(module);
+
+        // Check if the module has a prefetch handler.
+        if (handler) {
+            await this.syncModule(module, courseId);
+
+            await handler.download(module, courseId, dirPath);
+        }
     }
 
     /**

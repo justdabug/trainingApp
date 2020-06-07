@@ -25,6 +25,8 @@ import { CoreTextUtilsProvider } from './text';
 import { CoreUrlUtilsProvider } from './url';
 import { CoreUtilsProvider } from './utils';
 import { CoreContentLinksHelperProvider } from '@core/contentlinks/providers/helper';
+import { makeSingleton } from '@singletons/core.singletons';
+import { CoreUrl } from '@singletons/url';
 
 /*
  * "Utils" service with helper functions for iframes, embed and similar.
@@ -53,7 +55,7 @@ export class CoreIframeUtilsProvider {
     checkOnlineFrameInOffline(element: any, isSubframe?: boolean): boolean {
         const src = element.src || element.data;
 
-        if (src && src.match(/^https?:\/\//i) && !this.appProvider.isOnline()) {
+        if (src && !this.urlUtils.isLocalFileUrl(src) && !this.appProvider.isOnline()) {
             if (element.classList.contains('core-iframe-offline-disabled')) {
                 // Iframe already hidden, stop.
                 return true;
@@ -224,7 +226,7 @@ export class CoreIframeUtilsProvider {
                     } else {
                         element.setAttribute('src', url);
                     }
-                } else if (url.indexOf('cdvfile://') === 0 || url.indexOf('file://') === 0) {
+                } else if (this.urlUtils.isLocalFileUrl(url)) {
                     // It's a local file.
                     this.utils.openFile(url).catch((error) => {
                         this.domUtils.showErrorModal(error);
@@ -346,22 +348,20 @@ export class CoreIframeUtilsProvider {
             return;
         }
 
-        const scheme = this.urlUtils.getUrlScheme(link.href);
-        if (!link.href || (scheme && scheme == 'javascript')) {
+        const urlParts = CoreUrl.parse(link.href);
+        if (!link.href || (urlParts.protocol && urlParts.protocol == 'javascript')) {
             // Links with no URL and Javascript links are ignored.
             return;
         }
 
-        if (scheme && scheme != 'file' && scheme != 'filesystem') {
+        if (!this.urlUtils.isLocalFileUrlScheme(urlParts.protocol, urlParts.domain)) {
             // Scheme suggests it's an external resource.
             event.preventDefault();
 
-            const frameSrc = (<HTMLFrameElement> element).src || (<HTMLObjectElement> element).data,
-                frameScheme = this.urlUtils.getUrlScheme(frameSrc);
+            const frameSrc = (<HTMLFrameElement> element).src || (<HTMLObjectElement> element).data;
 
             // If the frame is not local, check the target to identify how to treat the link.
-            if (frameScheme && frameScheme != 'file' && frameScheme != 'filesystem' &&
-                    (!link.target || link.target == '_self')) {
+            if (!this.urlUtils.isLocalFileUrl(frameSrc) && (!link.target || link.target == '_self')) {
                 // Load the link inside the frame itself.
                 if (element.tagName.toLowerCase() == 'object') {
                     element.setAttribute('data', link.href);
@@ -395,6 +395,8 @@ export class CoreIframeUtilsProvider {
         }
     }
 }
+
+export class CoreIframeUtils extends makeSingleton(CoreIframeUtilsProvider) {}
 
 /**
  * Subtype of HTMLAnchorElement, with some calculated data.
