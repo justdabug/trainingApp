@@ -15,7 +15,7 @@
         "parents": {
           "NSPhotoLibraryUsageDescription": [
             {
-              "xml": "<string>We need photo library access to get pictures from there so you can attach them as part of your submissions.</string>",
+              "xml": "<string>Need to take a photo of you for your profile</string>",
               "count": 1,
               "mode": "merge",
               "id": "config.xml"
