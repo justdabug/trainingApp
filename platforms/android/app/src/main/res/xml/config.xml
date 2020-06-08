@@ -153,4 +153,5 @@
     <preference name="CustomURLSchemePluginClearsAndroidIntent" value="true" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
     <preference name="iosScheme" value="moodleappfs" />
+    <preference name="WKWebViewOnly" value="true" />
 </widget>

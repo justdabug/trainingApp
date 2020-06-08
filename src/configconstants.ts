@@ -92,7 +92,7 @@ export class CoreConfigConstants {
         93.75
 ];
     static customurlscheme = 'moodlemobile';
-    static siteurl = 'https://aquaponics.online';
+    static siteurl = 'learn.aquaponics.africa';
     static sitename = 'Ichthys Academy';
     static multisitesdisplay = '';
     static skipssoconfirmation = false;
@@ -112,12 +112,12 @@ export class CoreConfigConstants {
     static forceColorScheme = '';
     static ioswebviewscheme = 'moodleappfs';
     static appstores: any = {
-        android: 'com.moodle.moodlemobile',
+        android: 'com.ichthys.ichthysmobile',
         ios: 'id633359593',
         windows: 'moodle-desktop/9p9bwvhdc8c8',
         mac: 'id1255924440',
         linux: 'https://download.moodle.org/desktop/download.php?platform=linux&arch=64'
     };
-    static compilationtime = 1591526285448;
-    static lastcommit = '4e2e2b3dbc8e3cf12abfee6e86f18d7132cae0ea';
+    static compilationtime = 1591614634085;
+    static lastcommit = '5cf01562d6ffbc0ad04d8db0c318a9c48d6b5012';
 }
