@@ -1,17 +1,18 @@
 webpackJsonp([16],{
 
-/***/ 2092:
+/***/ 2102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreTagIndexAreaPageModule", function() { return CoreTagIndexAreaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreTagSerchPageModule", function() { return CoreTagSerchPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index_area__ = __webpack_require__(2246);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__search__ = __webpack_require__(2258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_search_components_components_module__ = __webpack_require__(224);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,40 +38,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreTagIndexAreaPageModule = /** @class */ (function () {
-    function CoreTagIndexAreaPageModule() {
+
+var CoreTagSerchPageModule = /** @class */ (function () {
+    function CoreTagSerchPageModule() {
     }
-    CoreTagIndexAreaPageModule = __decorate([
+    CoreTagSerchPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__index_area__["a" /* CoreTagIndexAreaPage */]
+                __WEBPACK_IMPORTED_MODULE_3__search__["a" /* CoreTagSearchPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__index_area__["a" /* CoreTagIndexAreaPage */]),
+                __WEBPACK_IMPORTED_MODULE_6__core_search_components_components_module__["a" /* CoreSearchComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__search__["a" /* CoreTagSearchPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], CoreTagIndexAreaPageModule);
-    return CoreTagIndexAreaPageModule;
+    ], CoreTagSerchPageModule);
+    return CoreTagSerchPageModule;
 }());
 
-//# sourceMappingURL=index-area.module.js.map
+//# sourceMappingURL=search.module.js.map
 
 /***/ }),
 
-/***/ 2246:
+/***/ 2258:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreTagIndexAreaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreTagSearchPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_app__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_utils_utils__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_utils_text__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_contentlinks_providers_helper__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_tag_providers_tag__ = __webpack_require__(128);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -99,128 +105,126 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 /**
- * Page that displays the tag index area.
+ * Page that displays most used tags and allows searching.
  */
-var CoreTagIndexAreaPage = /** @class */ (function () {
-    function CoreTagIndexAreaPage(navParams, injector, translate, tagProvider, domUtils, tagAreaDelegate) {
-        this.injector = injector;
+var CoreTagSearchPage = /** @class */ (function () {
+    function CoreTagSearchPage(navCtrl, navParams, appProvider, translate, domUtils, utils, textUtils, contentLinksHelper, tagProvider) {
+        this.navCtrl = navCtrl;
+        this.appProvider = appProvider;
         this.translate = translate;
-        this.tagProvider = tagProvider;
         this.domUtils = domUtils;
-        this.tagAreaDelegate = tagAreaDelegate;
+        this.utils = utils;
+        this.textUtils = textUtils;
+        this.contentLinksHelper = contentLinksHelper;
+        this.tagProvider = tagProvider;
+        this.collections = [];
         this.loaded = false;
-        this.items = [];
-        this.nextPage = 0;
-        this.canLoadMore = false;
-        this.loadMoreError = false;
-        this.tagId = navParams.get('tagId');
-        this.tagName = navParams.get('tagName');
-        this.collectionId = navParams.get('collectionId');
-        this.areaId = navParams.get('areaId');
-        this.fromContextId = navParams.get('fromContextId');
-        this.contextId = navParams.get('contextId');
-        this.recursive = navParams.get('recursive');
-        this.areaNameKey = navParams.get('areaNameKey');
-        // Pass the the following parameters to avoid fetching the first page.
-        this.componentName = navParams.get('componentName');
-        this.itemType = navParams.get('itemType');
-        this.items = navParams.get('items') || [];
-        this.nextPage = navParams.get('nextPage') || 0;
-        this.canLoadMore = !!navParams.get('canLoadMore');
+        this.searching = false;
+        this.collectionId = navParams.get('collectionId') || 0;
+        this.query = navParams.get('query') || '';
     }
     /**
      * View loaded.
      */
-    CoreTagIndexAreaPage.prototype.ionViewDidLoad = function () {
+    CoreTagSearchPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        var promise;
-        if (!this.componentName || !this.itemType || !this.items.length || this.nextPage == 0) {
-            promise = this.fetchData(true);
-        }
-        else {
-            promise = Promise.resolve();
-        }
-        promise.then(function () {
-            return _this.tagAreaDelegate.getComponent(_this.componentName, _this.itemType, _this.injector).then(function (component) {
-                _this.areaComponent = component;
-            });
-        }).finally(function () {
+        this.fetchData().finally(function () {
             _this.loaded = true;
         });
     };
-    /**
-     * Fetch next page of the tag index area.
-     *
-     * @param refresh Whether to refresh the data or fetch a new page.
-     * @return Resolved when done.
-     */
-    CoreTagIndexAreaPage.prototype.fetchData = function (refresh) {
+    CoreTagSearchPage.prototype.fetchData = function () {
         var _this = this;
-        if (refresh === void 0) { refresh = false; }
-        this.loadMoreError = false;
-        var page = refresh ? 0 : this.nextPage;
-        return this.tagProvider.getTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive, page).then(function (areas) {
-            var area = areas[0];
-            return _this.tagAreaDelegate.parseContent(area.component, area.itemtype, area.content).then(function (items) {
-                if (!items || !items.length) {
-                    // Tag area not supported.
-                    return Promise.reject(_this.translate.instant('core.tag.errorareanotsupported'));
-                }
-                if (page == 0) {
-                    _this.items = items;
-                }
-                else {
-                    (_a = _this.items).push.apply(_a, items);
-                }
-                _this.componentName = area.component;
-                _this.itemType = area.itemtype;
-                _this.areaNameKey = _this.tagAreaDelegate.getDisplayNameKey(area.component, area.itemtype);
-                _this.canLoadMore = !!area.nextpageurl;
-                _this.nextPage = page + 1;
-                var _a;
-            });
-        }).catch(function (error) {
-            _this.loadMoreError = true; // Set to prevent infinite calls with infinite-loading.
-            _this.domUtils.showErrorModalDefault(error, 'Error loading tag index');
+        return Promise.all([
+            this.fetchCollections(),
+            this.fetchTags()
+        ]).catch(function (error) {
+            _this.domUtils.showErrorModalDefault(error, 'Error loading tags.');
         });
     };
     /**
-     * Load more items.
+     * Fetch tag collections.
      *
-     * @param infiniteComplete Infinite scroll complete function.
      * @return Resolved when done.
      */
-    CoreTagIndexAreaPage.prototype.loadMore = function (infiniteComplete) {
-        return this.fetchData().finally(function () {
-            infiniteComplete();
+    CoreTagSearchPage.prototype.fetchCollections = function () {
+        var _this = this;
+        return this.tagProvider.getTagCollections().then(function (collections) {
+            collections.forEach(function (collection) {
+                if (!collection.name && collection.isdefault) {
+                    collection.name = _this.translate.instant('core.tag.defautltagcoll');
+                }
+            });
+            _this.collections = collections;
         });
+    };
+    /**
+     * Fetch tags.
+     *
+     * @return Resolved when done.
+     */
+    CoreTagSearchPage.prototype.fetchTags = function () {
+        var _this = this;
+        return this.tagProvider.getTagCloud(this.collectionId, undefined, undefined, this.query).then(function (cloud) {
+            _this.cloud = cloud;
+        });
+    };
+    /**
+     * Go to tag index page.
+     */
+    CoreTagSearchPage.prototype.openTag = function (tag) {
+        var url = this.textUtils.decodeURI(tag.viewurl);
+        this.contentLinksHelper.handleLink(url, undefined, this.navCtrl);
     };
     /**
      * Refresh data.
      *
      * @param refresher Refresher.
      */
-    CoreTagIndexAreaPage.prototype.refreshData = function (refresher) {
+    CoreTagSearchPage.prototype.refreshData = function (refresher) {
         var _this = this;
-        this.tagProvider.invalidateTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive).finally(function () {
-            _this.fetchData(true).finally(function () {
+        this.utils.allPromises([
+            this.tagProvider.invalidateTagCollections(),
+            this.tagProvider.invalidateTagCloud(this.collectionId, undefined, undefined, this.query),
+        ]).finally(function () {
+            return _this.fetchData().finally(function () {
                 refresher.complete();
             });
         });
     };
-    CoreTagIndexAreaPage = __decorate([
+    /**
+     * Search tags.
+     *
+     * @param query Search query.
+     * @return Resolved when done.
+     */
+    CoreTagSearchPage.prototype.searchTags = function (query) {
+        var _this = this;
+        this.searching = true;
+        this.query = query;
+        this.appProvider.closeKeyboard();
+        return this.fetchTags().catch(function (error) {
+            _this.domUtils.showErrorModalDefault(error, 'Error loading tags.');
+        }).finally(function () {
+            _this.searching = false;
+        });
+    };
+    CoreTagSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-tag-index-area',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index-area/index-area.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.tag.itemstaggedwith\' | translate: { $a: {tagarea: areaNameKey | translate, tag: tagName} } }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="loaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-loading [hideUntil]="loaded">\n        <ng-container *ngIf="loaded">\n            <core-dynamic-component [component]="areaComponent" [data]="{items: items}"></core-dynamic-component>\n        </ng-container>\n        <core-infinite-loading [enabled]="canLoadMore" (action)="loadMore($event)" [error]="loadMoreError"></core-infinite-loading>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index-area/index-area.html"*/,
+            selector: 'page-core-tag-search',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/search/search.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.tag.searchtags\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="loaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <ion-grid class="safe-area-page">\n        <ion-row>\n            <ion-col col-12 [attr.col-sm-6]="collections && collections.length > 1 ? \'\' : null">\n                <core-search-box (onSubmit)="searchTags($event)" (onClear)="searchTags(\'\')" [initialSearch]="query" [disabled]="searching" autocorrect="off" [spellcheck]="false" [autoFocus]="false" [lengthCheck]="0" searchArea="CoreTag"></core-search-box>\n            </ion-col>\n            <ion-col col-12 col-sm-6 *ngIf="collections && collections.length > 1">\n                <ion-select text-start [(ngModel)]="collectionId" (ngModelChange)="searchTags(query)" [disabled]="searching" interface="popover" class="core-button-select">\n                    <ion-option [value]="0">{{ \'core.tag.inalltagcoll\' | translate }}</ion-option>\n                    <ion-option *ngFor="let collection of collections" [value]="collection.id">{{ collection.name }}</ion-option>\n                </ion-select>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n    <core-loading [hideUntil]="loaded && !searching" class="safe-area-page">\n        <core-empty-box *ngIf="!cloud || !cloud.tags || !cloud.tags.length" icon="pricetags" [message]="\'core.tag.notagsfound\' | translate: {$a: query}"></core-empty-box>\n\n        <ng-container *ngIf="cloud && cloud.tags && cloud.tags.length > 0">\n            <div text-center class="core-tag-cloud">\n                <ion-badge *ngFor="let tag of cloud.tags" (click)="openTag(tag)" text-wrap>\n                   <span [class]="\'size\' + tag.size" >{{ tag.name }}</span>\n                </ion-badge>\n            </div>\n            <p *ngIf="cloud.tags.length < cloud.totalcount" text-center>\n                {{ \'core.tag.showingfirsttags\' | translate: {$a: cloud.tags.length} }}\n            </p>\n        </ng-container>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/search/search.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__["a" /* CoreTagProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__["a" /* CoreTagAreaDelegate */]])
-    ], CoreTagIndexAreaPage);
-    return CoreTagIndexAreaPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__providers_app__["b" /* CoreAppProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_utils_utils__["b" /* CoreUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_utils_text__["b" /* CoreTextUtilsProvider */], __WEBPACK_IMPORTED_MODULE_7__core_contentlinks_providers_helper__["a" /* CoreContentLinksHelperProvider */],
+            __WEBPACK_IMPORTED_MODULE_8__core_tag_providers_tag__["a" /* CoreTagProvider */]])
+    ], CoreTagSearchPage);
+    return CoreTagSearchPage;
 }());
 
-//# sourceMappingURL=index-area.js.map
+//# sourceMappingURL=search.js.map
 
 /***/ })
 

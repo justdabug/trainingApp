@@ -1,15 +1,15 @@
 webpackJsonp([8],{
 
-/***/ 2100:
+/***/ 2110:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerTextPageModule", function() { return CoreViewerTextPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerTextAreaPageModule", function() { return CoreViewerTextAreaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text__ = __webpack_require__(2254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__textarea__ = __webpack_require__(2266);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
@@ -40,37 +40,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /**
  * Module to lazy load the page.
  */
-var CoreViewerTextPageModule = /** @class */ (function () {
-    function CoreViewerTextPageModule() {
+var CoreViewerTextAreaPageModule = /** @class */ (function () {
+    function CoreViewerTextAreaPageModule() {
     }
-    CoreViewerTextPageModule = __decorate([
+    CoreViewerTextAreaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__text__["a" /* CoreViewerTextPage */]
+                __WEBPACK_IMPORTED_MODULE_3__textarea__["a" /* CoreViewerTextAreaPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__text__["a" /* CoreViewerTextPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__textarea__["a" /* CoreViewerTextAreaPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreViewerTextPageModule);
-    return CoreViewerTextPageModule;
+    ], CoreViewerTextAreaPageModule);
+    return CoreViewerTextAreaPageModule;
 }());
 
-//# sourceMappingURL=text.module.js.map
+//# sourceMappingURL=textarea.module.js.map
 
 /***/ }),
 
-/***/ 2254:
+/***/ 2266:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerTextPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerTextAreaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_text__ = __webpack_require__(11);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -95,39 +94,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
- * Page to render a certain text. If opened as a modal, it will have a button to close the modal.
+ * Page to render a textarea prompt.
  */
-var CoreViewerTextPage = /** @class */ (function () {
-    function CoreViewerTextPage(viewCtrl, params, textUtils) {
+var CoreViewerTextAreaPage = /** @class */ (function () {
+    function CoreViewerTextAreaPage(viewCtrl, params) {
         this.viewCtrl = viewCtrl;
+        this.text = '';
         this.title = params.get('title');
-        this.content = params.get('content');
-        this.component = params.get('component');
-        this.componentId = params.get('componentId');
-        this.files = params.get('files');
-        this.filter = params.get('filter');
-        this.contextLevel = params.get('contextLevel');
-        this.instanceId = params.get('instanceId');
-        this.courseId = params.get('courseId');
+        this.message = params.get('message');
+        this.placeholder = params.get('placeholder') || '';
+        var buttons = params.get('buttons');
+        this.buttons = buttons.map(function (button) {
+            if (typeof button === 'string') {
+                return { text: button };
+            }
+            return button;
+        });
     }
     /**
-     * Close modal.
+     * Button clicked.
+     *
+     * @param button: Clicked button.
      */
-    CoreViewerTextPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
+    CoreViewerTextAreaPage.prototype.buttonClicked = function (button) {
+        var shouldDismiss = true;
+        if (button.handler) {
+            // A handler has been provided, execute it pass the handler the values from the inputs
+            if (button.handler(this.text) === false) {
+                // If the return value of the handler is false then do not dismiss
+                shouldDismiss = false;
+            }
+        }
+        if (shouldDismiss) {
+            this.viewCtrl.dismiss(button.role);
+        }
     };
-    CoreViewerTextPage = __decorate([
+    CoreViewerTextAreaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-viewer-text',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/text/text.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <core-format-text [text]="content" [component]="component" [componentId]="componentId" [filter]="filter" [contextLevel]="contextLevel" [contextInstanceId]="instanceId" [courseId]="courseId"></core-format-text>\n\n    <ion-card *ngIf="files && files.length">\n        <core-file *ngFor="let file of files" [file]="file" [component]="component" [componentId]="componentId"></core-file>\n    </ion-card>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/text/text.html"*/,
+            selector: 'page-core-viewer-textarea',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/textarea/textarea.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>{{ title }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <div class="prompt-message"><core-format-text [text]="message"></core-format-text></div>\n    <ion-textarea rows="1" core-auto-rows name="feedback" [attr.aria-multiline]="true" [(ngModel)]="text" [placeholder]="placeholder"></ion-textarea>\n    <div class="prompt-button-group">\n        <button *ngFor="let button of buttons" ion-button="prompt-button" (click)="buttonClicked(button)" [ngClass]="button.cssClass">\n            {{ button.text }}\n        </button>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/textarea/textarea.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_text__["a" /* CoreTextUtilsProvider */]])
-    ], CoreViewerTextPage);
-    return CoreViewerTextPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], CoreViewerTextAreaPage);
+    return CoreViewerTextAreaPage;
 }());
 
-//# sourceMappingURL=text.js.map
+//# sourceMappingURL=textarea.js.map
 
 /***/ })
 

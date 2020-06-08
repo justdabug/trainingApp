@@ -1,16 +1,17 @@
 webpackJsonp([9],{
 
-/***/ 2099:
+/***/ 2108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerImagePageModule", function() { return CoreViewerImagePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerTextPageModule", function() { return CoreViewerTextPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__image__ = __webpack_require__(2253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__text__ = __webpack_require__(2264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,36 +36,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreViewerImagePageModule = /** @class */ (function () {
-    function CoreViewerImagePageModule() {
+
+/**
+ * Module to lazy load the page.
+ */
+var CoreViewerTextPageModule = /** @class */ (function () {
+    function CoreViewerTextPageModule() {
     }
-    CoreViewerImagePageModule = __decorate([
+    CoreViewerTextPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__image__["a" /* CoreViewerImagePage */]
+                __WEBPACK_IMPORTED_MODULE_3__text__["a" /* CoreViewerTextPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__image__["a" /* CoreViewerImagePage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__text__["a" /* CoreViewerTextPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreViewerImagePageModule);
-    return CoreViewerImagePageModule;
+    ], CoreViewerTextPageModule);
+    return CoreViewerTextPageModule;
 }());
 
-//# sourceMappingURL=image.module.js.map
+//# sourceMappingURL=text.module.js.map
 
 /***/ }),
 
-/***/ 2253:
+/***/ 2264:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerImagePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerTextPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_text__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__ = __webpack_require__(4);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,33 +97,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Page to view an image. If opened as a modal, it will have a button to close the modal.
+ * Page to render a certain text. If opened as a modal, it will have a button to close the modal.
  */
-var CoreViewerImagePage = /** @class */ (function () {
-    function CoreViewerImagePage(viewCtrl, params, translate) {
+var CoreViewerTextPage = /** @class */ (function () {
+    function CoreViewerTextPage(viewCtrl, params, textUtils) {
         this.viewCtrl = viewCtrl;
-        this.title = params.get('title') || translate.instant('core.imageviewer');
-        this.image = params.get('image');
+        this.title = params.get('title');
+        this.content = params.get('content');
         this.component = params.get('component');
         this.componentId = params.get('componentId');
+        this.files = params.get('files');
+        this.filter = params.get('filter');
+        this.contextLevel = params.get('contextLevel');
+        this.instanceId = params.get('instanceId');
+        this.courseId = params.get('courseId');
+        this.displayCopyButton = !!params.get('displayCopyButton');
     }
     /**
      * Close modal.
      */
-    CoreViewerImagePage.prototype.closeModal = function () {
+    CoreViewerTextPage.prototype.closeModal = function () {
         this.viewCtrl.dismiss();
     };
-    CoreViewerImagePage = __decorate([
+    /**
+     * Copy the text to clipboard.
+     */
+    CoreViewerTextPage.prototype.copyText = function () {
+        __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["a" /* CoreUtils */].instance.copyToClipboard(this.content);
+    };
+    CoreViewerTextPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-viewer-image',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/image/image.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-scroll zoom="true" maxZoom="2" class="core-zoom-pane" scrollX="true" scrollY="true">\n        <img [src]="image" [alt]="title" core-external-content [component]="component" [componentId]="componentId">\n    </ion-scroll>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/image/image.html"*/,
+            selector: 'page-core-viewer-text',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/text/text.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <core-format-text [text]="content" [component]="component" [componentId]="componentId" [filter]="filter" [contextLevel]="contextLevel" [contextInstanceId]="instanceId" [courseId]="courseId"></core-format-text>\n\n    <ion-card *ngIf="files && files.length">\n        <core-file *ngFor="let file of files" [file]="file" [component]="component" [componentId]="componentId"></core-file>\n    </ion-card>\n</ion-content>\n<ion-footer color="light" *ngIf="displayCopyButton">\n    <button ion-button block color="light" icon-start (click)="copyText()">\n        <ion-icon name="copy" aria-hidden="true"></ion-icon>\n        {{ \'core.copytoclipboard\' | translate }}\n    </button>\n</ion-footer>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/text/text.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["G" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */]])
-    ], CoreViewerImagePage);
-    return CoreViewerImagePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_text__["b" /* CoreTextUtilsProvider */]])
+    ], CoreViewerTextPage);
+    return CoreViewerTextPage;
 }());
 
-//# sourceMappingURL=image.js.map
+//# sourceMappingURL=text.js.map
 
 /***/ })
 

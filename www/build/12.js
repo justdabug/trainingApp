@@ -1,17 +1,16 @@
 webpackJsonp([12],{
 
-/***/ 2096:
+/***/ 2106:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreUserParticipantsPageModule", function() { return CoreUserParticipantsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerIframePageModule", function() { return CoreViewerIframePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__iframe__ = __webpack_require__(2262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__participants__ = __webpack_require__(2250);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,37 +35,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CoreUserParticipantsPageModule = /** @class */ (function () {
-    function CoreUserParticipantsPageModule() {
+var CoreViewerIframePageModule = /** @class */ (function () {
+    function CoreViewerIframePageModule() {
     }
-    CoreUserParticipantsPageModule = __decorate([
+    CoreViewerIframePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__participants__["a" /* CoreUserParticipantsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__iframe__["a" /* CoreViewerIframePage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreUserComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__participants__["a" /* CoreUserParticipantsPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
-            ],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__iframe__["a" /* CoreViewerIframePage */])
+            ]
         })
-    ], CoreUserParticipantsPageModule);
-    return CoreUserParticipantsPageModule;
+    ], CoreViewerIframePageModule);
+    return CoreViewerIframePageModule;
 }());
 
-//# sourceMappingURL=participants.module.js.map
+//# sourceMappingURL=iframe.module.js.map
 
 /***/ }),
 
-/***/ 2250:
+/***/ 2262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreUserParticipantsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerIframePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sites__ = __webpack_require__(2);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -91,23 +89,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Page that displays the list of course participants.
+ * Page to display a URL in an iframe.
  */
-var CoreUserParticipantsPage = /** @class */ (function () {
-    function CoreUserParticipantsPage(navParams) {
-        this.courseId = navParams.get('courseId');
+var CoreViewerIframePage = /** @class */ (function () {
+    //   "yes" -> Always auto-login.
+    //   "no" -> Never auto-login.
+    //   "check" -> Auto-login only if it points to the current site. Default value.
+    function CoreViewerIframePage(params, sitesProvider) {
+        var _this = this;
+        this.title = params.get('title');
+        this.autoLogin = params.get('autoLogin') || 'check';
+        var url = params.get('url'), currentSite = sitesProvider.getCurrentSite();
+        if (currentSite && (this.autoLogin == 'yes' || (this.autoLogin == 'check' && currentSite.containsUrl(url)))) {
+            // Format the URL to add auto-login.
+            currentSite.getAutoLoginUrl(url, false).then(function (url) {
+                _this.url = url;
+            });
+        }
+        else {
+            this.url = url;
+        }
     }
-    CoreUserParticipantsPage = __decorate([
+    CoreViewerIframePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-user-participants',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/user/pages/participants/participants.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.user.participants\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<core-user-participants [courseId]="courseId"></core-user-participants>'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/user/pages/participants/participants.html"*/,
+            selector: 'page-core-viewer-iframe',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/iframe/iframe.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="url">\n        <core-iframe *ngIf="url" [src]="url"></core-iframe>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/iframe/iframe.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
-    ], CoreUserParticipantsPage);
-    return CoreUserParticipantsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_sites__["a" /* CoreSitesProvider */]])
+    ], CoreViewerIframePage);
+    return CoreViewerIframePage;
 }());
 
-//# sourceMappingURL=participants.js.map
+//# sourceMappingURL=iframe.js.map
 
 /***/ })
 

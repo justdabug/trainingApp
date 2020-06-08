@@ -1,18 +1,17 @@
 webpackJsonp([30],{
 
-/***/ 2078:
+/***/ 2088:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreRatingRatingsPageModule", function() { return CoreRatingRatingsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreAppSettingsPageModule", function() { return CoreAppSettingsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ratings__ = __webpack_require__(2232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app__ = __webpack_require__(2244);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipes_pipes_module__ = __webpack_require__(64);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,40 +37,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CoreRatingRatingsPageModule = /** @class */ (function () {
-    function CoreRatingRatingsPageModule() {
+var CoreAppSettingsPageModule = /** @class */ (function () {
+    function CoreAppSettingsPageModule() {
     }
-    CoreRatingRatingsPageModule = __decorate([
+    CoreAppSettingsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__ratings__["a" /* CoreRatingRatingsPage */]
+                __WEBPACK_IMPORTED_MODULE_3__app__["a" /* CoreAppSettingsPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_6__pipes_pipes_module__["a" /* CorePipesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__ratings__["a" /* CoreRatingRatingsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__app__["a" /* CoreAppSettingsPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], CoreRatingRatingsPageModule);
-    return CoreRatingRatingsPageModule;
+    ], CoreAppSettingsPageModule);
+    return CoreAppSettingsPageModule;
 }());
 
-//# sourceMappingURL=ratings.module.js.map
+//# sourceMappingURL=app.module.js.map
 
 /***/ }),
 
-/***/ 2232:
+/***/ 2244:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreRatingRatingsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreAppSettingsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_rating_providers_rating__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_split_view_split_view__ = __webpack_require__(81);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,78 +93,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 /**
- * Page that displays individual ratings
+ * Page that displays the list of app settings pages.
  */
-var CoreRatingRatingsPage = /** @class */ (function () {
-    function CoreRatingRatingsPage(navParams, viewCtrl, domUtils, ratingProvider) {
-        this.viewCtrl = viewCtrl;
-        this.domUtils = domUtils;
-        this.ratingProvider = ratingProvider;
-        this.loaded = false;
-        this.ratings = [];
-        this.contextLevel = navParams.get('contextLevel');
-        this.instanceId = navParams.get('instanceId');
-        this.component = navParams.get('ratingComponent');
-        this.ratingArea = navParams.get('ratingArea');
-        this.aggregateMethod = navParams.get('aggregateMethod');
-        this.itemId = navParams.get('itemId');
-        this.scaleId = navParams.get('scaleId');
-        this.courseId = navParams.get('courseId');
+var CoreAppSettingsPage = /** @class */ (function () {
+    function CoreAppSettingsPage(platorm, navParams) {
+        this.isIOS = platorm.is('ios');
+        this.selectedPage = navParams.get('page') || false;
     }
     /**
      * View loaded.
      */
-    CoreRatingRatingsPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.fetchData().finally(function () {
-            _this.loaded = true;
-        });
+    CoreAppSettingsPage.prototype.ionViewDidLoad = function () {
+        if (this.selectedPage) {
+            this.openHandler(this.selectedPage);
+        }
+        else if (this.splitviewCtrl.isOn()) {
+            this.openHandler('CoreSettingsGeneralPage');
+        }
     };
     /**
-     * Fetch all the data required for the view.
+     * Open a handler.
      *
-     * @return Resolved when done.
+     * @param page Page to open.
+     * @param params Params of the page to open.
      */
-    CoreRatingRatingsPage.prototype.fetchData = function () {
-        var _this = this;
-        return this.ratingProvider.getItemRatings(this.contextLevel, this.instanceId, this.component, this.ratingArea, this.itemId, this.scaleId, undefined, this.courseId).then(function (ratings) {
-            _this.ratings = ratings;
-        }).catch(function (error) {
-            _this.domUtils.showErrorModal(error);
-        });
+    CoreAppSettingsPage.prototype.openHandler = function (page, params) {
+        this.selectedPage = page;
+        this.splitviewCtrl.push(page, params);
     };
-    /**
-     * Refresh data.
-     *
-     * @param refresher Refresher.
-     */
-    CoreRatingRatingsPage.prototype.refreshRatings = function (refresher) {
-        var _this = this;
-        this.ratingProvider.invalidateRatingItems(this.contextLevel, this.instanceId, this.component, this.ratingArea, this.itemId, this.scaleId).finally(function () {
-            return _this.fetchData().finally(function () {
-                refresher.complete();
-            });
-        });
-    };
-    /**
-     * Close modal.
-     */
-    CoreRatingRatingsPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
-    };
-    CoreRatingRatingsPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_split_view_split_view__["a" /* CoreSplitViewComponent */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_split_view_split_view__["a" /* CoreSplitViewComponent */])
+    ], CoreAppSettingsPage.prototype, "splitviewCtrl", void 0);
+    CoreAppSettingsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-rating-ratings',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/rating/pages/ratings/ratings.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.rating.ratings\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="loaded" (ionRefresh)="refreshRatings($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-loading [hideUntil]="loaded">\n        <ion-list *ngIf="ratings.length > 0">\n            <ion-item text-wrap *ngFor="let rating of ratings">\n                <ion-avatar core-user-avatar [user]="rating" [courseId]="courseId" item-start></ion-avatar>\n                <ion-note item-end padding-left *ngIf="rating.timemodified">\n                    {{ rating.timemodified | coreDateDayOrTime }}\n                </ion-note>\n                <h2>{{ rating.userfullname }}</h2>\n                <p>{{ rating.rating }}</p>\n            </ion-item>\n        </ion-list>\n        <core-empty-box *ngIf="ratings.length == 0" icon="stats" [message]="\'core.rating.noratings\' | translate"></core-empty-box>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/rating/pages/ratings/ratings.html"*/,
+            selector: 'page-core-settings-app',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/settings/pages/app/app.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.settings.appsettings\' | translate}}</ion-title>\n        <ion-buttons end>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<core-split-view>\n    <ion-content>\n        <ion-list>\n            <a ion-item (click)="openHandler(\'CoreSettingsGeneralPage\')" [title]="\'core.settings.general\' | translate"  [class.core-split-item-selected]="\'CoreSettingsGeneralPage\' == selectedPage" detail-push>\n                <ion-icon name="construct" item-start></ion-icon>\n                <h2>{{ \'core.settings.general\' | translate }}</h2>\n            </a>\n            <a ion-item (click)="openHandler(\'CoreSettingsSpaceUsagePage\')" [title]="\'core.settings.spaceusage\' | translate" [class.core-split-item-selected]="\'CoreSettingsSpaceUsagePage\' == selectedPage" detail-push>\n                <ion-icon name="stats" item-start></ion-icon>\n                <h2>{{ \'core.settings.spaceusage\' | translate }}</h2>\n            </a>\n            <a ion-item (click)="openHandler(\'CoreSettingsSynchronizationPage\')" [title]="\'core.settings.synchronization\' | translate" [class.core-split-item-selected]="\'CoreSettingsSynchronizationPage\' == selectedPage" detail-push>\n                <ion-icon name="sync" item-start></ion-icon>\n                <h2>{{ \'core.settings.synchronization\' | translate }}</h2>\n            </a>\n            <a ion-item *ngIf="isIOS" (click)="openHandler(\'CoreSharedFilesListPage\', {manage: true})" [title]="\'core.sharedfiles.sharedfiles\' | translate" [class.core-split-item-selected]="\'CoreSharedFilesListPage\' == selectedPage" detail-push>\n                <ion-icon name="folder" item-start></ion-icon>\n                <h2>{{ \'core.sharedfiles.sharedfiles\' | translate }}</h2>\n            </a>\n            <a ion-item (click)="openHandler(\'CoreSettingsAboutPage\')" [title]="\'core.settings.about\' | translate" [class.core-split-item-selected]="\'CoreSettingsAboutPage\' == selectedPage" detail-push>\n                <ion-icon name="contacts" item-start></ion-icon>\n                <h2>{{ \'core.settings.about\' | translate }}</h2>\n            </a>\n        </ion-list>\n    </ion-content>\n</core-split-view>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/settings/pages/app/app.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__core_rating_providers_rating__["a" /* CoreRatingProvider */]])
-    ], CoreRatingRatingsPage);
-    return CoreRatingRatingsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], CoreAppSettingsPage);
+    return CoreAppSettingsPage;
 }());
 
-//# sourceMappingURL=ratings.js.map
+//# sourceMappingURL=app.js.map
 
 /***/ })
 

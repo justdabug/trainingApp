@@ -1,19 +1,18 @@
 webpackJsonp([113],{
 
-/***/ 1992:
+/***/ 2000:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModChatSessionMessagesPageModule", function() { return AddonModChatSessionMessagesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModChatUsersPageModule", function() { return AddonModChatUsersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pipes_pipes_module__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(990);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__session_messages__ = __webpack_require__(2142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pipes_pipes_module__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__users__ = __webpack_require__(2152);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,44 +39,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var AddonModChatSessionMessagesPageModule = /** @class */ (function () {
-    function AddonModChatSessionMessagesPageModule() {
+var AddonModChatUsersPageModule = /** @class */ (function () {
+    function AddonModChatUsersPageModule() {
     }
-    AddonModChatSessionMessagesPageModule = __decorate([
+    AddonModChatUsersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_7__session_messages__["a" /* AddonModChatSessionMessagesPage */],
+                __WEBPACK_IMPORTED_MODULE_6__users__["a" /* AddonModChatUsersPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
                 __WEBPACK_IMPORTED_MODULE_5__pipes_pipes_module__["a" /* CorePipesModule */],
-                __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* AddonModChatComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_7__session_messages__["a" /* AddonModChatSessionMessagesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_6__users__["a" /* AddonModChatUsersPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonModChatSessionMessagesPageModule);
-    return AddonModChatSessionMessagesPageModule;
+    ], AddonModChatUsersPageModule);
+    return AddonModChatUsersPageModule;
 }());
 
-//# sourceMappingURL=session-messages.module.js.map
+//# sourceMappingURL=users.module.js.map
 
 /***/ }),
 
-/***/ 2142:
+/***/ 2152:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModChatSessionMessagesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModChatUsersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_app__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_user_providers_user__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_chat__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_helper__ = __webpack_require__(993);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_chat__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__ = __webpack_require__(126);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -108,101 +105,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Page that displays list of chat session messages.
+ * Page that displays the chat session users.
  */
-var AddonModChatSessionMessagesPage = /** @class */ (function () {
-    function AddonModChatSessionMessagesPage(navParams, domUtils, chatProvider, sitesProvider, chatHelper, userProvider) {
+var AddonModChatUsersPage = /** @class */ (function () {
+    function AddonModChatUsersPage(navParams, network, zone, appProvider, sitesProvider, viewCtrl, domUtils, chatProvider) {
+        var _this = this;
+        this.appProvider = appProvider;
+        this.sitesProvider = sitesProvider;
+        this.viewCtrl = viewCtrl;
         this.domUtils = domUtils;
         this.chatProvider = chatProvider;
-        this.chatHelper = chatHelper;
-        this.userProvider = userProvider;
-        this.messages = [];
-        this.loaded = false;
-        this.courseId = navParams.get('courseId');
-        this.chatId = navParams.get('chatId');
-        this.groupId = navParams.get('groupId');
-        this.sessionStart = navParams.get('sessionStart');
-        this.sessionEnd = navParams.get('sessionEnd');
-        this.cmId = navParams.get('cmId');
-        this.currentUserId = sitesProvider.getCurrentSiteUserId();
-        this.fetchMessages();
+        this.users = [];
+        this.usersLoaded = false;
+        this.sessionId = navParams.get('sessionId');
+        this.isOnline = this.appProvider.isOnline();
+        this.currentUserId = this.sitesProvider.getCurrentSiteUserId();
+        this.onlineObserver = network.onchange().subscribe(function () {
+            // Execute the callback in the Angular zone, so change detection doesn't stop working.
+            zone.run(function () {
+                _this.isOnline = _this.appProvider.isOnline();
+            });
+        });
     }
     /**
-     * Fetch session messages.
-     *
-     * @return Promise resolved when done.
+     * View loaded.
      */
-    AddonModChatSessionMessagesPage.prototype.fetchMessages = function () {
+    AddonModChatUsersPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        return this.chatProvider.getSessionMessages(this.chatId, this.sessionStart, this.sessionEnd, this.groupId)
-            .then(function (messages) {
-            return _this.chatProvider.getMessagesUserData(messages, _this.courseId).then(function (messages) {
-                _this.messages = messages;
-                if (messages.length) {
-                    var _loop_1 = function (index) {
-                        var message = _this.messages[index];
-                        var prevMessage = index > 0 ? _this.messages[index - 1] : null;
-                        _this.chatHelper.formatMessage(_this.currentUserId, message, prevMessage);
-                        if (message.beep && message.beep != _this.currentUserId + '') {
-                            _this.getUserFullname(message.beep).then(function (fullname) {
-                                message.beepWho = fullname;
-                            });
-                        }
-                    };
-                    // Calculate which messages need to display the date or user data.
-                    for (var index = 0; index < _this.messages.length; index++) {
-                        _loop_1(index);
-                    }
-                    _this.messages[_this.messages.length - 1].showTail = true;
-                }
-            });
+        this.chatProvider.getChatUsers(this.sessionId).then(function (data) {
+            _this.users = data.users;
         }).catch(function (error) {
-            _this.domUtils.showErrorModalDefault(error, 'core.errorloadingcontent', true);
+            _this.domUtils.showErrorModalDefault(error, 'addon.mod_chat.errorwhilegettingchatusers', true);
         }).finally(function () {
-            _this.loaded = true;
+            _this.usersLoaded = true;
         });
     };
     /**
-     * Get the user fullname for a beep.
-     *
-     * @param  id User Id before parsing.
-     * @return User fullname.
+     * Close the chat users modal.
      */
-    AddonModChatSessionMessagesPage.prototype.getUserFullname = function (id) {
-        if (isNaN(parseInt(id, 10))) {
-            return Promise.resolve(id);
-        }
-        return this.userProvider.getProfile(parseInt(id, 10), this.courseId, true).then(function (user) {
-            return user.fullname;
-        }).catch(function () {
-            // Error getting profile.
-            return id;
-        });
+    AddonModChatUsersPage.prototype.closeModal = function () {
+        this.viewCtrl.dismiss({ users: this.users });
     };
     /**
-     * Refresh session messages.
+     * Add "To user:".
      *
-     * @param refresher Refresher.
+     * @param user User object.
      */
-    AddonModChatSessionMessagesPage.prototype.refreshMessages = function (refresher) {
-        var _this = this;
-        this.chatProvider.invalidateSessionMessages(this.chatId, this.sessionStart, this.groupId).finally(function () {
-            _this.fetchMessages().finally(function () {
-                refresher.complete();
-            });
-        });
+    AddonModChatUsersPage.prototype.talkTo = function (user) {
+        this.viewCtrl.dismiss({ talkTo: user.fullname, users: this.users });
     };
-    AddonModChatSessionMessagesPage = __decorate([
+    /**
+     * Beep a user.
+     *
+     * @param user User object.
+     */
+    AddonModChatUsersPage.prototype.beepTo = function (user) {
+        this.viewCtrl.dismiss({ beepTo: user.id, users: this.users });
+    };
+    /**
+     * Page destroyed.
+     */
+    AddonModChatUsersPage.prototype.ngOnDestroy = function () {
+        this.onlineObserver && this.onlineObserver.unsubscribe();
+    };
+    AddonModChatUsersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-mod-chat-session-messages',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/session-messages/session-messages.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.mod_chat.messages\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="loaded" (ionRefresh)="refreshMessages($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-loading [hideUntil]="loaded">\n        <ion-list class="addon-messages-discussion-container safe-area-page" aria-live="polite">\n            <ng-container *ngFor="let message of messages; index as index;">\n                <h6 text-center *ngIf="message.showDate" class="addon-messages-date">\n                    {{ message.timestamp * 1000 | coreFormatDate:"strftimedayshort" }}\n                </h6>\n\n                <div text-center *ngIf="message.special" class="addon-mod-chat-notice">\n                    <ion-badge text-wrap color="success" *ngIf="message.issystem && message.message == \'enter\'">\n                        <span><core-icon name="fa-sign-in"></core-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }} {{ \'addon.mod_chat.messageenter\' | translate:{$a: message.userfullname} }}</span>\n                    </ion-badge>\n\n                    <ion-badge text-wrap color="danger" *ngIf="message.issystem && message.message == \'exit\'">\n                        <span><core-icon name="fa-sign-out"></core-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }} {{ \'addon.mod_chat.messageexit\' | translate:{$a: message.userfullname} }}</span>\n                    </ion-badge>\n\n                    <ion-badge text-wrap color="primary" *ngIf="message.beep == \'all\'">\n                        <span><ion-icon name="notifications"></ion-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}\n                        {{ \'addon.mod_chat.messagebeepseveryone\' | translate:{$a: message.userfullname} }} </span>\n                    </ion-badge>\n\n                    <ion-badge text-wrap color="primary" *ngIf="message.userid != currentUserId && message.beep == currentUserId">\n                        <span><ion-icon name="notifications"></ion-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}\n                        {{ \'addon.mod_chat.messagebeepsyou\' | translate:{$a: message.userfullname} }} </span>\n                    </ion-badge>\n\n                    <ion-badge text-wrap color="light" *ngIf="message.userid == currentUserId && message.beep && message.beep != \'all\'">\n                        <span><ion-icon name="notifications"></ion-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}\n                        {{ \'addon.mod_chat.messageyoubeep\' | translate:{$a: message.beepWho} }} </span>\n                    </ion-badge>\n\n                    <ion-badge text-wrap color="info" *ngIf="!message.issystem && !message.beep">\n                        <span><core-icon name="fa-asterisk"></core-icon> {{ message.timestamp * 1000 | coreFormatDate:"strftimetime" }}\n                            <strong>{{ message.userfullname }} <core-format-text [text]="message.message" contextLevel="module" [contextInstanceId]="cmId" [courseId]="courseId"></core-format-text></strong></span>\n                    </ion-badge>\n                </div>\n\n                <ion-item text-wrap *ngIf="!message.special" class="addon-message" [class.addon-message-mine]="message.userid == currentUserId" [class.addon-message-not-mine]="message.userid != currentUserId" [class.addon-message-no-user]="!message.showUserData">\n                    <!-- User data. -->\n                    <h2 class="addon-message-user">\n                        <ion-avatar item-start core-user-avatar [user]="message" [linkProfile]="false" *ngIf="message.showUserData"></ion-avatar>\n                        <div *ngIf="message.showUserData">{{ message.userfullname }}</div>\n                        <ion-note>{{ message.timestamp * 1000 | coreFormatDate: "strftimetime" }}</ion-note>\n                    </h2>\n\n                    <p class="addon-message-text">\n                        <core-format-text [text]="message.message" contextLevel="module" [contextInstanceId]="cmId" [courseId]="courseId"></core-format-text>\n                    </p>\n                    <div class="tail" *ngIf="message.showTail"></div>\n                </ion-item>\n            </ng-container>\n        </ion-list>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/session-messages/session-messages.html"*/,
+            selector: 'page-addon-mod-chat-users',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/users/users.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.mod_chat.currentusers\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="usersLoaded">\n        <ion-item text-wrap *ngFor="let user of users" [class.addon-mod-chat-user]="currentUserId != user.id && isOnline">\n            <ion-avatar core-user-avatar [user]="user" item-start></ion-avatar>\n            <h2>{{ user.fullname }}</h2>\n            <ng-container *ngIf="currentUserId != user.id && isOnline">\n                <button ion-button clear icon-left (click)="talkTo(user)">\n                    <ion-icon name="chatboxes"></ion-icon>\n                    {{ \'addon.mod_chat.talk\' | translate }}\n                </button>\n                <button ion-button clear icon-left (click)="beepTo(user)">\n                    <ion-icon name="notifications"></ion-icon>\n                    {{ \'addon.mod_chat.beep\' | translate }}\n                </button>\n            </ng-container>\n        </ion-item>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/users/users.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_chat__["a" /* AddonModChatProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_helper__["a" /* AddonModChatHelperProvider */], __WEBPACK_IMPORTED_MODULE_4__core_user_providers_user__["a" /* CoreUserProvider */]])
-    ], AddonModChatSessionMessagesPage);
-    return AddonModChatSessionMessagesPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__["a" /* Network */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* NgZone */], __WEBPACK_IMPORTED_MODULE_2__providers_app__["b" /* CoreAppProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_chat__["a" /* AddonModChatProvider */]])
+    ], AddonModChatUsersPage);
+    return AddonModChatUsersPage;
 }());
 
-//# sourceMappingURL=session-messages.js.map
+//# sourceMappingURL=users.js.map
 
 /***/ })
 

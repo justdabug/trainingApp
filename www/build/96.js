@@ -1,18 +1,18 @@
 webpackJsonp([96],{
 
-/***/ 2007:
+/***/ 2017:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModForumNewDiscussionPageModule", function() { return AddonModForumNewDiscussionPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModGlossaryNewDiscussionPageModule", function() { return AddonModGlossaryNewDiscussionPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__new_discussion__ = __webpack_require__(2157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_editor_components_components_module__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__edit__ = __webpack_require__(2169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__core_editor_components_components_module__ = __webpack_require__(127);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,53 +39,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddonModForumNewDiscussionPageModule = /** @class */ (function () {
-    function AddonModForumNewDiscussionPageModule() {
+var AddonModGlossaryNewDiscussionPageModule = /** @class */ (function () {
+    function AddonModGlossaryNewDiscussionPageModule() {
     }
-    AddonModForumNewDiscussionPageModule = __decorate([
+    AddonModGlossaryNewDiscussionPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__new_discussion__["a" /* AddonModForumNewDiscussionPage */],
+                __WEBPACK_IMPORTED_MODULE_5__edit__["a" /* AddonModGlossaryEditPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
                 __WEBPACK_IMPORTED_MODULE_6__core_editor_components_components_module__["a" /* CoreEditorComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__new_discussion__["a" /* AddonModForumNewDiscussionPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__edit__["a" /* AddonModGlossaryEditPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonModForumNewDiscussionPageModule);
-    return AddonModForumNewDiscussionPageModule;
+    ], AddonModGlossaryNewDiscussionPageModule);
+    return AddonModGlossaryNewDiscussionPageModule;
 }());
 
-//# sourceMappingURL=new-discussion.module.js.map
+//# sourceMappingURL=edit.module.js.map
 
 /***/ }),
 
-/***/ 2157:
+/***/ 2169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModForumNewDiscussionPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModGlossaryEditPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_events__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_groups__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_sync__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_utils_text__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_utils_utils__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_fileuploader_providers_fileuploader__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_split_view_split_view__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__core_editor_components_rich_text_editor_rich_text_editor_ts__ = __webpack_require__(992);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_forum__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_offline__ = __webpack_require__(175);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_helper__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_sync__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_events__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_sites__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_utils_text__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__core_fileuploader_providers_fileuploader__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_glossary__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_offline__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_helper__ = __webpack_require__(443);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -107,9 +101,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -158,456 +149,113 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-
-
-
-
 /**
- * Page that displays the new discussion form.
+ * Page that displays the edit form.
  */
-var AddonModForumNewDiscussionPage = /** @class */ (function () {
-    function AddonModForumNewDiscussionPage(navParams, navCtrl, translate, domUtils, eventsProvider, groupsProvider, sitesProvider, syncProvider, uploaderProvider, textUtils, utils, forumProvider, forumOffline, forumSync, forumHelper, svComponent) {
+var AddonModGlossaryEditPage = /** @class */ (function () {
+    function AddonModGlossaryEditPage(navParams, navCtrl, translate, domUtils, eventsProvider, sitesProvider, uploaderProvider, textUtils, glossaryProvider, glossaryOffline, glossaryHelper) {
+        this.navParams = navParams;
         this.navCtrl = navCtrl;
         this.translate = translate;
         this.domUtils = domUtils;
         this.eventsProvider = eventsProvider;
-        this.groupsProvider = groupsProvider;
         this.sitesProvider = sitesProvider;
-        this.syncProvider = syncProvider;
         this.uploaderProvider = uploaderProvider;
         this.textUtils = textUtils;
-        this.utils = utils;
-        this.forumProvider = forumProvider;
-        this.forumOffline = forumOffline;
-        this.forumSync = forumSync;
-        this.forumHelper = forumHelper;
-        this.svComponent = svComponent;
-        this.component = __WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].COMPONENT;
-        this.messageControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]();
-        this.groupsLoaded = false;
-        this.showGroups = false;
-        this.hasOffline = false;
-        this.canCreateAttachments = true; // Assume we can by default.
-        this.canPin = false;
-        this.showForm = false;
-        this.groups = [];
-        this.groupIds = [];
-        this.newDiscussion = {
-            subject: '',
-            message: null,
-            postToAllGroups: false,
-            groupId: 0,
-            subscribe: true,
-            pin: false,
-            files: []
+        this.glossaryProvider = glossaryProvider;
+        this.glossaryOffline = glossaryOffline;
+        this.glossaryHelper = glossaryHelper;
+        this.component = __WEBPACK_IMPORTED_MODULE_9__providers_glossary__["a" /* AddonModGlossaryProvider */].COMPONENT;
+        this.loaded = false;
+        this.entry = {
+            concept: '',
+            definition: '',
+            timecreated: 0,
         };
-        this.advanced = false; // Display all form fields.
-        this.accessInfo = {};
+        this.options = {
+            categories: [],
+            aliases: '',
+            usedynalink: false,
+            casesensitive: false,
+            fullmatch: false
+        };
+        this.attachments = [];
+        this.definitionControl = new __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* FormControl */]();
+        this.categories = [];
+        this.editorExtraParams = {};
         this.isDestroyed = false;
-        this.forceLeave = false;
+        this.saved = false;
         this.courseId = navParams.get('courseId');
-        this.cmId = navParams.get('cmId');
-        this.forumId = navParams.get('forumId');
-        this.timeCreated = navParams.get('timeCreated');
+        this.module = navParams.get('module');
+        this.glossary = navParams.get('glossary');
     }
     /**
      * Component being initialized.
      */
-    AddonModForumNewDiscussionPage.prototype.ngOnInit = function () {
+    AddonModGlossaryEditPage.prototype.ngOnInit = function () {
         var _this = this;
-        this.fetchDiscussionData().finally(function () {
-            _this.groupsLoaded = true;
-        });
-    };
-    /**
-     * User entered the page that contains the component.
-     */
-    AddonModForumNewDiscussionPage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        // Refresh data if this discussion is synchronized automatically.
-        this.syncObserver = this.eventsProvider.on(__WEBPACK_IMPORTED_MODULE_17__providers_sync__["a" /* AddonModForumSyncProvider */].AUTO_SYNCED, function (data) {
-            if (data.forumId == _this.forumId && data.userId == _this.sitesProvider.getCurrentSiteUserId()) {
-                _this.domUtils.showAlertTranslated('core.notice', 'core.contenteditingsynced');
-                _this.returnToDiscussions();
-            }
-        }, this.sitesProvider.getCurrentSiteId());
-        // Trigger view event, to highlight the current opened discussion in the split view.
-        this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].VIEW_DISCUSSION_EVENT, {
-            forumId: this.forumId,
-            discussion: -this.timeCreated
-        }, this.sitesProvider.getCurrentSiteId());
-    };
-    /**
-     * Fetch if forum uses groups and the groups it uses.
-     *
-     * @param refresh Whether we're refreshing data.
-     * @return Promise resolved when done.
-     */
-    AddonModForumNewDiscussionPage.prototype.fetchDiscussionData = function (refresh) {
-        var _this = this;
-        return this.groupsProvider.getActivityGroupMode(this.cmId).then(function (mode) {
-            var promises = [];
-            if (mode === __WEBPACK_IMPORTED_MODULE_5__providers_groups__["a" /* CoreGroupsProvider */].SEPARATEGROUPS || mode === __WEBPACK_IMPORTED_MODULE_5__providers_groups__["a" /* CoreGroupsProvider */].VISIBLEGROUPS) {
-                promises.push(_this.groupsProvider.getActivityAllowedGroups(_this.cmId).then(function (result) {
-                    var promise;
-                    if (mode === __WEBPACK_IMPORTED_MODULE_5__providers_groups__["a" /* CoreGroupsProvider */].VISIBLEGROUPS) {
-                        // We need to check which of the returned groups the user can post to.
-                        promise = _this.validateVisibleGroups(result.groups);
-                    }
-                    else {
-                        // WS already filters groups, no need to do it ourselves. Add "All participants" if needed.
-                        promise = _this.addAllParticipantsOption(result.groups, true);
-                    }
-                    return promise.then(function (forumGroups) {
-                        if (forumGroups.length > 0) {
-                            _this.groups = forumGroups;
-                            _this.groupIds = forumGroups.map(function (group) { return group.id; }).filter(function (id) { return id > 0; });
-                            // Do not override group id.
-                            _this.newDiscussion.groupId = _this.newDiscussion.groupId || forumGroups[0].id;
-                            _this.showGroups = true;
-                            if (_this.groupIds.length <= 1) {
-                                _this.newDiscussion.postToAllGroups = false;
-                            }
-                        }
-                        else {
-                            var message = mode === __WEBPACK_IMPORTED_MODULE_5__providers_groups__["a" /* CoreGroupsProvider */].SEPARATEGROUPS ?
-                                'addon.mod_forum.cannotadddiscussionall' : 'addon.mod_forum.cannotadddiscussion';
-                            return Promise.reject(_this.translate.instant(message));
-                        }
-                    });
-                }));
-            }
-            else {
-                _this.showGroups = false;
-                _this.newDiscussion.postToAllGroups = false;
-                // Use the canAddDiscussion WS to check if the user can add attachments and pin discussions.
-                promises.push(_this.forumProvider.canAddDiscussionToAll(_this.forumId).then(function (response) {
-                    _this.canPin = !!response.canpindiscussions;
-                    _this.canCreateAttachments = !!response.cancreateattachment;
-                }).catch(function () {
-                    // Ignore errors, use default values.
-                }));
-            }
-            // Get forum.
-            promises.push(_this.forumProvider.getForum(_this.courseId, _this.cmId).then(function (forum) {
-                _this.forum = forum;
-            }));
-            // Get access information.
-            promises.push(_this.forumProvider.getAccessInformation(_this.forumId).then(function (accessInfo) {
-                _this.accessInfo = accessInfo;
-            }));
-            return Promise.all(promises);
-        }).then(function () {
-            // If editing a discussion, get offline data.
-            if (_this.timeCreated && !refresh) {
-                _this.syncId = _this.forumSync.getForumSyncId(_this.forumId);
-                return _this.forumSync.waitForSync(_this.syncId).then(function () {
-                    // Do not block if the scope is already destroyed.
-                    if (!_this.isDestroyed) {
-                        _this.syncProvider.blockOperation(__WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].COMPONENT, _this.syncId);
-                    }
-                    return _this.forumOffline.getNewDiscussion(_this.forumId, _this.timeCreated).then(function (discussion) {
-                        _this.hasOffline = true;
-                        discussion.options = discussion.options || {};
-                        if (discussion.groupid == __WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].ALL_GROUPS) {
-                            _this.newDiscussion.groupId = _this.groups[0].id;
-                            _this.newDiscussion.postToAllGroups = true;
-                        }
-                        else {
-                            _this.newDiscussion.groupId = discussion.groupid;
-                            _this.newDiscussion.postToAllGroups = false;
-                        }
-                        _this.newDiscussion.subject = discussion.subject;
-                        _this.newDiscussion.message = discussion.message;
-                        _this.newDiscussion.subscribe = discussion.options.discussionsubscribe;
-                        _this.newDiscussion.pin = discussion.options.discussionpinned;
-                        _this.messageControl.setValue(discussion.message);
-                        // Treat offline attachments if any.
-                        var promise;
-                        if (discussion.options.attachmentsid && discussion.options.attachmentsid.offline) {
-                            promise = _this.forumHelper.getNewDiscussionStoredFiles(_this.forumId, _this.timeCreated).then(function (files) {
-                                _this.newDiscussion.files = files;
-                            });
-                        }
-                        return Promise.resolve(promise).then(function () {
-                            // Show advanced fields by default if any of them has not the default value.
-                            if (!_this.newDiscussion.subscribe || _this.newDiscussion.pin || _this.newDiscussion.files.length ||
-                                _this.groups.length > 0 && _this.newDiscussion.groupId != _this.groups[0].id ||
-                                _this.newDiscussion.postToAllGroups) {
-                                _this.advanced = true;
-                            }
-                        });
-                    });
-                });
-            }
-        }).then(function () {
-            if (!_this.originalData) {
-                // Initialize original data.
-                _this.originalData = {
-                    subject: _this.newDiscussion.subject,
-                    message: _this.newDiscussion.message,
-                    files: _this.newDiscussion.files.slice(),
-                };
-            }
-            _this.showForm = true;
-        }).catch(function (message) {
-            _this.domUtils.showErrorModalDefault(message, 'addon.mod_forum.errorgetgroups', true);
-            _this.showForm = false;
-        });
-    };
-    /**
-     * Validate which of the groups returned by getActivityAllowedGroups in visible groups should be shown to post to.
-     *
-     * @param forumGroups Forum groups.
-     * @return Promise resolved with the list of groups.
-     */
-    AddonModForumNewDiscussionPage.prototype.validateVisibleGroups = function (forumGroups) {
-        var _this = this;
-        // We first check if the user can post to all the groups.
-        return this.forumProvider.canAddDiscussionToAll(this.forumId).catch(function () {
-            // The call failed, let's assume he can't.
-            return {
-                status: false,
-                canpindiscussions: false,
-                cancreateattachment: true
-            };
-        }).then(function (response) {
-            _this.canPin = !!response.canpindiscussions;
-            _this.canCreateAttachments = !!response.cancreateattachment;
-            if (response.status) {
-                // The user can post to all groups, add the "All participants" option and return them all.
-                return _this.addAllParticipantsOption(forumGroups, false);
-            }
-            else {
-                // The user can't post to all groups, let's check which groups he can post to.
-                var promises_1 = [];
-                var filtered_1 = [];
-                forumGroups.forEach(function (group) {
-                    promises_1.push(_this.forumProvider.canAddDiscussion(_this.forumId, group.id).catch(function () {
-                        /* The call failed, let's return true so the group is shown. If the user can't post to
-                           it an error will be shown when he tries to add the discussion. */
-                        return {
-                            status: true
-                        };
-                    }).then(function (response) {
-                        if (response.status) {
-                            filtered_1.push(group);
-                        }
-                    }));
-                });
-                return Promise.all(promises_1).then(function () {
-                    return filtered_1;
-                });
-            }
-        });
-    };
-    /**
-     * Filter forum groups, returning only those that are inside user groups.
-     *
-     * @param forumGroups Forum groups.
-     * @param userGroups User groups.
-     * @return Filtered groups.
-     */
-    AddonModForumNewDiscussionPage.prototype.filterGroups = function (forumGroups, userGroups) {
-        var filtered = [];
-        var userGroupsIds = userGroups.map(function (g) { return g.id; });
-        forumGroups.forEach(function (fg) {
-            if (userGroupsIds.indexOf(fg.id) > -1) {
-                filtered.push(fg);
-            }
-        });
-        return filtered;
-    };
-    /**
-     * Add the "All participants" option to a list of groups if the user can add a discussion to all participants.
-     *
-     * @param groups Groups.
-     * @param check True to check if the user can add a discussion to all participants.
-     * @return Promise resolved with the list of groups.
-     */
-    AddonModForumNewDiscussionPage.prototype.addAllParticipantsOption = function (groups, check) {
-        var _this = this;
-        if (!this.forumProvider.isAllParticipantsFixed()) {
-            // All participants has a bug, don't add it.
-            return Promise.resolve(groups);
-        }
+        var entry = this.navParams.get('entry');
         var promise;
-        if (check) {
-            // We need to check if the user can add a discussion to all participants.
-            promise = this.forumProvider.canAddDiscussionToAll(this.forumId).then(function (response) {
-                _this.canPin = !!response.canpindiscussions;
-                _this.canCreateAttachments = !!response.cancreateattachment;
-                return response.status;
-            }).catch(function () {
-                // The call failed, let's assume he can't.
-                return false;
-            });
-        }
-        else {
-            // No need to check, assume the user can.
-            promise = Promise.resolve(true);
-        }
-        return promise.then(function (canAdd) {
-            if (canAdd) {
-                groups.unshift({
-                    courseid: _this.courseId,
-                    id: __WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].ALL_PARTICIPANTS,
-                    name: _this.translate.instant('core.allparticipants')
+        if (entry) {
+            this.entry.concept = entry.concept || '';
+            this.entry.definition = entry.definition || '';
+            this.entry.timecreated = entry.timecreated || 0;
+            this.originalData = {
+                concept: this.entry.concept,
+                definition: this.entry.definition,
+                files: [],
+            };
+            if (entry.options) {
+                this.options.categories = entry.options.categories || [];
+                this.options.aliases = entry.options.aliases || '';
+                this.options.usedynalink = !!entry.options.usedynalink;
+                if (this.options.usedynalink) {
+                    this.options.casesensitive = !!entry.options.casesensitive;
+                    this.options.fullmatch = !!entry.options.fullmatch;
+                }
+            }
+            // Treat offline attachments if any.
+            if (entry.attachments && entry.attachments.offline) {
+                promise = this.glossaryHelper.getStoredFiles(this.glossary.id, entry.concept, entry.timecreated).then(function (files) {
+                    _this.attachments = files;
+                    _this.originalData.files = files.slice();
                 });
             }
-            return groups;
-        });
-    };
-    /**
-     * Pull to refresh.
-     *
-     * @param refresher Refresher.
-     */
-    AddonModForumNewDiscussionPage.prototype.refreshGroups = function (refresher) {
-        var _this = this;
-        var promises = [
-            this.groupsProvider.invalidateActivityGroupMode(this.cmId),
-            this.groupsProvider.invalidateActivityAllowedGroups(this.cmId),
-            this.forumProvider.invalidateCanAddDiscussion(this.forumId),
-        ];
-        Promise.all(promises).finally(function () {
-            _this.fetchDiscussionData(true).finally(function () {
-                refresher.complete();
+            if (entry.id) {
+                this.editorExtraParams.id = entry.id;
+            }
+        }
+        this.definitionControl.setValue(this.entry.definition);
+        Promise.resolve(promise).then(function () {
+            _this.glossaryProvider.getAllCategories(_this.glossary.id).then(function (categories) {
+                _this.categories = categories;
+            }).finally(function () {
+                _this.loaded = true;
             });
         });
     };
     /**
-     * Convenience function to update or return to discussions depending on device.
-     *
-     * @param discussionIds Ids of the new discussions.
-     * @param discTimecreated The time created of the discussion (if offline).
-     */
-    AddonModForumNewDiscussionPage.prototype.returnToDiscussions = function (discussionIds, discTimecreated) {
-        var data = {
-            forumId: this.forumId,
-            cmId: this.cmId,
-            discussionIds: discussionIds,
-            discTimecreated: discTimecreated
-        };
-        this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].NEW_DISCUSSION_EVENT, data, this.sitesProvider.getCurrentSiteId());
-        // Delete the local files from the tmp folder.
-        this.uploaderProvider.clearTmpFiles(this.newDiscussion.files);
-        if (this.svComponent && this.svComponent.isOn()) {
-            // Empty form.
-            this.hasOffline = false;
-            this.newDiscussion.subject = '';
-            this.newDiscussion.message = null;
-            this.newDiscussion.files = [];
-            this.newDiscussion.postToAllGroups = false;
-            this.messageEditor.clearText();
-            this.originalData = this.utils.clone(this.newDiscussion);
-            this.forceLeave = true; // Avoid asking for confirmation.
-            // Trigger view event, to highlight the current opened discussion in the split view.
-            this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].VIEW_DISCUSSION_EVENT, {
-                forumId: this.forumId,
-                discussion: 0
-            }, this.sitesProvider.getCurrentSiteId());
-        }
-        else {
-            this.forceLeave = true; // Avoid asking for confirmation.
-            this.navCtrl.pop();
-        }
-    };
-    /**
-     * Message changed.
+     * Definition changed.
      *
      * @param text The new text.
      */
-    AddonModForumNewDiscussionPage.prototype.onMessageChange = function (text) {
-        this.newDiscussion.message = text;
-    };
-    /**
-     * Add a new discussion.
-     */
-    AddonModForumNewDiscussionPage.prototype.add = function () {
-        var _this = this;
-        var forumName = this.forum.name;
-        var subject = this.newDiscussion.subject;
-        var message = this.newDiscussion.message;
-        var pin = this.newDiscussion.pin;
-        var attachments = this.newDiscussion.files;
-        var discTimecreated = this.timeCreated || Date.now();
-        var options = {
-            discussionsubscribe: !!this.newDiscussion.subscribe
-        };
-        if (!subject) {
-            this.domUtils.showErrorModal('addon.mod_forum.erroremptysubject', true);
-            return;
-        }
-        if (!message) {
-            this.domUtils.showErrorModal('addon.mod_forum.erroremptymessage', true);
-            return;
-        }
-        var modal = this.domUtils.showModalLoading('core.sending', true);
-        // Add some HTML to the message if needed.
-        message = this.textUtils.formatHtmlLines(message);
-        if (pin) {
-            options.discussionpinned = true;
-        }
-        var groupIds = this.newDiscussion.postToAllGroups ? this.groupIds : [this.newDiscussion.groupId];
-        this.forumHelper.addNewDiscussion(this.forumId, forumName, this.courseId, subject, message, attachments, options, groupIds, discTimecreated).then(function (discussionIds) {
-            if (discussionIds) {
-                // Data sent to server, delete stored files (if any).
-                _this.forumHelper.deleteNewDiscussionStoredFiles(_this.forumId, discTimecreated);
-            }
-            if (discussionIds && discussionIds.length < groupIds.length) {
-                // Some discussions could not be created.
-                _this.domUtils.showErrorModalDefault(null, 'addon.mod_forum.errorposttoallgroups', true);
-            }
-            _this.domUtils.triggerFormSubmittedEvent(_this.formElement, !!discussionIds, _this.sitesProvider.getCurrentSiteId());
-            _this.returnToDiscussions(discussionIds, discTimecreated);
-        }).catch(function (message) {
-            _this.domUtils.showErrorModalDefault(message, 'addon.mod_forum.cannotcreatediscussion', true);
-        }).finally(function () {
-            modal.dismiss();
-        });
-    };
-    /**
-     * Discard an offline saved discussion.
-     */
-    AddonModForumNewDiscussionPage.prototype.discard = function () {
-        var _this = this;
-        this.domUtils.showConfirm(this.translate.instant('core.areyousure')).then(function () {
-            var promises = [];
-            promises.push(_this.forumOffline.deleteNewDiscussion(_this.forumId, _this.timeCreated));
-            promises.push(_this.forumHelper.deleteNewDiscussionStoredFiles(_this.forumId, _this.timeCreated).catch(function () {
-                // Ignore errors, maybe there are no files.
-            }));
-            return Promise.all(promises).then(function () {
-                _this.domUtils.triggerFormCancelledEvent(_this.formElement, _this.sitesProvider.getCurrentSiteId());
-                _this.returnToDiscussions();
-            });
-        }).catch(function () {
-            // Cancelled.
-        });
-    };
-    /**
-     * Show or hide advanced form fields.
-     */
-    AddonModForumNewDiscussionPage.prototype.toggleAdvanced = function () {
-        this.advanced = !this.advanced;
+    AddonModGlossaryEditPage.prototype.onDefinitionChange = function (text) {
+        this.entry.definition = text;
     };
     /**
      * Check if we can leave the page or not.
      *
      * @return Resolved if we can leave it, rejected if not.
      */
-    AddonModForumNewDiscussionPage.prototype.ionViewCanLeave = function () {
+    AddonModGlossaryEditPage.prototype.ionViewCanLeave = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (this.forceLeave) {
+                        if (this.saved) {
                             return [2 /*return*/];
                         }
-                        if (!this.forumHelper.hasPostDataChanged(this.newDiscussion, this.originalData)) return [3 /*break*/, 2];
+                        if (!this.glossaryHelper.hasEntryDataChanged(this.entry, this.attachments, this.originalData)) return [3 /*break*/, 2];
                         // Show confirmation if some data has been modified.
                         return [4 /*yield*/, this.domUtils.showConfirm(this.translate.instant('core.confirmcanceledit'))];
                     case 1:
@@ -616,64 +264,122 @@ var AddonModForumNewDiscussionPage = /** @class */ (function () {
                         _a.label = 2;
                     case 2:
                         // Delete the local files from the tmp folder.
-                        this.uploaderProvider.clearTmpFiles(this.newDiscussion.files);
-                        if (this.formElement) {
-                            this.domUtils.triggerFormCancelledEvent(this.formElement, this.sitesProvider.getCurrentSiteId());
-                        }
+                        this.uploaderProvider.clearTmpFiles(this.attachments);
+                        this.domUtils.triggerFormCancelledEvent(this.formElement, this.sitesProvider.getCurrentSiteId());
                         return [2 /*return*/];
                 }
             });
         });
     };
     /**
-     * Runs when the page is about to leave and no longer be the active page.
+     * Save the entry.
      */
-    AddonModForumNewDiscussionPage.prototype.ionViewWillLeave = function () {
-        this.syncObserver && this.syncObserver.off();
-    };
-    /**
-     * Page destroyed.
-     */
-    AddonModForumNewDiscussionPage.prototype.ngOnDestroy = function () {
-        if (this.syncId) {
-            this.syncProvider.unblockOperation(__WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */].COMPONENT, this.syncId);
+    AddonModGlossaryEditPage.prototype.save = function () {
+        var _this = this;
+        var definition = this.entry.definition, saveOffline = false, promise;
+        var timecreated = this.entry.timecreated || Date.now();
+        if (!this.entry.concept || !definition) {
+            this.domUtils.showErrorModal('addon.mod_glossary.fillfields', true);
+            return;
         }
-        this.isDestroyed = true;
+        var modal = this.domUtils.showModalLoading('core.sending', true);
+        // Add some HTML to the definition if needed.
+        definition = this.textUtils.formatHtmlLines(definition);
+        // Upload attachments first if any.
+        if (this.attachments.length > 0) {
+            promise = this.glossaryHelper.uploadOrStoreFiles(this.glossary.id, this.entry.concept, timecreated, this.attachments, false).catch(function () {
+                // Cannot upload them in online, save them in offline.
+                saveOffline = true;
+                return _this.glossaryHelper.uploadOrStoreFiles(_this.glossary.id, _this.entry.concept, timecreated, _this.attachments, true);
+            });
+        }
+        else {
+            promise = Promise.resolve();
+        }
+        promise.then(function (attach) {
+            var options = {
+                aliases: _this.options.aliases,
+                categories: _this.options.categories.join(',')
+            };
+            if (_this.glossary.usedynalink) {
+                options.usedynalink = _this.options.usedynalink ? 1 : 0;
+                if (_this.options.usedynalink) {
+                    options.casesensitive = _this.options.casesensitive ? 1 : 0;
+                    options.fullmatch = _this.options.fullmatch ? 1 : 0;
+                }
+            }
+            if (saveOffline) {
+                var promise_1;
+                if (_this.entry && !_this.glossary.allowduplicatedentries) {
+                    // Check if the entry is duplicated in online or offline mode.
+                    promise_1 = _this.glossaryProvider.isConceptUsed(_this.glossary.id, _this.entry.concept, _this.entry.timecreated)
+                        .then(function (used) {
+                        if (used) {
+                            // There's a entry with same name, reject with error message.
+                            return Promise.reject(_this.translate.instant('addon.mod_glossary.errconceptalreadyexists'));
+                        }
+                    });
+                }
+                else {
+                    promise_1 = Promise.resolve();
+                }
+                return promise_1.then(function () {
+                    // Save entry in offline.
+                    return _this.glossaryOffline.addNewEntry(_this.glossary.id, _this.entry.concept, definition, _this.courseId, options, attach, timecreated, undefined, undefined, _this.entry).then(function () {
+                        // Don't return anything.
+                    });
+                });
+            }
+            else {
+                // Try to send it to server.
+                // Don't allow offline if there are attachments since they were uploaded fine.
+                return _this.glossaryProvider.addEntry(_this.glossary.id, _this.entry.concept, definition, _this.courseId, options, attach, timecreated, undefined, _this.entry, !_this.attachments.length, !_this.glossary.allowduplicatedentries);
+            }
+        }).then(function (entryId) {
+            // Delete the local files from the tmp folder.
+            _this.uploaderProvider.clearTmpFiles(_this.attachments);
+            if (entryId) {
+                // Data sent to server, delete stored files (if any).
+                _this.glossaryHelper.deleteStoredFiles(_this.glossary.id, _this.entry.concept, timecreated);
+                _this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_4__providers_events__["b" /* CoreEventsProvider */].ACTIVITY_DATA_SENT, { module: 'glossary' });
+            }
+            var data = {
+                glossaryId: _this.glossary.id,
+            };
+            _this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_9__providers_glossary__["a" /* AddonModGlossaryProvider */].ADD_ENTRY_EVENT, data, _this.sitesProvider.getCurrentSiteId());
+            _this.domUtils.triggerFormSubmittedEvent(_this.formElement, !!entryId, _this.sitesProvider.getCurrentSiteId());
+            _this.saved = true;
+            _this.navCtrl.pop();
+        }).catch(function (error) {
+            _this.domUtils.showErrorModalDefault(error, 'addon.mod_glossary.cannoteditentry', true);
+        }).finally(function () {
+            modal.dismiss();
+        });
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('newDiscFormEl'),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('editFormEl'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], AddonModForumNewDiscussionPage.prototype, "formElement", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_13__core_editor_components_rich_text_editor_rich_text_editor_ts__["a" /* CoreEditorRichTextEditorComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_13__core_editor_components_rich_text_editor_rich_text_editor_ts__["a" /* CoreEditorRichTextEditorComponent */])
-    ], AddonModForumNewDiscussionPage.prototype, "messageEditor", void 0);
-    AddonModForumNewDiscussionPage = __decorate([
+    ], AddonModGlossaryEditPage.prototype, "formElement", void 0);
+    AddonModGlossaryEditPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-mod-forum-new-discussion',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/new-discussion/new-discussion.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.mod_forum.addanewdiscussion\' | translate }}</ion-title>\n        <ion-buttons end>\n            <!-- The context menu will be added in here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="groupsLoaded" (ionRefresh)="refreshGroups($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n\n    <core-loading [hideUntil]="groupsLoaded">\n        <form ion-list *ngIf="showForm" #newDiscFormEl>\n            <ion-item>\n                <ion-label stacked>{{ \'addon.mod_forum.subject\' | translate }}</ion-label>\n                <ion-input type="text" [placeholder]="\'addon.mod_forum.subject\' | translate" [(ngModel)]="newDiscussion.subject" name="subject"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>{{ \'addon.mod_forum.message\' | translate }}</ion-label>\n                <core-rich-text-editor item-content [control]="messageControl" (contentChanged)="onMessageChange($event)" [placeholder]="\'addon.mod_forum.message\' | translate" name="addon_mod_forum_new_discussion" [component]="component" [componentId]="forum.cmid" [autoSave]="true" contextLevel="module" [contextInstanceId]="forum.cmid" elementId="message"></core-rich-text-editor>\n            </ion-item>\n            <ion-item-divider text-wrap (click)="toggleAdvanced()" class="core-expandable">\n                <core-icon *ngIf="!advanced" name="fa-caret-right" item-start></core-icon>\n                <core-icon *ngIf="advanced" name="fa-caret-down" item-start></core-icon>\n                {{ \'addon.mod_forum.advanced\' | translate }}\n            </ion-item-divider>\n            <ng-container *ngIf="advanced">\n                <ion-item *ngIf="showGroups && groupIds.length > 1 && accessInfo.cancanposttomygroups">\n                    <ion-label>{{ \'addon.mod_forum.posttomygroups\' | translate }}</ion-label>\n                    <ion-toggle [(ngModel)]="newDiscussion.postToAllGroups" name="postallgroups"></ion-toggle>\n                </ion-item>\n                <ion-item *ngIf="showGroups">\n                    <ion-label id="addon-mod-forum-groupslabel">{{ \'addon.mod_forum.group\' | translate }}</ion-label>\n                    <ion-select [(ngModel)]="newDiscussion.groupId" [disabled]="newDiscussion.postToAllGroups" aria-labelledby="addon-mod-forum-groupslabel" interface="action-sheet" name="groupid">\n                        <ion-option *ngFor="let group of groups" [value]="group.id">{{ group.name }}</ion-option>\n                    </ion-select>\n                </ion-item>\n                <ion-item>\n                    <ion-label>{{ \'addon.mod_forum.discussionsubscription\' | translate }}</ion-label>\n                    <ion-toggle [(ngModel)]="newDiscussion.subscribe" name="subscribe"></ion-toggle>\n                </ion-item>\n                <ion-item *ngIf="canPin">\n                    <ion-label>{{ \'addon.mod_forum.discussionpinned\' | translate }}</ion-label>\n                    <ion-toggle [(ngModel)]="newDiscussion.pin" name="pin"></ion-toggle>\n                </ion-item>\n                <core-attachments *ngIf="canCreateAttachments && forum && forum.maxattachments > 0" [files]="newDiscussion.files" [maxSize]="forum.maxbytes" [maxSubmissions]="forum.maxattachments" [component]="component" [componentId]="forum.cmid" [allowOffline]="true"></core-attachments>\n            </ng-container>\n            <ion-item>\n                <ion-row>\n                    <ion-col>\n                        <button ion-button block (click)="add()" [disabled]="newDiscussion.subject == \'\' || newDiscussion.message == null">{{ \'addon.mod_forum.posttoforum\' | translate }}</button>\n                    </ion-col>\n                    <ion-col *ngIf="hasOffline">\n                        <button ion-button block color="light" (click)="discard()">{{ \'core.discard\' | translate }}</button>\n                    </ion-col>\n                </ion-row>\n            </ion-item>\n        </form>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/new-discussion/new-discussion.html"*/,
+            selector: 'page-addon-mod-glossary-edit',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/glossary/pages/edit/edit.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title><core-format-text [text]="module.name" contextLevel="module" [contextInstanceId]="module.id" [courseId]="courseId"></core-format-text></ion-title>\n        <ion-buttons end>\n            <button ion-button (click)="save()"> {{ \'core.save\' | translate }}</button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="loaded">\n        <form ion-list #editFormEl>\n            <ion-item>\n                <ion-label stacked>{{ \'addon.mod_glossary.concept\' | translate }}</ion-label>\n                <ion-input type="text" [placeholder]="\'addon.mod_glossary.concept\' | translate" [(ngModel)]="entry.concept" name="concept"></ion-input>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked>{{ \'addon.mod_glossary.definition\' | translate }}</ion-label>\n                <core-rich-text-editor item-content [control]="definitionControl" (contentChanged)="onDefinitionChange($event)" [placeholder]="\'addon.mod_glossary.definition\' | translate" name="addon_mod_glossary_edit" [component]="component" [componentId]="glossary.cmid" [autoSave]="true" contextLevel="module" [contextInstanceId]="module.id" elementId="definition_editor" [draftExtraParams]="editorExtraParams"></core-rich-text-editor>\n            </ion-item>\n            <ion-item *ngIf="categories.length > 0">\n                <ion-label stacked id="addon-mod-glossary-categories-label">{{ \'addon.mod_glossary.categories\' | translate }}</ion-label>\n                <ion-select [(ngModel)]="options.categories" multiple="true" aria-labelledby="addon-mod-glossary-categories-label" interface="action-sheet" [placeholder]="\'addon.mod_glossary.categories\' | translate" name="categories">\n                    <ion-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</ion-option>\n                </ion-select>\n            </ion-item>\n            <ion-item>\n                <ion-label stacked id="addon-mod-glossary-aliases-label">{{ \'addon.mod_glossary.aliases\' | translate }}</ion-label>\n                <ion-textarea [(ngModel)]="options.aliases" rows="1" core-auto-rows aria-labelledby="addon-mod-glossary-aliases-label" name="aliases"></ion-textarea>\n            </ion-item>\n            <ion-item-divider>{{ \'addon.mod_glossary.attachment\' | translate }}</ion-item-divider>\n            <core-attachments [files]="attachments" [component]="component" [componentId]="glossary.cmid" [allowOffline]="true"></core-attachments>\n            <ng-container *ngIf="glossary.usedynalink">\n                <ion-item-divider>{{ \'addon.mod_glossary.linking\' | translate }}</ion-item-divider>\n                <ion-item text-wrap>\n                    <ion-label>{{ \'addon.mod_glossary.entryusedynalink\' | translate }}</ion-label>\n                    <ion-toggle [(ngModel)]="options.usedynalink" name="usedynalink"></ion-toggle>\n                </ion-item>\n                <ion-item text-wrap>\n                    <ion-label>{{ \'addon.mod_glossary.casesensitive\' | translate }}</ion-label>\n                    <ion-toggle [disabled]="!options.usedynalink" [(ngModel)]="options.casesensitive" name="casesensitive"></ion-toggle>\n                </ion-item>\n                <ion-item text-wrap>\n                    <ion-label>{{ \'addon.mod_glossary.fullmatch\' | translate }}</ion-label>\n                    <ion-toggle [disabled]="!options.usedynalink" [(ngModel)]="options.fullmatch" name="fullmatch"></ion-toggle>\n                </ion-item>\n            </ng-container>\n        </form>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/glossary/pages/edit/edit.html"*/,
         }),
-        __param(15, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Optional */])()),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["s" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_events__["a" /* CoreEventsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_groups__["a" /* CoreGroupsProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_sites__["a" /* CoreSitesProvider */],
-            __WEBPACK_IMPORTED_MODULE_7__providers_sync__["a" /* CoreSyncProvider */],
-            __WEBPACK_IMPORTED_MODULE_11__core_fileuploader_providers_fileuploader__["a" /* CoreFileUploaderProvider */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_utils_text__["a" /* CoreTextUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_10__providers_utils_utils__["a" /* CoreUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_14__providers_forum__["a" /* AddonModForumProvider */],
-            __WEBPACK_IMPORTED_MODULE_15__providers_offline__["a" /* AddonModForumOfflineProvider */],
-            __WEBPACK_IMPORTED_MODULE_17__providers_sync__["a" /* AddonModForumSyncProvider */],
-            __WEBPACK_IMPORTED_MODULE_16__providers_helper__["a" /* AddonModForumHelperProvider */],
-            __WEBPACK_IMPORTED_MODULE_12__components_split_view_split_view__["a" /* CoreSplitViewComponent */]])
-    ], AddonModForumNewDiscussionPage);
-    return AddonModForumNewDiscussionPage;
+            __WEBPACK_IMPORTED_MODULE_6__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_events__["b" /* CoreEventsProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */],
+            __WEBPACK_IMPORTED_MODULE_8__core_fileuploader_providers_fileuploader__["a" /* CoreFileUploaderProvider */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_utils_text__["b" /* CoreTextUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_glossary__["a" /* AddonModGlossaryProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_offline__["a" /* AddonModGlossaryOfflineProvider */],
+            __WEBPACK_IMPORTED_MODULE_11__providers_helper__["a" /* AddonModGlossaryHelperProvider */]])
+    ], AddonModGlossaryEditPage);
+    return AddonModGlossaryEditPage;
 }());
 
-//# sourceMappingURL=new-discussion.js.map
+//# sourceMappingURL=edit.js.map
 
 /***/ })
 

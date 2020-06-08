@@ -1,16 +1,17 @@
 webpackJsonp([116],{
 
-/***/ 1987:
+/***/ 1998:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModBookTocPageModule", function() { return AddonModBookTocPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModChatIndexPageModule", function() { return AddonModChatIndexPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__toc__ = __webpack_require__(2137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(990);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(2150);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,35 +36,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddonModBookTocPageModule = /** @class */ (function () {
-    function AddonModBookTocPageModule() {
+
+var AddonModChatIndexPageModule = /** @class */ (function () {
+    function AddonModChatIndexPageModule() {
     }
-    AddonModBookTocPageModule = __decorate([
+    AddonModChatIndexPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__toc__["a" /* AddonModBookTocPage */],
+                __WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModChatIndexPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__toc__["a" /* AddonModBookTocPage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* AddonModChatComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModChatIndexPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonModBookTocPageModule);
-    return AddonModBookTocPageModule;
+    ], AddonModChatIndexPageModule);
+    return AddonModChatIndexPageModule;
 }());
 
-//# sourceMappingURL=toc.module.js.map
+//# sourceMappingURL=index.module.js.map
 
 /***/ }),
 
-/***/ 2137:
+/***/ 2150:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModBookTocPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModChatIndexPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index__ = __webpack_require__(437);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -88,50 +92,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
- * Modal to display the TOC of a book.
+ * Page that displays a chat.
  */
-var AddonModBookTocPage = /** @class */ (function () {
-    function AddonModBookTocPage(navParams, viewCtrl) {
-        this.viewCtrl = viewCtrl;
-        this.showNumbers = true;
-        this.addPadding = true;
-        this.showBullets = false;
-        this.moduleId = navParams.get('moduleId');
-        this.chapters = navParams.get('chapters') || [];
-        this.selected = navParams.get('selected');
+var AddonModChatIndexPage = /** @class */ (function () {
+    function AddonModChatIndexPage(navParams) {
+        this.module = navParams.get('module') || {};
         this.courseId = navParams.get('courseId');
-        this.book = navParams.get('book');
-        if (this.book) {
-            this.showNumbers = this.book.numbering == 1 /* NUMBERS */;
-            this.showBullets = this.book.numbering == 2 /* BULLETS */;
-            this.addPadding = this.book.numbering != 0 /* NONE */;
-        }
+        this.title = this.module.name;
     }
     /**
-     * Function called when a course is clicked.
+     * Update some data based on the chat instance.
      *
-     * @param id ID of the clicked chapter.
+     * @param chat Chat instance.
      */
-    AddonModBookTocPage.prototype.loadChapter = function (id) {
-        this.viewCtrl.dismiss(id);
+    AddonModChatIndexPage.prototype.updateData = function (chat) {
+        this.title = chat.name || this.title;
     };
-    /**
-     * Close modal.
-     */
-    AddonModBookTocPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
-    };
-    AddonModBookTocPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModChatIndexComponent */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModChatIndexComponent */])
+    ], AddonModChatIndexPage.prototype, "chatComponent", void 0);
+    AddonModChatIndexPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-mod-book-toc',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/book/pages/toc/toc.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.mod_book.toc\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <nav>\n        <ion-list>\n            <a ion-item text-wrap *ngFor="let chapter of chapters" (click)="loadChapter(chapter.id)" [class.core-nav-item-selected]="selected == chapter.id" [class.item-dimmed]="chapter.hidden">\n                <p [attr.padding-left]="addPadding && chapter.level == 1 ? true : null">\n                    <span *ngIf="showNumbers" class="addon-mod-book-number">{{chapter.number}}</span>\n                    <span *ngIf="showBullets" class="addon-mod-book-bullet">&bull;</span>\n                    <core-format-text [text]="chapter.title" contextLevel="module" [contextInstanceId]="moduleId" [courseId]="courseId"></core-format-text>\n                </p>\n            </a>\n        </ion-list>\n    </nav>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/book/pages/toc/toc.html"*/
+            selector: 'page-addon-mod-chat-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/index/index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title><core-format-text [text]="title" contextLevel="module" [contextInstanceId]="module.id" [courseId]="courseId"></core-format-text></ion-title>\n\n        <ion-buttons end>\n            <!-- The buttons defined by the component will be added in here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="chatComponent.loaded" (ionRefresh)="chatComponent.doRefresh($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n\n    <addon-mod-chat-index [module]="module" [courseId]="courseId" (dataRetrieved)="updateData($event)"></addon-mod-chat-index>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/chat/pages/index/index.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */]])
-    ], AddonModBookTocPage);
-    return AddonModBookTocPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], AddonModChatIndexPage);
+    return AddonModChatIndexPage;
 }());
 
-//# sourceMappingURL=toc.js.map
+//# sourceMappingURL=index.js.map
 
 /***/ })
 

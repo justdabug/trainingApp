@@ -1,18 +1,17 @@
 webpackJsonp([44],{
 
-/***/ 2065:
+/***/ 2074:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreGradesCourseSplitPageModule", function() { return CoreGradesCourseSplitPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreLoginChangePasswordPageModule", function() { return CoreLoginChangePasswordPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__coursesplit__ = __webpack_require__(2219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__change_password__ = __webpack_require__(2230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(994);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,39 +37,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var CoreGradesCourseSplitPageModule = /** @class */ (function () {
-    function CoreGradesCourseSplitPageModule() {
+var CoreLoginChangePasswordPageModule = /** @class */ (function () {
+    function CoreLoginChangePasswordPageModule() {
     }
-    CoreGradesCourseSplitPageModule = __decorate([
+    CoreLoginChangePasswordPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__coursesplit__["a" /* CoreGradesCourseSplitPage */]
+                __WEBPACK_IMPORTED_MODULE_3__change_password__["a" /* CoreLoginChangePasswordPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* CoreGradesComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__coursesplit__["a" /* CoreGradesCourseSplitPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__change_password__["a" /* CoreLoginChangePasswordPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
-            ],
+            ]
         })
-    ], CoreGradesCourseSplitPageModule);
-    return CoreGradesCourseSplitPageModule;
+    ], CoreLoginChangePasswordPageModule);
+    return CoreLoginChangePasswordPageModule;
 }());
 
-//# sourceMappingURL=coursesplit.module.js.map
+//# sourceMappingURL=change-password.module.js.map
 
 /***/ }),
 
-/***/ 2219:
+/***/ 2230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreGradesCourseSplitPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreLoginChangePasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sites__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_helper__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__ = __webpack_require__(7);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,25 +95,58 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Page that displays a course grades.
+ * Page that shows instructions to change the password.
  */
-var CoreGradesCourseSplitPage = /** @class */ (function () {
-    function CoreGradesCourseSplitPage(navParams, sitesProvider) {
-        this.courseId = navParams.get('courseId');
-        this.userId = navParams.get('userId') || sitesProvider.getCurrentSiteUserId();
-        this.gradeId = navParams.get('gradeId');
+var CoreLoginChangePasswordPage = /** @class */ (function () {
+    function CoreLoginChangePasswordPage(translate, sitesProvider, loginHelper, domUtls) {
+        this.translate = translate;
+        this.sitesProvider = sitesProvider;
+        this.loginHelper = loginHelper;
+        this.domUtls = domUtls;
+        this.changingPassword = false;
+        this.logoutLabel = this.loginHelper.getLogoutLabel();
     }
-    CoreGradesCourseSplitPage = __decorate([
+    /**
+     * Show a help modal.
+     */
+    CoreLoginChangePasswordPage.prototype.showHelp = function () {
+        this.domUtls.showAlert(this.translate.instant('core.help'), this.translate.instant('core.login.changepasswordhelp'));
+    };
+    /**
+     * Open the change password page in a browser.
+     */
+    CoreLoginChangePasswordPage.prototype.openChangePasswordPage = function () {
+        this.loginHelper.openInAppForEdit(this.sitesProvider.getCurrentSiteId(), '/login/change_password.php', undefined, true);
+        this.changingPassword = true;
+    };
+    /**
+     * Login the user.
+     */
+    CoreLoginChangePasswordPage.prototype.login = function () {
+        this.loginHelper.goToSiteInitialPage();
+        this.changingPassword = false;
+    };
+    /**
+     * Logout the user.
+     */
+    CoreLoginChangePasswordPage.prototype.logout = function () {
+        this.sitesProvider.logout();
+        this.changingPassword = false;
+    };
+    CoreLoginChangePasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-grades-course-split',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/grades/pages/coursesplit/coursesplit.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.grades.grades\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<core-split-view>\n    <core-grades-course class="core-avoid-header" [courseId]="courseId" [userId]="userId" [gradeId]="gradeId"></core-grades-course>\n</core-split-view>\n\n\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/grades/pages/coursesplit/coursesplit.html"*/,
+            selector: 'page-core-change-password',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/change-password/change-password.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.login.changepassword\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="showHelp()" [attr.aria-label]="\'core.help\' | translate">\n                <ion-icon name="help-circle"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item text-wrap *ngIf="!changingPassword">\n            <h2>{{ \'core.login.forcepasswordchangenotice\' | translate }}</h2>\n            <p padding-vertical>{{ \'core.login.changepasswordinstructions\' | translate }}</p>\n            <button text-wrap ion-button block (click)="openChangePasswordPage()">{{ \'core.login.changepasswordbutton\' | translate }}</button>\n        </ion-item>\n        <ion-item text-wrap *ngIf="changingPassword">\n            <p padding-bottom>{{ \'core.login.changepasswordreconnectinstructions\' | translate }}</p>\n            <button text-wrap ion-button block (click)="login()">{{ \'core.login.reconnect\' | translate }}</button>\n        </ion-item>\n        <ion-item text-wrap>\n            <p padding-bottom>{{ \'core.login.changepasswordlogoutinstructions\' | translate }}</p>\n            <button text-wrap ion-button block color="light" (click)="logout()">{{ logoutLabel | translate }}</button>\n        </ion-item>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/change-password/change-password.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_sites__["a" /* CoreSitesProvider */]])
-    ], CoreGradesCourseSplitPage);
-    return CoreGradesCourseSplitPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_2__providers_sites__["a" /* CoreSitesProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* CoreLoginHelperProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__["a" /* CoreDomUtilsProvider */]])
+    ], CoreLoginChangePasswordPage);
+    return CoreLoginChangePasswordPage;
 }());
 
-//# sourceMappingURL=coursesplit.js.map
+//# sourceMappingURL=change-password.js.map
 
 /***/ })
 

@@ -1,17 +1,17 @@
 webpackJsonp([20],{
 
-/***/ 2087:
+/***/ 2098:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreSharedFilesListPageModule", function() { return CoreSharedFilesListPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreSitePluginsModuleIndexPageModule", function() { return CoreSitePluginsModuleIndexPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__list__ = __webpack_require__(2241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__module_index__ = __webpack_require__(2254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(1003);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,42 +37,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreSharedFilesListPageModule = /** @class */ (function () {
-    function CoreSharedFilesListPageModule() {
+/**
+ * Module to lazy load the page.
+ */
+var CoreSitePluginsModuleIndexPageModule = /** @class */ (function () {
+    function CoreSitePluginsModuleIndexPageModule() {
     }
-    CoreSharedFilesListPageModule = __decorate([
+    CoreSitePluginsModuleIndexPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__list__["a" /* CoreSharedFilesListPage */]
+                __WEBPACK_IMPORTED_MODULE_4__module_index__["a" /* CoreSitePluginsModuleIndexPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__list__["a" /* CoreSharedFilesListPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreSitePluginsComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__module_index__["a" /* CoreSitePluginsModuleIndexPage */]),
+                __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreSharedFilesListPageModule);
-    return CoreSharedFilesListPageModule;
+    ], CoreSitePluginsModuleIndexPageModule);
+    return CoreSitePluginsModuleIndexPageModule;
 }());
 
-//# sourceMappingURL=list.module.js.map
+//# sourceMappingURL=module-index.module.js.map
 
 /***/ }),
 
-/***/ 2241:
+/***/ 2254:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreSharedFilesListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreSitePluginsModuleIndexPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_events__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_file__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_utils_text__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_sharedfiles__ = __webpack_require__(425);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__ = __webpack_require__(292);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,164 +96,77 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-
 /**
- * Modal to display the list of shared files.
+ * Page to render the index page of a module site plugin.
  */
-var CoreSharedFilesListPage = /** @class */ (function () {
-    function CoreSharedFilesListPage(viewCtrl, navParams, sharedFilesProvider, sitesProvider, textUtils, translate, fileProvider, eventsProvider, navCtrl) {
-        this.viewCtrl = viewCtrl;
-        this.sharedFilesProvider = sharedFilesProvider;
-        this.sitesProvider = sitesProvider;
-        this.textUtils = textUtils;
-        this.translate = translate;
-        this.fileProvider = fileProvider;
-        this.eventsProvider = eventsProvider;
-        this.navCtrl = navCtrl;
-        this.path = '';
-        this.siteId = navParams.get('siteId') || this.sitesProvider.getCurrentSiteId();
-        this.mimetypes = navParams.get('mimetypes');
-        this.isModal = !!navParams.get('isModal');
-        this.manage = !!navParams.get('manage');
-        this.pick = !!navParams.get('pick');
-        this.path = navParams.get('path') || '';
-        this.showSitePicker = !navParams.get('hideSitePicker');
+var CoreSitePluginsModuleIndexPage = /** @class */ (function () {
+    function CoreSitePluginsModuleIndexPage(params) {
+        this.title = params.get('title');
+        this.module = params.get('module');
+        this.courseId = params.get('courseId');
     }
     /**
-     * Component being initialized.
-     */
-    CoreSharedFilesListPage.prototype.ngOnInit = function () {
-        var _this = this;
-        this.loadFiles();
-        // Listen for new files shared with the app.
-        this.shareObserver = this.eventsProvider.on(__WEBPACK_IMPORTED_MODULE_3__providers_events__["a" /* CoreEventsProvider */].FILE_SHARED, function (data) {
-            if (data.siteId == _this.siteId) {
-                // File was stored in current site, refresh the list.
-                _this.filesLoaded = false;
-                _this.loadFiles().finally(function () {
-                    _this.filesLoaded = true;
-                });
-            }
-        });
-    };
-    /**
-     * Load the files.
-     *
-     * @return Promise resolved when done.
-     */
-    CoreSharedFilesListPage.prototype.loadFiles = function () {
-        var _this = this;
-        if (this.path) {
-            this.title = this.fileProvider.getFileAndDirectoryFromPath(this.path).name;
-        }
-        else {
-            this.title = this.translate.instant('core.sharedfiles.sharedfiles');
-        }
-        return this.sharedFilesProvider.getSiteSharedFiles(this.siteId, this.path, this.mimetypes).then(function (files) {
-            _this.files = files;
-            _this.filesLoaded = true;
-        });
-    };
-    /**
-     * Close modal.
-     */
-    CoreSharedFilesListPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
-    };
-    /**
-     * Refresh the list of files.
+     * Refresh the data.
      *
      * @param refresher Refresher.
      */
-    CoreSharedFilesListPage.prototype.refreshFiles = function (refresher) {
-        this.loadFiles().finally(function () {
+    CoreSitePluginsModuleIndexPage.prototype.refreshData = function (refresher) {
+        this.content.doRefresh().finally(function () {
             refresher.complete();
         });
     };
     /**
-     * Called when a file is deleted. Remove the file from the list.
-     *
-     * @param index Position of the file.
+     * The page is about to enter and become the active page.
      */
-    CoreSharedFilesListPage.prototype.fileDeleted = function (index) {
-        this.files.splice(index, 1);
+    CoreSitePluginsModuleIndexPage.prototype.ionViewWillEnter = function () {
+        this.content.callComponentFunction('ionViewWillEnter');
     };
     /**
-     * Called when a file is renamed. Update the list.
-     *
-     * @param index Position of the file.
-     * @param data Data containing the new FileEntry.
+     * The page has fully entered and is now the active page. This event will fire, whether it was the first load or a cached page.
      */
-    CoreSharedFilesListPage.prototype.fileRenamed = function (index, data) {
-        this.files[index] = data.file;
+    CoreSitePluginsModuleIndexPage.prototype.ionViewDidEnter = function () {
+        this.content.callComponentFunction('ionViewDidEnter');
     };
     /**
-     * Open a subfolder.
-     *
-     * @param folder The folder to open.
+     * The page is about to leave and no longer be the active page.
      */
-    CoreSharedFilesListPage.prototype.openFolder = function (folder) {
-        var path = this.textUtils.concatenatePaths(this.path, folder.name);
-        if (this.isModal) {
-            // In Modal we don't want to open a new page because we cannot dismiss the modal from the new page.
-            this.path = path;
-            this.filesLoaded = false;
-            this.loadFiles();
-        }
-        else {
-            this.navCtrl.push('CoreSharedFilesListPage', {
-                path: path,
-                manage: this.manage,
-                pick: this.pick,
-                siteId: this.siteId,
-                mimetypes: this.mimetypes,
-                isModal: this.isModal
-            });
-        }
+    CoreSitePluginsModuleIndexPage.prototype.ionViewWillLeave = function () {
+        this.content.callComponentFunction('ionViewWillLeave');
     };
     /**
-     * Change site loaded.
-     *
-     * @param id Site to load.
+     * The page has finished leaving and is no longer the active page.
      */
-    CoreSharedFilesListPage.prototype.changeSite = function (id) {
-        this.siteId = id;
-        this.path = '';
-        this.filesLoaded = false;
-        this.loadFiles();
+    CoreSitePluginsModuleIndexPage.prototype.ionViewDidLeave = function () {
+        this.content.callComponentFunction('ionViewDidLeave');
     };
     /**
-     * A file was picked.
-     *
-     * @param file Picked file.
+     * The page is about to be destroyed and have its elements removed.
      */
-    CoreSharedFilesListPage.prototype.filePicked = function (file) {
-        this.viewCtrl.dismiss(file);
+    CoreSitePluginsModuleIndexPage.prototype.ionViewWillUnload = function () {
+        this.content.callComponentFunction('ionViewWillUnload');
     };
     /**
-     * Component destroyed.
+     * Check if we can leave the page or not.
+     *
+     * @return Resolved if we can leave it, rejected if not.
      */
-    CoreSharedFilesListPage.prototype.ngOnDestroy = function () {
-        if (this.shareObserver) {
-            this.shareObserver.off();
-        }
+    CoreSitePluginsModuleIndexPage.prototype.ionViewCanLeave = function () {
+        return this.content.callComponentFunction('ionViewCanLeave');
     };
-    CoreSharedFilesListPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__["a" /* CoreSitePluginsModuleIndexComponent */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__["a" /* CoreSitePluginsModuleIndexComponent */])
+    ], CoreSitePluginsModuleIndexPage.prototype, "content", void 0);
+    CoreSitePluginsModuleIndexPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-shared-files-list',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/sharedfiles/pages/list/list.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end *ngIf="isModal">\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="filesLoaded" (ionRefresh)="refreshFiles($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <!-- Allow selecting the site to view. -->\n    <core-site-picker *ngIf="showSitePicker" [hidden]="!filesLoaded" [initialSite]="siteId" (siteSelected)="changeSite($event)"></core-site-picker>\n    <core-loading [hideUntil]="filesLoaded">\n        <ion-list *ngIf="files && files.length > 0">\n            <ng-container *ngFor="let file of files; let idx = index">\n                <core-local-file *ngIf="file.isFile" [file]="file" [manage]="manage" [overrideClick]="pick" (onClick)="filePicked(file)" (onDelete)="fileDeleted(idx)" (onRename)="fileRenamed(idx, $event)"></core-local-file>\n                <a ion-item text-wrap class="item-media" *ngIf="!file.isFile" (click)="openFolder(file)">\n                    <img src="assets/img/files/folder-64.png" alt="{{ \'core.folder\' | translate }}" role="presentation" item-start>\n                    <p>{{ file.name }}</p>\n                </a>\n            </ng-container>\n        </ion-list>\n        <core-empty-box *ngIf="files && !files.length && manage" icon="folder" [message]="\'core.sharedfiles.nosharedfiles\' | translate"></core-empty-box>\n        <core-empty-box *ngIf="files && !files.length && !manage" icon="folder" [message]="\'core.sharedfiles.nosharedfilestoupload\' | translate"></core-empty-box>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/sharedfiles/pages/list/list.html"*/,
+            selector: 'page-core-site-plugins-module-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/module-index/module-index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <!-- If the site plugin defines some buttons using core-nav-buttons, they will be added here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="content && content.content && content.content.dataLoaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-site-plugins-module-index [module]="module" [courseId]="courseId" [pageTitle]="title"></core-site-plugins-module-index>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/module-index/module-index.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_7__providers_sharedfiles__["a" /* CoreSharedFilesProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_utils_text__["a" /* CoreTextUtilsProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_file__["a" /* CoreFileProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_events__["a" /* CoreEventsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */]])
-    ], CoreSharedFilesListPage);
-    return CoreSharedFilesListPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], CoreSitePluginsModuleIndexPage);
+    return CoreSitePluginsModuleIndexPage;
 }());
 
-//# sourceMappingURL=list.js.map
+//# sourceMappingURL=module-index.js.map
 
 /***/ })
 

@@ -1,17 +1,17 @@
 webpackJsonp([18],{
 
-/***/ 2090:
+/***/ 2100:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreSitePluginsModuleIndexPageModule", function() { return CoreSitePluginsModuleIndexPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreTagIndexAreaPageModule", function() { return CoreTagIndexAreaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__module_index__ = __webpack_require__(2244);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(1003);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index_area__ = __webpack_require__(2256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,40 +37,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-/**
- * Module to lazy load the page.
- */
-var CoreSitePluginsModuleIndexPageModule = /** @class */ (function () {
-    function CoreSitePluginsModuleIndexPageModule() {
+var CoreTagIndexAreaPageModule = /** @class */ (function () {
+    function CoreTagIndexAreaPageModule() {
     }
-    CoreSitePluginsModuleIndexPageModule = __decorate([
+    CoreTagIndexAreaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__module_index__["a" /* CoreSitePluginsModuleIndexPage */]
+                __WEBPACK_IMPORTED_MODULE_3__index_area__["a" /* CoreTagIndexAreaPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreSitePluginsComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__module_index__["a" /* CoreSitePluginsModuleIndexPage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__index_area__["a" /* CoreTagIndexAreaPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
-            ]
+            ],
         })
-    ], CoreSitePluginsModuleIndexPageModule);
-    return CoreSitePluginsModuleIndexPageModule;
+    ], CoreTagIndexAreaPageModule);
+    return CoreTagIndexAreaPageModule;
 }());
 
-//# sourceMappingURL=module-index.module.js.map
+//# sourceMappingURL=index-area.module.js.map
 
 /***/ }),
 
-/***/ 2244:
+/***/ 2256:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreSitePluginsModuleIndexPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreTagIndexAreaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__ = __webpack_require__(132);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -96,77 +96,131 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 /**
- * Page to render the index page of a module site plugin.
+ * Page that displays the tag index area.
  */
-var CoreSitePluginsModuleIndexPage = /** @class */ (function () {
-    function CoreSitePluginsModuleIndexPage(params) {
-        this.title = params.get('title');
-        this.module = params.get('module');
-        this.courseId = params.get('courseId');
+var CoreTagIndexAreaPage = /** @class */ (function () {
+    function CoreTagIndexAreaPage(navParams, injector, translate, tagProvider, domUtils, tagAreaDelegate) {
+        this.injector = injector;
+        this.translate = translate;
+        this.tagProvider = tagProvider;
+        this.domUtils = domUtils;
+        this.tagAreaDelegate = tagAreaDelegate;
+        this.loaded = false;
+        this.items = [];
+        this.nextPage = 0;
+        this.canLoadMore = false;
+        this.loadMoreError = false;
+        this.tagId = navParams.get('tagId');
+        this.tagName = navParams.get('tagName');
+        this.collectionId = navParams.get('collectionId');
+        this.areaId = navParams.get('areaId');
+        this.fromContextId = navParams.get('fromContextId');
+        this.contextId = navParams.get('contextId');
+        this.recursive = navParams.get('recursive');
+        this.areaNameKey = navParams.get('areaNameKey');
+        // Pass the the following parameters to avoid fetching the first page.
+        this.componentName = navParams.get('componentName');
+        this.itemType = navParams.get('itemType');
+        this.items = navParams.get('items') || [];
+        this.nextPage = navParams.get('nextPage') || 0;
+        this.canLoadMore = !!navParams.get('canLoadMore');
     }
     /**
-     * Refresh the data.
-     *
-     * @param refresher Refresher.
+     * View loaded.
      */
-    CoreSitePluginsModuleIndexPage.prototype.refreshData = function (refresher) {
-        this.content.doRefresh().finally(function () {
-            refresher.complete();
+    CoreTagIndexAreaPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        var promise;
+        if (!this.componentName || !this.itemType || !this.items.length || this.nextPage == 0) {
+            promise = this.fetchData(true);
+        }
+        else {
+            promise = Promise.resolve();
+        }
+        promise.then(function () {
+            return _this.tagAreaDelegate.getComponent(_this.componentName, _this.itemType, _this.injector).then(function (component) {
+                _this.areaComponent = component;
+            });
+        }).finally(function () {
+            _this.loaded = true;
         });
     };
     /**
-     * The page is about to enter and become the active page.
-     */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewWillEnter = function () {
-        this.content.callComponentFunction('ionViewWillEnter');
-    };
-    /**
-     * The page has fully entered and is now the active page. This event will fire, whether it was the first load or a cached page.
-     */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewDidEnter = function () {
-        this.content.callComponentFunction('ionViewDidEnter');
-    };
-    /**
-     * The page is about to leave and no longer be the active page.
-     */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewWillLeave = function () {
-        this.content.callComponentFunction('ionViewWillLeave');
-    };
-    /**
-     * The page has finished leaving and is no longer the active page.
-     */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewDidLeave = function () {
-        this.content.callComponentFunction('ionViewDidLeave');
-    };
-    /**
-     * The page is about to be destroyed and have its elements removed.
-     */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewWillUnload = function () {
-        this.content.callComponentFunction('ionViewWillUnload');
-    };
-    /**
-     * Check if we can leave the page or not.
+     * Fetch next page of the tag index area.
      *
-     * @return Resolved if we can leave it, rejected if not.
+     * @param refresh Whether to refresh the data or fetch a new page.
+     * @return Resolved when done.
      */
-    CoreSitePluginsModuleIndexPage.prototype.ionViewCanLeave = function () {
-        return this.content.callComponentFunction('ionViewCanLeave');
+    CoreTagIndexAreaPage.prototype.fetchData = function (refresh) {
+        var _this = this;
+        if (refresh === void 0) { refresh = false; }
+        this.loadMoreError = false;
+        var page = refresh ? 0 : this.nextPage;
+        return this.tagProvider.getTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive, page).then(function (areas) {
+            var area = areas[0];
+            return _this.tagAreaDelegate.parseContent(area.component, area.itemtype, area.content).then(function (items) {
+                if (!items || !items.length) {
+                    // Tag area not supported.
+                    return Promise.reject(_this.translate.instant('core.tag.errorareanotsupported'));
+                }
+                if (page == 0) {
+                    _this.items = items;
+                }
+                else {
+                    (_a = _this.items).push.apply(_a, items);
+                }
+                _this.componentName = area.component;
+                _this.itemType = area.itemtype;
+                _this.areaNameKey = _this.tagAreaDelegate.getDisplayNameKey(area.component, area.itemtype);
+                _this.canLoadMore = !!area.nextpageurl;
+                _this.nextPage = page + 1;
+                var _a;
+            });
+        }).catch(function (error) {
+            _this.loadMoreError = true; // Set to prevent infinite calls with infinite-loading.
+            _this.domUtils.showErrorModalDefault(error, 'Error loading tag index');
+        });
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__["a" /* CoreSitePluginsModuleIndexComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_module_index_module_index__["a" /* CoreSitePluginsModuleIndexComponent */])
-    ], CoreSitePluginsModuleIndexPage.prototype, "content", void 0);
-    CoreSitePluginsModuleIndexPage = __decorate([
+    /**
+     * Load more items.
+     *
+     * @param infiniteComplete Infinite scroll complete function.
+     * @return Resolved when done.
+     */
+    CoreTagIndexAreaPage.prototype.loadMore = function (infiniteComplete) {
+        return this.fetchData().finally(function () {
+            infiniteComplete();
+        });
+    };
+    /**
+     * Refresh data.
+     *
+     * @param refresher Refresher.
+     */
+    CoreTagIndexAreaPage.prototype.refreshData = function (refresher) {
+        var _this = this;
+        this.tagProvider.invalidateTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive).finally(function () {
+            _this.fetchData(true).finally(function () {
+                refresher.complete();
+            });
+        });
+    };
+    CoreTagIndexAreaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-site-plugins-module-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/module-index/module-index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <!-- If the site plugin defines some buttons using core-nav-buttons, they will be added here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="content && content.content && content.content.dataLoaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-site-plugins-module-index [module]="module" [courseId]="courseId" [pageTitle]="title"></core-site-plugins-module-index>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/module-index/module-index.html"*/,
+            selector: 'page-core-tag-index-area',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index-area/index-area.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.tag.itemstaggedwith\' | translate: { $a: {tagarea: areaNameKey | translate, tag: tagName} } }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="loaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-loading [hideUntil]="loaded">\n        <ng-container *ngIf="loaded">\n            <core-dynamic-component [component]="areaComponent" [data]="{items: items}"></core-dynamic-component>\n        </ng-container>\n        <core-infinite-loading [enabled]="canLoadMore" (action)="loadMore($event)" [error]="loadMoreError"></core-infinite-loading>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index-area/index-area.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
-    ], CoreSitePluginsModuleIndexPage);
-    return CoreSitePluginsModuleIndexPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */], __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__["a" /* CoreTagProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__["a" /* CoreTagAreaDelegate */]])
+    ], CoreTagIndexAreaPage);
+    return CoreTagIndexAreaPage;
 }());
 
-//# sourceMappingURL=module-index.js.map
+//# sourceMappingURL=index-area.js.map
 
 /***/ })
 

@@ -1,18 +1,18 @@
 webpackJsonp([123],{
 
-/***/ 1977:
+/***/ 1989:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonMessagesGroupConversationsPageModule", function() { return AddonMessagesGroupConversationsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModAssignEditPageModule", function() { return AddonModAssignEditPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__group_conversations__ = __webpack_require__(2127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipes_pipes_module__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(988);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__edit__ = __webpack_require__(2141);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,47 +39,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddonMessagesGroupConversationsPageModule = /** @class */ (function () {
-    function AddonMessagesGroupConversationsPageModule() {
+var AddonModAssignEditPageModule = /** @class */ (function () {
+    function AddonModAssignEditPageModule() {
     }
-    AddonMessagesGroupConversationsPageModule = __decorate([
+    AddonModAssignEditPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__group_conversations__["a" /* AddonMessagesGroupConversationsPage */],
+                __WEBPACK_IMPORTED_MODULE_6__edit__["a" /* AddonModAssignEditPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_6__pipes_pipes_module__["a" /* CorePipesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__group_conversations__["a" /* AddonMessagesGroupConversationsPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* AddonModAssignComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_6__edit__["a" /* AddonModAssignEditPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonMessagesGroupConversationsPageModule);
-    return AddonMessagesGroupConversationsPageModule;
+    ], AddonModAssignEditPageModule);
+    return AddonModAssignEditPageModule;
 }());
 
-//# sourceMappingURL=group-conversations.module.js.map
+//# sourceMappingURL=edit.module.js.map
 
 /***/ }),
 
-/***/ 2127:
+/***/ 2141:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonMessagesGroupConversationsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModAssignEditPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_events__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_events__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_messages__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_messages_offline__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_utils_utils__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__core_pushnotifications_providers_delegate__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_split_view_split_view__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__core_user_providers_user__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_sync__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_fileuploader_providers_helper__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_assign__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_assign_offline__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_assign_sync__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_helper__ = __webpack_require__(131);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -102,6 +102,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
@@ -115,637 +150,334 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Page that displays the list of conversations, including group conversations.
+ * Page that allows adding or editing an assigment submission.
  */
-var AddonMessagesGroupConversationsPage = /** @class */ (function () {
-    function AddonMessagesGroupConversationsPage(eventsProvider, sitesProvider, translate, messagesProvider, domUtils, navParams, navCtrl, platform, utils, pushNotificationsDelegate, messagesOffline, userProvider) {
-        var _this = this;
-        this.messagesProvider = messagesProvider;
-        this.domUtils = domUtils;
+var AddonModAssignEditPage = /** @class */ (function () {
+    function AddonModAssignEditPage(navParams, navCtrl, sitesProvider, syncProvider, domUtils, translate, fileUploaderHelper, eventsProvider, assignProvider, assignOfflineProvider, assignHelper, assignSyncProvider) {
         this.navCtrl = navCtrl;
-        this.utils = utils;
-        this.messagesOffline = messagesOffline;
-        this.userProvider = userProvider;
-        this.loaded = false;
-        this.contactRequestsCount = 0;
-        this.favourites = {
-            type: null,
-            favourites: true,
-            count: 0,
-            unread: 0,
-        };
-        this.group = {
-            type: __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MESSAGE_CONVERSATION_TYPE_GROUP,
-            favourites: false,
-            count: 0,
-            unread: 0
-        };
-        this.individual = {
-            type: __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MESSAGE_CONVERSATION_TYPE_INDIVIDUAL,
-            favourites: false,
-            count: 0,
-            unread: 0
-        };
-        this.typeGroup = __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MESSAGE_CONVERSATION_TYPE_GROUP;
-        this.loadingString = translate.instant('core.loading');
-        this.siteId = sitesProvider.getCurrentSiteId();
-        this.currentUserId = sitesProvider.getCurrentSiteUserId();
-        // Conversation to load.
-        this.conversationId = navParams.get('conversationId') || false;
-        this.discussionUserId = !this.conversationId && (navParams.get('discussionUserId') || false);
-        // Update conversations when new message is received.
-        this.newMessagesObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].NEW_MESSAGE_EVENT, function (data) {
-            // Check if the new message belongs to the option that is currently expanded.
-            var expandedOption = _this.getExpandedOption(), messageOption = _this.getConversationOption(data);
-            if (expandedOption != messageOption) {
-                return; // Message doesn't belong to current list, stop.
-            }
-            // Search the conversation to update.
-            var conversation = _this.findConversation(data.conversationId, data.userId, expandedOption);
-            if (typeof conversation == 'undefined') {
-                // Probably a new conversation, refresh the list.
-                _this.loaded = false;
-                _this.refreshData().finally(function () {
-                    _this.loaded = true;
-                });
-            }
-            else if (conversation.lastmessage != data.message || conversation.lastmessagedate != data.timecreated / 1000) {
-                var isNewer = data.timecreated / 1000 > conversation.lastmessagedate;
-                // An existing conversation has a new message, update the last message.
-                conversation.lastmessage = data.message;
-                conversation.lastmessagedate = data.timecreated / 1000;
-                // Sort the affected list.
-                var option = _this.getConversationOption(conversation);
-                option.conversations = _this.messagesProvider.sortConversations(option.conversations);
-                if (isNewer) {
-                    // The last message is newer than the previous one, scroll to top to keep viewing the conversation.
-                    _this.domUtils.scrollToTop(_this.content);
-                }
-            }
-        }, this.siteId);
-        // Update conversations when a message is read.
-        this.readChangedObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].READ_CHANGED_EVENT, function (data) {
-            if (data.conversationId) {
-                var conversation = _this.findConversation(data.conversationId);
-                if (typeof conversation != 'undefined') {
-                    // A conversation has been read reset counter.
-                    conversation.unreadcount = 0;
-                    // Conversations changed, invalidate them and refresh unread counts.
-                    _this.messagesProvider.invalidateConversations(_this.siteId);
-                    _this.messagesProvider.refreshUnreadConversationCounts(_this.siteId);
-                }
-            }
-        }, this.siteId);
-        // Load a discussion if we receive an event to do so.
-        this.openConversationObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].OPEN_CONVERSATION_EVENT, function (data) {
-            if (data.conversationId || data.userId) {
-                _this.gotoConversation(data.conversationId, data.userId);
-            }
-        }, this.siteId);
-        // Refresh the view when the app is resumed.
-        this.appResumeSubscription = platform.resume.subscribe(function () {
-            if (!_this.loaded) {
-                return;
-            }
-            _this.loaded = false;
-            _this.refreshData().finally(function () {
-                _this.loaded = true;
-            });
-        });
-        // Update conversations if we receive an event to do so.
-        this.updateConversationListObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].UPDATE_CONVERSATION_LIST_EVENT, function (data) {
-            if (data && data.action == 'mute') {
-                // If the conversation is displayed, change its muted value.
-                var expandedOption = _this.getExpandedOption();
-                if (expandedOption && expandedOption.conversations) {
-                    var conversation = _this.findConversation(data.conversationId, undefined, expandedOption);
-                    if (conversation) {
-                        conversation.ismuted = data.value;
-                    }
-                }
-                return;
-            }
-            _this.refreshData();
-        }, this.siteId);
-        // If a message push notification is received, refresh the view.
-        this.pushObserver = pushNotificationsDelegate.on('receive').subscribe(function (notification) {
-            // New message received. If it's from current site, refresh the data.
-            if (utils.isFalseOrZero(notification.notif) && notification.site == _this.siteId) {
-                // Don't refresh unread counts, it's refreshed from the main menu handler in this case.
-                _this.refreshData(null, false);
-            }
-        });
-        // Update unread conversation counts.
-        this.cronObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].UNREAD_CONVERSATION_COUNTS_EVENT, function (data) {
-            _this.favourites.unread = data.favourites;
-            _this.individual.unread = data.individual + data.self; // Self is only returned if it's not favourite.
-            _this.group.unread = data.group;
-        }, this.siteId);
-        // Update the contact requests badge.
-        this.contactRequestsCountObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].CONTACT_REQUESTS_COUNT_EVENT, function (data) {
-            _this.contactRequestsCount = data.count;
-        }, this.siteId);
-        // Update block status of a user.
-        this.memberInfoObserver = eventsProvider.on(__WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MEMBER_INFO_CHANGED_EVENT, function (data) {
-            if (!data.userBlocked && !data.userUnblocked) {
-                // The block status has not changed, ignore.
-                return;
-            }
-            var expandedOption = _this.getExpandedOption();
-            if (expandedOption == _this.individual || expandedOption == _this.favourites) {
-                if (!expandedOption.conversations || expandedOption.conversations.length <= 0) {
-                    return;
-                }
-                var conversation = _this.findConversation(undefined, data.userId, expandedOption);
-                if (conversation) {
-                    conversation.isblocked = data.userBlocked;
-                }
-            }
-        }, this.siteId);
+        this.sitesProvider = sitesProvider;
+        this.syncProvider = syncProvider;
+        this.domUtils = domUtils;
+        this.translate = translate;
+        this.fileUploaderHelper = fileUploaderHelper;
+        this.eventsProvider = eventsProvider;
+        this.assignProvider = assignProvider;
+        this.assignOfflineProvider = assignOfflineProvider;
+        this.assignHelper = assignHelper;
+        this.assignSyncProvider = assignSyncProvider;
+        this.saveOffline = false; // Whether to save data in offline.
+        this.hasOffline = false; // Whether the assignment has offline data.
+        this.isDestroyed = false; // Whether the component has been destroyed.
+        this.forceLeave = false; // To allow leaving the page without checking for changes.
+        this.moduleId = navParams.get('moduleId');
+        this.courseId = navParams.get('courseId');
+        this.userId = sitesProvider.getCurrentSiteUserId(); // Right now we can only edit current user's submissions.
+        this.isBlind = !!navParams.get('blindId');
+        this.editText = translate.instant('addon.mod_assign.editsubmission');
+        this.title = this.editText;
     }
     /**
-     * Component loaded.
+     * Component being initialized.
      */
-    AddonMessagesGroupConversationsPage.prototype.ngOnInit = function () {
+    AddonModAssignEditPage.prototype.ngOnInit = function () {
         var _this = this;
-        if (this.conversationId || this.discussionUserId) {
-            // There is a discussion to load, open the discussion in a new state.
-            this.gotoConversation(this.conversationId, this.discussionUserId);
-        }
-        this.fetchData().then(function () {
-            if (!_this.conversationId && !_this.discussionUserId && _this.splitviewCtrl.isOn()) {
-                // Load the first conversation.
-                var conversation = void 0;
-                var expandedOption = _this.getExpandedOption();
-                if (expandedOption) {
-                    conversation = expandedOption.conversations[0];
-                }
-                if (conversation) {
-                    _this.gotoConversation(conversation.id);
-                }
-            }
-        });
-    };
-    /**
-     * Fetch conversations.
-     *
-     * @param refreshUnreadCounts Whether to refresh unread counts.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.fetchData = function (refreshUnreadCounts) {
-        var _this = this;
-        if (refreshUnreadCounts === void 0) { refreshUnreadCounts = true; }
-        this.loadingMessage = this.loadingString;
-        // Load the amount of conversations and contact requests.
-        var promises = [];
-        promises.push(this.fetchConversationCounts());
-        // View updated by the events observers.
-        promises.push(this.messagesProvider.getContactRequestsCount(this.siteId));
-        if (refreshUnreadCounts) {
-            promises.push(this.messagesProvider.refreshUnreadConversationCounts(this.siteId));
-        }
-        return Promise.all(promises).then(function () {
-            if (typeof _this.favourites.expanded == 'undefined') {
-                // The expanded status hasn't been initialized. Do it now.
-                if (_this.conversationId || _this.discussionUserId) {
-                    // A certain conversation should be opened.
-                    // We don't know which option it belongs to, so we need to fetch the data for all of them.
-                    var promises_1 = [];
-                    promises_1.push(_this.fetchDataForOption(_this.favourites, false));
-                    promises_1.push(_this.fetchDataForOption(_this.group, false));
-                    promises_1.push(_this.fetchDataForOption(_this.individual, false));
-                    return Promise.all(promises_1).then(function () {
-                        // All conversations have been loaded, find the one we need to load and expand its option.
-                        var conversation = _this.findConversation(_this.conversationId, _this.discussionUserId);
-                        if (conversation) {
-                            var option = _this.getConversationOption(conversation);
-                            return _this.expandOption(option);
-                        }
-                        else {
-                            // Conversation not found, just open the default option.
-                            _this.calculateExpandedStatus();
-                            // Now load the data for the expanded option.
-                            return _this.fetchDataForExpandedOption();
-                        }
-                    });
-                }
-                // No conversation specified or not found, determine which one should be expanded.
-                _this.calculateExpandedStatus();
-            }
-            // Now load the data for the expanded option.
-            return _this.fetchDataForExpandedOption();
-        }).catch(function (error) {
-            _this.domUtils.showErrorModalDefault(error, 'addon.messages.errorwhileretrievingdiscussions', true);
-        }).finally(function () {
+        this.fetchAssignment().finally(function () {
             _this.loaded = true;
         });
     };
     /**
-     * Calculate which option should be expanded initially.
+     * Check if we can leave the page or not.
+     *
+     * @return Resolved if we can leave it, rejected if not.
      */
-    AddonMessagesGroupConversationsPage.prototype.calculateExpandedStatus = function () {
-        this.favourites.expanded = this.favourites.count != 0 && !this.group.unread && !this.individual.unread;
-        this.group.expanded = !this.favourites.expanded && this.group.count != 0 && !this.individual.unread;
-        this.individual.expanded = !this.favourites.expanded && !this.group.expanded;
-        this.loadCurrentListElement();
+    AddonModAssignEditPage.prototype.ionViewCanLeave = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var changed;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (this.forceLeave) {
+                            return [2 /*return*/];
+                        }
+                        return [4 /*yield*/, this.hasDataChanged()];
+                    case 1:
+                        changed = _a.sent();
+                        if (!changed) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.domUtils.showConfirm(this.translate.instant('core.confirmcanceledit'))];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        // Nothing has changed or user confirmed to leave. Clear temporary data from plugins.
+                        this.assignHelper.clearSubmissionPluginTmpData(this.assign, this.userSubmission, this.getInputData());
+                        this.domUtils.triggerFormCancelledEvent(this.formElement, this.sitesProvider.getCurrentSiteId());
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     /**
-     * Fetch data for the expanded option.
+     * Fetch assignment data.
      *
      * @return Promise resolved when done.
      */
-    AddonMessagesGroupConversationsPage.prototype.fetchDataForExpandedOption = function () {
-        var expandedOption = this.getExpandedOption();
-        if (expandedOption) {
-            return this.fetchDataForOption(expandedOption, false);
-        }
-        return Promise.resolve();
-    };
-    /**
-     * Fetch data for a certain option.
-     *
-     * @param option The option to fetch data for.
-     * @param loadingMore Whether we are loading more data or just the first ones.
-     * @param getCounts Whether to get counts data.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.fetchDataForOption = function (option, loadingMore, getCounts) {
+    AddonModAssignEditPage.prototype.fetchAssignment = function () {
         var _this = this;
-        option.loadMoreError = false;
-        var limitFrom = loadingMore ? option.conversations.length : 0, promises = [];
-        var data, offlineMessages;
-        // Get the conversations and, if needed, the offline messages. Always try to get the latest data.
-        promises.push(this.messagesProvider.invalidateConversations(this.siteId).catch(function () {
-            // Shouldn't happen.
+        var currentUserId = this.sitesProvider.getCurrentSiteUserId();
+        // Get assignment data.
+        return this.assignProvider.getAssignment(this.courseId, this.moduleId).then(function (assign) {
+            _this.assign = assign;
+            _this.title = assign.name || _this.title;
+            if (!_this.isDestroyed) {
+                // Block the assignment.
+                _this.syncProvider.blockOperation(__WEBPACK_IMPORTED_MODULE_8__providers_assign__["a" /* AddonModAssignProvider */].COMPONENT, assign.id);
+            }
+            // Wait for sync to be over (if any).
+            return _this.assignSyncProvider.waitForSync(assign.id);
         }).then(function () {
-            return _this.messagesProvider.getConversations(option.type, option.favourites, limitFrom, _this.siteId);
-        }).then(function (result) {
-            data = result;
-        }));
-        if (!loadingMore) {
-            promises.push(this.messagesOffline.getAllMessages().then(function (data) {
-                offlineMessages = data;
-            }));
-        }
-        if (getCounts) {
-            promises.push(this.fetchConversationCounts());
-            promises.push(this.messagesProvider.refreshUnreadConversationCounts(this.siteId));
-        }
-        return Promise.all(promises).then(function () {
-            if (loadingMore) {
-                option.conversations = option.conversations.concat(data.conversations);
-                option.canLoadMore = data.canLoadMore;
+            // Get submission status. Ignore cache to get the latest data.
+            return _this.assignProvider.getSubmissionStatus(_this.assign.id, _this.userId, undefined, _this.isBlind, false, true)
+                .catch(function (err) {
+                // Cannot connect. Get cached data.
+                return _this.assignProvider.getSubmissionStatus(_this.assign.id, _this.userId, undefined, _this.isBlind)
+                    .then(function (response) {
+                    var userSubmission = _this.assignProvider.getSubmissionObjectFromAttempt(_this.assign, response.lastattempt);
+                    // Check if the user can edit it in offline.
+                    return _this.assignHelper.canEditSubmissionOffline(_this.assign, userSubmission).then(function (canEditOffline) {
+                        if (canEditOffline) {
+                            return response;
+                        }
+                        // Submission cannot be edited in offline, reject.
+                        _this.allowOffline = false;
+                        return Promise.reject(err);
+                    });
+                });
+            }).then(function (response) {
+                if (!response.lastattempt.canedit) {
+                    // Can't edit. Reject.
+                    return Promise.reject(_this.translate.instant('core.nopermissions', { $a: _this.editText }));
+                }
+                _this.userSubmission = _this.assignProvider.getSubmissionObjectFromAttempt(_this.assign, response.lastattempt);
+                _this.allowOffline = true; // If offline isn't allowed we shouldn't have reached this point.
+                // Only show submission statement if we are editing our own submission.
+                if (_this.assign.requiresubmissionstatement && !_this.assign.submissiondrafts && _this.userId == currentUserId) {
+                    _this.submissionStatement = _this.assign.submissionstatement;
+                }
+                else {
+                    _this.submissionStatement = undefined;
+                }
+                // Check if there's any offline data for this submission.
+                return _this.assignOfflineProvider.getSubmission(_this.assign.id, _this.userId).then(function (data) {
+                    _this.hasOffline = data && data.plugindata && Object.keys(data.plugindata).length > 0;
+                }).catch(function () {
+                    // No offline data found.
+                    _this.hasOffline = false;
+                });
+            });
+        }).catch(function (error) {
+            _this.domUtils.showErrorModalDefault(error, 'Error getting assigment data.');
+            // Leave the player.
+            _this.leaveWithoutCheck();
+        });
+    };
+    /**
+     * Get the input data.
+     *
+     * @return Input data.
+     */
+    AddonModAssignEditPage.prototype.getInputData = function () {
+        return this.domUtils.getDataFromForm(document.forms['addon-mod_assign-edit-form']);
+    };
+    /**
+     * Check if data has changed.
+     *
+     * @return Promise resolved with boolean: whether data has changed.
+     */
+    AddonModAssignEditPage.prototype.hasDataChanged = function () {
+        var _this = this;
+        // Usually the hasSubmissionDataChanged call will be resolved inmediately, causing the modal to be shown just an instant.
+        // We'll wait a bit before showing it to prevent this "blink".
+        var modal, showModal = true;
+        setTimeout(function () {
+            if (showModal) {
+                modal = _this.domUtils.showModalLoading();
+            }
+        }, 100);
+        var data = this.getInputData();
+        return this.assignHelper.hasSubmissionDataChanged(this.assign, this.userSubmission, data).finally(function () {
+            if (modal) {
+                modal.dismiss();
             }
             else {
-                option.conversations = data.conversations;
-                option.canLoadMore = data.canLoadMore;
-                if (offlineMessages && offlineMessages.length) {
-                    return _this.loadOfflineMessages(option, offlineMessages).then(function () {
-                        // Sort the conversations, the offline messages could affect the order.
-                        option.conversations = _this.messagesProvider.sortConversations(option.conversations);
-                    });
-                }
+                showModal = false;
             }
         });
     };
     /**
-     * Fetch conversation counts.
-     *
-     * @return Promise resolved when done.
+     * Leave the view without checking for changes.
      */
-    AddonMessagesGroupConversationsPage.prototype.fetchConversationCounts = function () {
+    AddonModAssignEditPage.prototype.leaveWithoutCheck = function () {
+        this.forceLeave = true;
+        this.navCtrl.pop();
+    };
+    /**
+     * Get data to submit based on the input data.
+     *
+     * @param inputData The input data.
+     * @return Promise resolved with the data to submit.
+     */
+    AddonModAssignEditPage.prototype.prepareSubmissionData = function (inputData) {
         var _this = this;
-        // Always try to get the latest data.
-        return this.messagesProvider.invalidateConversationCounts(this.siteId).catch(function () {
-            // Shouldn't happen.
-        }).then(function () {
-            return _this.messagesProvider.getConversationCounts(_this.siteId);
-        }).then(function (counts) {
-            _this.favourites.count = counts.favourites;
-            _this.individual.count = counts.individual + counts.self; // Self is only returned if it's not favourite.
-            _this.group.count = counts.group;
-        });
-    };
-    /**
-     * Find a conversation in the list of loaded conversations.
-     *
-     * @param conversationId The conversation ID to search.
-     * @param userId User ID to search (if no conversationId).
-     * @param option The option to search in. If not defined, search in all options.
-     * @return Conversation.
-     */
-    AddonMessagesGroupConversationsPage.prototype.findConversation = function (conversationId, userId, option) {
-        if (conversationId) {
-            var conversations_1 = option ? (option.conversations || []) : ((this.favourites.conversations || [])
-                .concat(this.group.conversations || []).concat(this.individual.conversations || []));
-            return conversations_1.find(function (conv) {
-                return conv.id == conversationId;
-            });
-        }
-        var conversations = option ? (option.conversations || []) :
-            ((this.favourites.conversations || []).concat(this.individual.conversations || []));
-        return conversations.find(function (conv) {
-            return conv.userid == userId;
-        });
-    };
-    /**
-     * Get the option that is currently expanded, undefined if they are all collapsed.
-     *
-     * @return Option currently expanded.
-     */
-    AddonMessagesGroupConversationsPage.prototype.getExpandedOption = function () {
-        if (this.favourites.expanded) {
-            return this.favourites;
-        }
-        else if (this.group.expanded) {
-            return this.group;
-        }
-        else if (this.individual.expanded) {
-            return this.individual;
-        }
-    };
-    /**
-     * Navigate to contacts view.
-     */
-    AddonMessagesGroupConversationsPage.prototype.gotoContacts = function () {
-        this.splitviewCtrl.getMasterNav().push('AddonMessagesContactsPage');
-    };
-    /**
-     * Navigate to a particular conversation.
-     *
-     * @param conversationId Conversation Id to load.
-     * @param userId User of the conversation. Only if there is no conversationId.
-     * @param messageId Message to scroll after loading the discussion. Used when searching.
-     */
-    AddonMessagesGroupConversationsPage.prototype.gotoConversation = function (conversationId, userId, messageId) {
-        this.selectedConversationId = conversationId;
-        this.selectedUserId = userId;
-        var params = {
-            conversationId: conversationId,
-            userId: userId
-        };
-        if (messageId) {
-            params['message'] = messageId;
-        }
-        this.splitviewCtrl.push('AddonMessagesDiscussionPage', params);
-    };
-    /**
-     * Navigate to message settings.
-     */
-    AddonMessagesGroupConversationsPage.prototype.gotoSettings = function () {
-        this.splitviewCtrl.push('AddonMessagesSettingsPage');
-    };
-    /**
-     * Function to load more conversations.
-     *
-     * @param option The option to fetch data for.
-     * @param infiniteComplete Infinite scroll complete function. Only used from core-infinite-loading.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.loadMoreConversations = function (option, infiniteComplete) {
-        var _this = this;
-        return this.fetchDataForOption(option, true).catch(function (error) {
-            _this.domUtils.showErrorModalDefault(error, 'addon.messages.errorwhileretrievingdiscussions', true);
-            option.loadMoreError = true;
-        }).finally(function () {
-            infiniteComplete && infiniteComplete();
-        });
-    };
-    /**
-     * Load offline messages into the conversations.
-     *
-     * @param option The option where the messages should be loaded.
-     * @param messages Offline messages.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.loadOfflineMessages = function (option, messages) {
-        var _this = this;
-        var promises = [];
-        messages.forEach(function (message) {
-            if (message.conversationid) {
-                // It's an existing conversation. Search it in the current option.
-                var conversation = _this.findConversation(message.conversationid, undefined, option);
-                if (conversation) {
-                    // Check if it's the last message. Offline messages are considered more recent than sent messages.
-                    if (typeof conversation.lastmessage === 'undefined' || conversation.lastmessage === null ||
-                        !conversation.lastmessagepending || conversation.lastmessagedate <= message.timecreated / 1000) {
-                        _this.addLastOfflineMessage(conversation, message);
-                    }
-                }
-                else {
-                    // Conversation not found, it could be an old one or the message could belong to another option.
-                    conversation = message.conversation || {};
-                    conversation.id = message.conversationid;
-                    if (_this.getConversationOption(conversation) == option) {
-                        // Message belongs to current option, add the conversation.
-                        _this.addLastOfflineMessage(conversation, message);
-                        _this.addOfflineConversation(conversation);
-                    }
-                }
+        // If there's offline data, always save it in offline.
+        this.saveOffline = this.hasOffline;
+        return this.assignHelper.prepareSubmissionPluginData(this.assign, this.userSubmission, inputData, this.hasOffline)
+            .catch(function (error) {
+            if (_this.allowOffline && !_this.saveOffline) {
+                // Cannot submit in online, prepare for offline usage.
+                _this.saveOffline = true;
+                return _this.assignHelper.prepareSubmissionPluginData(_this.assign, _this.userSubmission, inputData, true);
             }
-            else if (option == _this.individual) {
-                // It's a new conversation. Check if we already created it (there is more than one message for the same user).
-                var conversation = _this.findConversation(undefined, message.touserid, option);
-                message.text = message.smallmessage;
-                if (conversation) {
-                    // Check if it's the last message. Offline messages are considered more recent than sent messages.
-                    if (conversation.lastmessagedate <= message.timecreated / 1000) {
-                        _this.addLastOfflineMessage(conversation, message);
-                    }
-                }
-                else {
-                    // Get the user data and create a new conversation if it belongs to the current option.
-                    promises.push(_this.userProvider.getProfile(message.touserid, undefined, true).catch(function () {
-                        // User not found.
-                    }).then(function (user) {
-                        var conversation = {
-                            userid: message.touserid,
-                            name: user ? user.fullname : String(message.touserid),
-                            imageurl: user ? user.profileimageurl : '',
-                            type: __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MESSAGE_CONVERSATION_TYPE_INDIVIDUAL
-                        };
-                        _this.addLastOfflineMessage(conversation, message);
-                        _this.addOfflineConversation(conversation);
-                    }));
-                }
-            }
-        });
-        return Promise.all(promises);
-    };
-    /**
-     * Add an offline conversation into the right list of conversations.
-     *
-     * @param conversation Offline conversation to add.
-     */
-    AddonMessagesGroupConversationsPage.prototype.addOfflineConversation = function (conversation) {
-        var option = this.getConversationOption(conversation);
-        option.conversations.unshift(conversation);
-    };
-    /**
-     * Add a last offline message into a conversation.
-     *
-     * @param conversation Conversation where to put the last message.
-     * @param message Offline message to add.
-     */
-    AddonMessagesGroupConversationsPage.prototype.addLastOfflineMessage = function (conversation, message) {
-        conversation.lastmessage = message.text;
-        conversation.lastmessagedate = message.timecreated / 1000;
-        conversation.lastmessagepending = true;
-        conversation.sentfromcurrentuser = true;
-    };
-    /**
-     * Given a conversation, return its option (favourites, group, individual).
-     *
-     * @param conversation Conversation to check.
-     * @return Option object.
-     */
-    AddonMessagesGroupConversationsPage.prototype.getConversationOption = function (conversation) {
-        if (conversation.isfavourite) {
-            return this.favourites;
-        }
-        else if (conversation.type == __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */].MESSAGE_CONVERSATION_TYPE_GROUP) {
-            return this.group;
-        }
-        else {
-            return this.individual;
-        }
-    };
-    /**
-     * Refresh the data.
-     *
-     * @param refresher Refresher.
-     * @param refreshUnreadCounts Whether to refresh unread counts.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.refreshData = function (refresher, refreshUnreadCounts) {
-        var _this = this;
-        if (refreshUnreadCounts === void 0) { refreshUnreadCounts = true; }
-        // Don't invalidate conversations and so, they always try to get latest data.
-        var promises = [
-            this.messagesProvider.invalidateContactRequestsCountCache(this.siteId)
-        ];
-        return this.utils.allPromises(promises).finally(function () {
-            return _this.fetchData(refreshUnreadCounts).finally(function () {
-                if (refresher) {
-                    refresher.complete();
-                }
-            });
-        });
-    };
-    /**
-     * Toogle the visibility of an option (expand/collapse).
-     *
-     * @param option The option to expand/collapse.
-     */
-    AddonMessagesGroupConversationsPage.prototype.toggle = function (option) {
-        var _this = this;
-        if (option.expanded) {
-            // Already expanded, close it.
-            option.expanded = false;
-            this.loadCurrentListElement();
-        }
-        else {
-            // Pass getCounts=true to update the counts everytime the user expands an option.
-            this.expandOption(option, true).catch(function (error) {
-                _this.domUtils.showErrorModalDefault(error, 'addon.messages.errorwhileretrievingdiscussions', true);
-            });
-        }
-    };
-    /**
-     * Expand a certain option.
-     *
-     * @param option The option to expand.
-     * @param getCounts Whether to get counts data.
-     * @return Promise resolved when done.
-     */
-    AddonMessagesGroupConversationsPage.prototype.expandOption = function (option, getCounts) {
-        var _this = this;
-        // Collapse all and expand the right one.
-        this.favourites.expanded = false;
-        this.group.expanded = false;
-        this.individual.expanded = false;
-        option.expanded = true;
-        option.loading = true;
-        return this.fetchDataForOption(option, false, getCounts).then(function () {
-            _this.loadCurrentListElement();
-        }).catch(function (error) {
-            option.expanded = false;
             return Promise.reject(error);
-        }).finally(function () {
-            option.loading = false;
         });
     };
     /**
-     * Load the current list element based on the expanded list.
+     * Save the submission.
      */
-    AddonMessagesGroupConversationsPage.prototype.loadCurrentListElement = function () {
-        if (this.favourites.expanded) {
-            this.currentListEl = this.favListEl && this.favListEl.nativeElement;
-        }
-        else if (this.group.expanded) {
-            this.currentListEl = this.groupListEl && this.groupListEl.nativeElement;
-        }
-        else if (this.individual.expanded) {
-            this.currentListEl = this.indListEl && this.indListEl.nativeElement;
-        }
-        else {
-            this.currentListEl = undefined;
-        }
+    AddonModAssignEditPage.prototype.save = function () {
+        var _this = this;
+        // Check if data has changed.
+        this.hasDataChanged().then(function (changed) {
+            if (changed) {
+                _this.saveSubmission().then(function () {
+                    _this.leaveWithoutCheck();
+                }).catch(function (error) {
+                    _this.domUtils.showErrorModalDefault(error, 'Error saving submission.');
+                });
+            }
+            else {
+                // Nothing to save, just go back.
+                _this.leaveWithoutCheck();
+            }
+        });
     };
     /**
-     * Navigate to the search page.
+     * Save the submission.
+     *
+     * @return Promise resolved when done.
      */
-    AddonMessagesGroupConversationsPage.prototype.gotoSearch = function () {
-        this.navCtrl.push('AddonMessagesSearchPage');
+    AddonModAssignEditPage.prototype.saveSubmission = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var inputData, modal, size, error_1, pluginData, sent, params;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        inputData = this.getInputData();
+                        if (this.submissionStatement && (!inputData.submissionstatement || inputData.submissionstatement === 'false')) {
+                            throw this.translate.instant('addon.mod_assign.acceptsubmissionstatement');
+                        }
+                        modal = this.domUtils.showModalLoading();
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.assignHelper.getSubmissionSizeForEdit(this.assign, this.userSubmission, inputData)];
+                    case 2:
+                        size = _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        // Error calculating size, return -1.
+                        size = -1;
+                        return [3 /*break*/, 4];
+                    case 4:
+                        modal.dismiss();
+                        _a.label = 5;
+                    case 5:
+                        _a.trys.push([5, , 13, 14]);
+                        // Confirm action.
+                        return [4 /*yield*/, this.fileUploaderHelper.confirmUploadFile(size, true, this.allowOffline)];
+                    case 6:
+                        // Confirm action.
+                        _a.sent();
+                        modal = this.domUtils.showModalLoading('core.sending', true);
+                        return [4 /*yield*/, this.prepareSubmissionData(inputData)];
+                    case 7:
+                        pluginData = _a.sent();
+                        if (!Object.keys(pluginData).length) {
+                            // Nothing to save.
+                            return [2 /*return*/];
+                        }
+                        sent = void 0;
+                        if (!this.saveOffline) return [3 /*break*/, 9];
+                        // Save submission in offline.
+                        sent = false;
+                        return [4 /*yield*/, this.assignOfflineProvider.saveSubmission(this.assign.id, this.courseId, pluginData, this.userSubmission.timemodified, !this.assign.submissiondrafts, this.userId)];
+                    case 8:
+                        _a.sent();
+                        return [3 /*break*/, 11];
+                    case 9: return [4 /*yield*/, this.assignProvider.saveSubmission(this.assign.id, this.courseId, pluginData, this.allowOffline, this.userSubmission.timemodified, !!this.assign.submissiondrafts, this.userId)];
+                    case 10:
+                        // Try to send it to server.
+                        sent = _a.sent();
+                        _a.label = 11;
+                    case 11: 
+                    // Clear temporary data from plugins.
+                    return [4 /*yield*/, this.assignHelper.clearSubmissionPluginTmpData(this.assign, this.userSubmission, inputData)];
+                    case 12:
+                        // Clear temporary data from plugins.
+                        _a.sent();
+                        if (sent) {
+                            this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_3__providers_events__["b" /* CoreEventsProvider */].ACTIVITY_DATA_SENT, { module: 'assign' });
+                        }
+                        // Submission saved, trigger events.
+                        this.domUtils.triggerFormSubmittedEvent(this.formElement, sent, this.sitesProvider.getCurrentSiteId());
+                        params = {
+                            assignmentId: this.assign.id,
+                            submissionId: this.userSubmission.id,
+                            userId: this.userId,
+                        };
+                        this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_8__providers_assign__["a" /* AddonModAssignProvider */].SUBMISSION_SAVED_EVENT, params, this.sitesProvider.getCurrentSiteId());
+                        if (!this.assign.submissiondrafts) {
+                            // No drafts allowed, so it was submitted. Trigger event.
+                            this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_8__providers_assign__["a" /* AddonModAssignProvider */].SUBMITTED_FOR_GRADING_EVENT, params, this.sitesProvider.getCurrentSiteId());
+                        }
+                        return [3 /*break*/, 14];
+                    case 13:
+                        modal.dismiss();
+                        return [7 /*endfinally*/];
+                    case 14: return [2 /*return*/];
+                }
+            });
+        });
     };
     /**
-     * Page destroyed.
+     * Component being destroyed.
      */
-    AddonMessagesGroupConversationsPage.prototype.ngOnDestroy = function () {
-        this.newMessagesObserver && this.newMessagesObserver.off();
-        this.appResumeSubscription && this.appResumeSubscription.unsubscribe();
-        this.pushObserver && this.pushObserver.unsubscribe();
-        this.readChangedObserver && this.readChangedObserver.off();
-        this.cronObserver && this.cronObserver.off();
-        this.openConversationObserver && this.openConversationObserver.off();
-        this.updateConversationListObserver && this.updateConversationListObserver.off();
-        this.contactRequestsCountObserver && this.contactRequestsCountObserver.off();
-        this.memberInfoObserver && this.memberInfoObserver.off();
+    AddonModAssignEditPage.prototype.ngOnDestroy = function () {
+        this.isDestroyed = true;
+        // Unblock the assignment.
+        if (this.assign) {
+            this.syncProvider.unblockOperation(__WEBPACK_IMPORTED_MODULE_8__providers_assign__["a" /* AddonModAssignProvider */].COMPONENT, this.assign.id);
+        }
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_10__components_split_view_split_view__["a" /* CoreSplitViewComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_10__components_split_view_split_view__["a" /* CoreSplitViewComponent */])
-    ], AddonMessagesGroupConversationsPage.prototype, "splitviewCtrl", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Content */])
-    ], AddonMessagesGroupConversationsPage.prototype, "content", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('favlist'),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('editSubmissionForm'),
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], AddonMessagesGroupConversationsPage.prototype, "favListEl", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('grouplist'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], AddonMessagesGroupConversationsPage.prototype, "groupListEl", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('indlist'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], AddonMessagesGroupConversationsPage.prototype, "indListEl", void 0);
-    AddonMessagesGroupConversationsPage = __decorate([
+    ], AddonModAssignEditPage.prototype, "formElement", void 0);
+    AddonModAssignEditPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-messages-group-conversations',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/messages/pages/group-conversations/group-conversations.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.messages.messages\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoSearch()" [attr.aria-label]="\'addon.messages.search\' | translate">\n                <ion-icon name="search"></ion-icon>\n            </button>\n            <button ion-button icon-only (click)="gotoSettings($event)" [attr.aria-label]="\'addon.messages.messagepreferences\' | translate">\n                <ion-icon name="cog"></ion-icon>\n            </button>\n            <!-- Add an empty context menu so discussion page can add items in split view, otherwise the menu disappears in some cases. -->\n            <core-context-menu></core-context-menu>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<core-split-view>\n    <ion-content class="core-expand-max">\n        <ion-refresher [enabled]="loaded && (!currentListEl || currentListEl.scrollTop < 5)" (ionRefresh)="refreshData($event)">\n            <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n        </ion-refresher>\n\n        <core-loading [hideUntil]="loaded" [message]="loadingMessage">\n            <ion-list>\n                <a ion-item text-wrap (click)="gotoContacts($event)" [attr.aria-label]="\'addon.messages.contacts\' | translate" class="addon-message-discussion">\n                    <ion-icon name="person" item-start></ion-icon>\n                    <h2>{{ \'addon.messages.contacts\' | translate }}</h2>\n                    <ion-badge *ngIf="contactRequestsCount > 0" item-end>{{contactRequestsCount}}</ion-badge>\n                </a>\n                <!-- Favourite conversations. -->\n                <ion-item-divider text-wrap (click)="toggle(favourites)" class="core-expandable">\n                    <core-icon *ngIf="!favourites.expanded" name="fa-caret-right" item-start></core-icon>\n                    <core-icon *ngIf="favourites.expanded" name="fa-caret-down" item-start></core-icon>\n                    {{ \'core.favourites\' | translate }} ({{ favourites.count }})\n                    <ion-badge item-end *ngIf="favourites.unread">{{ favourites.unread }}</ion-badge>\n                </ion-item-divider>\n                <div [hidden]="!favourites.conversations || !favourites.expanded || favourites.loading" #favlist>\n                    <ng-container *ngTemplateOutlet="conversationsTemplate; context: {conversations: favourites.conversations}"></ng-container>\n                    <!-- The infinite loading cannot be inside the ng-template, it fails because it doesn\'t find ion-content. -->\n                    <core-infinite-loading [enabled]="favourites.canLoadMore" (action)="loadMoreConversations(favourites, $event)" [error]="favourites.loadMoreError"></core-infinite-loading>\n                    <ion-item text-wrap *ngIf="favourites.conversations && favourites.conversations.length == 0">\n                        <p>{{ \'addon.messages.nofavourites\' | translate }}</p>\n                    </ion-item>\n                </div>\n                <ion-item text-center *ngIf="favourites.loading">\n                    <ion-spinner></ion-spinner>\n                </ion-item>\n\n                <!-- Group conversations. -->\n                <ion-item-divider text-wrap (click)="toggle(group)" class="core-expandable">\n                    <core-icon *ngIf="!group.expanded" name="fa-caret-right" item-start></core-icon>\n                    <core-icon *ngIf="group.expanded" name="fa-caret-down" item-start></core-icon>\n                    {{ \'addon.messages.groupconversations\' | translate }} ({{ group.count }})\n                    <ion-badge item-end *ngIf="group.unread">{{ group.unread }}</ion-badge>\n                </ion-item-divider>\n                <div [hidden]="!group.conversations || !group.expanded || group.loading" #grouplist>\n                    <ng-container *ngTemplateOutlet="conversationsTemplate; context: {conversations: group.conversations}"></ng-container>\n                    <!-- The infinite loading cannot be inside the ng-template, it fails because it doesn\'t find ion-content. -->\n                    <core-infinite-loading [enabled]="group.canLoadMore" (action)="loadMoreConversations(group, $event)" [error]="group.loadMoreError"></core-infinite-loading>\n                    <ion-item text-wrap *ngIf="group.conversations && group.conversations.length == 0">\n                        <p>{{ \'addon.messages.nogroupconversations\' | translate }}</p>\n                    </ion-item>\n                </div>\n                <ion-item text-center *ngIf="group.loading">\n                    <ion-spinner></ion-spinner>\n                </ion-item>\n\n                <ion-item-divider text-wrap (click)="toggle(individual)" class="core-expandable">\n                    <core-icon *ngIf="!individual.expanded" name="fa-caret-right" item-start></core-icon>\n                    <core-icon *ngIf="individual.expanded" name="fa-caret-down" item-start></core-icon>\n                    {{ \'addon.messages.individualconversations\' | translate }} ({{ individual.count }})\n                    <ion-badge item-end *ngIf="individual.unread">{{ individual.unread }}</ion-badge>\n                </ion-item-divider>\n                <div [hidden]="!individual.conversations || !individual.expanded || individual.loading" #indlist>\n                    <ng-container *ngTemplateOutlet="conversationsTemplate; context: {conversations: individual.conversations}"></ng-container>\n                    <!-- The infinite loading cannot be inside the ng-template, it fails because it doesn\'t find ion-content. -->\n                    <core-infinite-loading [enabled]="individual.canLoadMore" (action)="loadMoreConversations(individual, $event)" [error]="individual.loadMoreError"></core-infinite-loading>\n                    <ion-item text-wrap *ngIf="individual.conversations && individual.conversations.length == 0">\n                        <p>{{ \'addon.messages.noindividualconversations\' | translate }}</p>\n                    </ion-item>\n                </div>\n                <ion-item text-center *ngIf="individual.loading">\n                    <ion-spinner></ion-spinner>\n                </ion-item>\n\n            </ion-list>\n        </core-loading>\n    </ion-content>\n</core-split-view>\n\n<!-- Template to render a list of conversations. -->\n<ng-template #conversationsTemplate let-conversations="conversations">\n    <a ion-item text-wrap *ngFor="let conversation of conversations" [title]="conversation.name" (click)="gotoConversation(conversation.id, conversation.userid)" [class.core-split-item-selected]="(conversation.id && conversation.id == selectedConversationId) || (conversation.userid && conversation.userid == selectedUserId)" class="addon-message-discussion" id="addon-message-conversation-{{ conversation.id ? conversation.id : \'user-\' + conversation.userid }}">\n        <!-- Group conversation image. -->\n        <ion-avatar item-start *ngIf="conversation.type == typeGroup">\n            <img [src]="conversation.imageurl" [alt]="conversation.name" core-external-content onError="this.src=\'assets/img/group-avatar.png\'">\n        </ion-avatar>\n\n        <!-- Avatar for individual conversations. -->\n        <ion-avatar *ngIf="conversation.type != typeGroup" core-user-avatar [user]="conversation.otherUser" [linkProfile]="false" [checkOnline]="conversation.showonlinestatus" item-start></ion-avatar>\n\n        <h2>\n            <core-format-text [text]="conversation.name" contextLevel="system" [contextInstanceId]="0"></core-format-text>\n            <core-icon name="fa-ban" *ngIf="conversation.isblocked" [label]="\'addon.messages.contactblocked\' | translate"></core-icon>\n            <core-icon *ngIf="conversation.ismuted" name="volume-off" [label]="\'addon.messages.mutedconversation\' | translate"></core-icon>\n        </h2>\n        <ion-note *ngIf="conversation.lastmessagedate > 0 || conversation.unreadcount">\n            <ion-badge *ngIf="conversation.unreadcount > 0">{{ conversation.unreadcount }}</ion-badge>\n            <span *ngIf="conversation.lastmessagedate > 0">{{conversation.lastmessagedate | coreDateDayOrTime}}</span>\n        </ion-note>\n        <p *ngIf="conversation.subname"><core-format-text [text]="conversation.subname" contextLevel="system" [contextInstanceId]="0"></core-format-text></p>\n        <p class="addon-message-last-message">\n            <span *ngIf="conversation.sentfromcurrentuser" class="addon-message-last-message-user">{{ \'addon.messages.you\' | translate }}</span>\n            <span *ngIf="!conversation.sentfromcurrentuser && conversation.type == typeGroup && conversation.members[0]" class="addon-message-last-message-user">{{ conversation.members[0].fullname + \':\' }}</span>\n            <core-format-text clean="true" singleLine="true" [text]="conversation.lastmessage" class="addon-message-last-message-text" contextLevel="system" [contextInstanceId]="0"></core-format-text>\n        </p>\n    </a>\n</ng-template>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/messages/pages/group-conversations/group-conversations.html"*/,
+            selector: 'page-addon-mod-assign-edit',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/assign/pages/edit/edit.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title><core-format-text [text]="title" contextLevel="module" [contextInstanceId]="moduleId" [courseId]="courseId"></core-format-text></ion-title>\n\n        <ion-buttons end>\n            <button ion-button clear (click)="save()" [attr.aria-label]="\'core.save\' | translate">\n                {{ \'core.save\' | translate }}\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="loaded">\n        <ion-list>\n            <!-- @todo: plagiarism_print_disclosure -->\n            <form name="addon-mod_assign-edit-form" *ngIf="userSubmission && userSubmission.plugins && userSubmission.plugins.length" #editSubmissionForm>\n                <!-- Submission statement. -->\n                <ion-item text-wrap *ngIf="submissionStatement">\n                    <ion-label><core-format-text [text]="submissionStatement" [filter]="false"></core-format-text></ion-label>\n                    <ion-checkbox item-end name="submissionstatement" [(ngModel)]="submissionStatementAccepted"></ion-checkbox>\n\n                    <!-- ion-checkbox doesn\'t use an input. Create a hidden input to hold the value. -->\n                    <input item-content type="hidden" [ngModel]="submissionStatementAccepted" name="submissionstatement">\n                </ion-item>\n\n                <addon-mod-assign-submission-plugin *ngFor="let plugin of userSubmission.plugins" [assign]="assign" [submission]="userSubmission" [plugin]="plugin" [edit]="true" [allowOffline]="allowOffline"></addon-mod-assign-submission-plugin>\n            </form>\n        </ion-list>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/assign/pages/edit/edit.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_events__["a" /* CoreEventsProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_messages__["a" /* AddonMessagesProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* Platform */], __WEBPACK_IMPORTED_MODULE_8__providers_utils_utils__["a" /* CoreUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_9__core_pushnotifications_providers_delegate__["a" /* CorePushNotificationsDelegate */], __WEBPACK_IMPORTED_MODULE_6__providers_messages_offline__["a" /* AddonMessagesOfflineProvider */],
-            __WEBPACK_IMPORTED_MODULE_11__core_user_providers_user__["a" /* CoreUserProvider */]])
-    ], AddonMessagesGroupConversationsPage);
-    return AddonMessagesGroupConversationsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_sites__["a" /* CoreSitesProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_sync__["a" /* CoreSyncProvider */], __WEBPACK_IMPORTED_MODULE_6__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */], __WEBPACK_IMPORTED_MODULE_7__core_fileuploader_providers_helper__["a" /* CoreFileUploaderHelperProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_events__["b" /* CoreEventsProvider */], __WEBPACK_IMPORTED_MODULE_8__providers_assign__["a" /* AddonModAssignProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_assign_offline__["a" /* AddonModAssignOfflineProvider */], __WEBPACK_IMPORTED_MODULE_11__providers_helper__["a" /* AddonModAssignHelperProvider */],
+            __WEBPACK_IMPORTED_MODULE_10__providers_assign_sync__["a" /* AddonModAssignSyncProvider */]])
+    ], AddonModAssignEditPage);
+    return AddonModAssignEditPage;
 }());
 
-//# sourceMappingURL=group-conversations.js.map
+//# sourceMappingURL=edit.js.map
 
 /***/ })
 

@@ -1,15 +1,15 @@
 webpackJsonp([10],{
 
-/***/ 2098:
+/***/ 2107:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerIframePageModule", function() { return CoreViewerIframePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreViewerQRScannerPageModule", function() { return CoreViewerQRScannerPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__iframe__ = __webpack_require__(2252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_scanner__ = __webpack_require__(2263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
@@ -35,36 +35,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreViewerIframePageModule = /** @class */ (function () {
-    function CoreViewerIframePageModule() {
+var CoreViewerQRScannerPageModule = /** @class */ (function () {
+    function CoreViewerQRScannerPageModule() {
     }
-    CoreViewerIframePageModule = __decorate([
+    CoreViewerQRScannerPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__iframe__["a" /* CoreViewerIframePage */]
+                __WEBPACK_IMPORTED_MODULE_3__qr_scanner__["a" /* CoreViewerQRScannerPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__iframe__["a" /* CoreViewerIframePage */])
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__qr_scanner__["a" /* CoreViewerQRScannerPage */]),
+                __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreViewerIframePageModule);
-    return CoreViewerIframePageModule;
+    ], CoreViewerQRScannerPageModule);
+    return CoreViewerQRScannerPageModule;
 }());
 
-//# sourceMappingURL=iframe.module.js.map
+//# sourceMappingURL=qr-scanner.module.js.map
 
 /***/ }),
 
-/***/ 2252:
+/***/ 2263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerIframePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreViewerQRScannerPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sites__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__ = __webpack_require__(4);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -90,38 +92,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Page to display a URL in an iframe.
+ * Page to scan a QR code.
  */
-var CoreViewerIframePage = /** @class */ (function () {
-    //   "yes" -> Always auto-login.
-    //   "no" -> Never auto-login.
-    //   "check" -> Auto-login only if it points to the current site. Default value.
-    function CoreViewerIframePage(params, sitesProvider) {
+var CoreViewerQRScannerPage = /** @class */ (function () {
+    function CoreViewerQRScannerPage(params, translate, viewCtrl, domUtils, utils) {
         var _this = this;
-        this.title = params.get('title');
-        this.autoLogin = params.get('autoLogin') || 'check';
-        var url = params.get('url'), currentSite = sitesProvider.getCurrentSite();
-        if (currentSite && (this.autoLogin == 'yes' || (this.autoLogin == 'check' && currentSite.containsUrl(url)))) {
-            // Format the URL to add auto-login.
-            currentSite.getAutoLoginUrl(url, false).then(function (url) {
-                _this.url = url;
-            });
-        }
-        else {
-            this.url = url;
-        }
+        this.viewCtrl = viewCtrl;
+        this.domUtils = domUtils;
+        this.utils = utils;
+        this.title = params.get('title') || translate.instant('core.scanqr');
+        this.utils.startScanQR().then(function (text) {
+            // Text captured, return it.
+            text = typeof text == 'string' ? text.trim() : '';
+            _this.closeModal(text);
+        }).catch(function (error) {
+            if (!error.coreCanceled) {
+                // Show error and stop scanning.
+                _this.domUtils.showErrorModalDefault(error, 'An error occurred.');
+                _this.utils.stopScanQR();
+            }
+            _this.closeModal();
+        });
     }
-    CoreViewerIframePage = __decorate([
+    /**
+     * Cancel scanning.
+     */
+    CoreViewerQRScannerPage.prototype.cancel = function () {
+        this.utils.stopScanQR();
+    };
+    /**
+     * Close modal.
+     *
+     * @param text The text to return (if any).
+     */
+    CoreViewerQRScannerPage.prototype.closeModal = function (text) {
+        this.viewCtrl.dismiss(text);
+    };
+    /**
+     * View will leave.
+     */
+    CoreViewerQRScannerPage.prototype.ionViewWillLeave = function () {
+        // If this code is reached and scan hasn't been stopped yet it means the user clicked the back button, cancel.
+        this.utils.stopScanQR();
+    };
+    CoreViewerQRScannerPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-viewer-iframe',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/iframe/iframe.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="url">\n        <core-iframe *ngIf="url" [src]="url"></core-iframe>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/iframe/iframe.html"*/,
+            selector: 'page-core-viewer-qr-scanner',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/qr-scanner/qr-scanner.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="cancel()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/viewer/pages/qr-scanner/qr-scanner.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_sites__["a" /* CoreSitesProvider */]])
-    ], CoreViewerIframePage);
-    return CoreViewerIframePage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["G" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_utils_utils__["b" /* CoreUtilsProvider */]])
+    ], CoreViewerQRScannerPage);
+    return CoreViewerQRScannerPage;
 }());
 
-//# sourceMappingURL=iframe.js.map
+//# sourceMappingURL=qr-scanner.js.map
 
 /***/ })
 

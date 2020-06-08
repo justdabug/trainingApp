@@ -1,17 +1,17 @@
 webpackJsonp([75],{
 
-/***/ 2030:
+/***/ 2040:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModScormTocPageModule", function() { return AddonModScormTocPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModUrlIndexPageModule", function() { return AddonModUrlIndexPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__toc__ = __webpack_require__(2182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(1029);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(2194);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,37 +37,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddonModScormTocPageModule = /** @class */ (function () {
-    function AddonModScormTocPageModule() {
+var AddonModUrlIndexPageModule = /** @class */ (function () {
+    function AddonModUrlIndexPageModule() {
     }
-    AddonModScormTocPageModule = __decorate([
+    AddonModUrlIndexPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__toc__["a" /* AddonModScormTocPage */],
+                __WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModUrlIndexPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__toc__["a" /* AddonModScormTocPage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* AddonModUrlComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModUrlIndexPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonModScormTocPageModule);
-    return AddonModScormTocPageModule;
+    ], AddonModUrlIndexPageModule);
+    return AddonModUrlIndexPageModule;
 }());
 
-//# sourceMappingURL=toc.module.js.map
+//# sourceMappingURL=index.module.js.map
 
 /***/ }),
 
-/***/ 2182:
+/***/ 2194:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModScormTocPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModUrlIndexPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_scorm__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index__ = __webpack_require__(454);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -94,48 +94,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Modal to display the TOC of a SCORM.
+ * Page that displays a url.
  */
-var AddonModScormTocPage = /** @class */ (function () {
-    function AddonModScormTocPage(navParams, viewCtrl) {
-        this.viewCtrl = viewCtrl;
-        this.toc = navParams.get('toc') || [];
-        this.attemptToContinue = navParams.get('attemptToContinue');
-        this.moduleId = navParams.get('moduleId');
+var AddonModUrlIndexPage = /** @class */ (function () {
+    function AddonModUrlIndexPage(navParams) {
+        this.module = navParams.get('module') || {};
         this.courseId = navParams.get('courseId');
-        this.accessInfo = navParams.get('accessInfo');
-        var mode = navParams.get('mode');
-        this.selected = navParams.get('selected');
-        this.isBrowse = mode === __WEBPACK_IMPORTED_MODULE_2__providers_scorm__["a" /* AddonModScormProvider */].MODEBROWSE;
-        this.isReview = mode === __WEBPACK_IMPORTED_MODULE_2__providers_scorm__["a" /* AddonModScormProvider */].MODEREVIEW;
+        this.title = this.module.name;
     }
     /**
-     * Function called when a SCO is clicked.
+     * Update some data based on the url instance.
      *
-     * @param sco Clicked SCO.
+     * @param url Url instance.
      */
-    AddonModScormTocPage.prototype.loadSco = function (sco) {
-        if (!sco.prereq || !sco.isvisible || !sco.launch) {
-            return;
-        }
-        this.viewCtrl.dismiss(sco);
+    AddonModUrlIndexPage.prototype.updateData = function (url) {
+        this.title = url.name || this.title;
     };
-    /**
-     * Close modal.
-     */
-    AddonModScormTocPage.prototype.closeModal = function () {
-        this.viewCtrl.dismiss();
-    };
-    AddonModScormTocPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModUrlIndexComponent */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModUrlIndexComponent */])
+    ], AddonModUrlIndexPage.prototype, "urlComponent", void 0);
+    AddonModUrlIndexPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-mod-scorm-toc',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/scorm/pages/toc/toc.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'addon.mod_scorm.toc\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <nav>\n        <ion-list class="addon-mod_scorm-toc">\n            <ion-item text-wrap *ngIf="attemptToContinue">\n                <p>{{ \'addon.mod_scorm.dataattemptshown\' | translate:{number: attemptToContinue} }}</p>\n            </ion-item>\n            <ion-item text-center *ngIf="isBrowse">\n                <p>{{ \'addon.mod_scorm.browsemode\' | translate }}</p>\n            </ion-item>\n            <ion-item text-center *ngIf="isReview">\n                <p>{{ \'addon.mod_scorm.reviewmode\' | translate }}</p>\n            </ion-item>\n\n            <!-- List of SCOs. -->\n            <ng-container *ngFor="let sco of toc">\n                <a *ngIf="sco.isvisible" ion-item text-wrap [ngClass]="\'core-padding-\' + sco.level + \' addon-mod_scorm-type-\' + sco.scormtype" [class.core-nav-item-selected]="selected == sco.id" [class]="" (click)="loadSco(sco)" [attr.disabled]="!sco.prereq || !sco.launch ? true : null" [attr.detail-none]="!sco.prereq || !sco.launch ? true : null">\n                    <core-icon [name]="sco.image.icon" [label]="sco.image.description" item-start></core-icon>\n                    <core-format-text [text]="sco.title" contextLevel="module" [contextInstanceId]="moduleId" [courseId]="courseId"></core-format-text>\n                    <span *ngIf="accessInfo && accessInfo.canviewscores && sco.score_raw">({{ \'addon.mod_scorm.score\' | translate }}: {{sco.score_raw}})</span>\n                </a>\n            </ng-container>\n        </ion-list>\n    </nav>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/scorm/pages/toc/toc.html"*/
+            selector: 'page-addon-mod-url-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/url/pages/index/index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title><core-format-text [text]="title" contextLevel="module" [contextInstanceId]="module.id"></core-format-text></ion-title>\n\n        <ion-buttons end>\n            <!-- The buttons defined by the component will be added in here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="urlComponent.loaded" (ionRefresh)="urlComponent.doRefresh($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n\n    <addon-mod-url-index [module]="module" [courseId]="courseId" (dataRetrieved)="updateData($event)"></addon-mod-url-index>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/url/pages/index/index.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */]])
-    ], AddonModScormTocPage);
-    return AddonModScormTocPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], AddonModUrlIndexPage);
+    return AddonModUrlIndexPage;
 }());
 
-//# sourceMappingURL=toc.js.map
+//# sourceMappingURL=index.js.map
 
 /***/ })
 

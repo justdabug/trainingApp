@@ -1,16 +1,17 @@
 webpackJsonp([60],{
 
-/***/ 2047:
+/***/ 2057:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreCommentsAddPageModule", function() { return CoreCommentsAddPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreContentLinksChooseSitePageModule", function() { return CoreContentLinksChooseSitePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add__ = __webpack_require__(2202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__choose_site__ = __webpack_require__(2214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,40 +36,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreCommentsAddPageModule = /** @class */ (function () {
-    function CoreCommentsAddPageModule() {
+
+var CoreContentLinksChooseSitePageModule = /** @class */ (function () {
+    function CoreContentLinksChooseSitePageModule() {
     }
-    CoreCommentsAddPageModule = __decorate([
+    CoreContentLinksChooseSitePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add__["a" /* CoreCommentsAddPage */]
+                __WEBPACK_IMPORTED_MODULE_2__choose_site__["a" /* CoreContentLinksChooseSitePage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add__["a" /* CoreCommentsAddPage */]),
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__choose_site__["a" /* CoreContentLinksChooseSitePage */]),
                 __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreCommentsAddPageModule);
-    return CoreCommentsAddPageModule;
+    ], CoreContentLinksChooseSitePageModule);
+    return CoreContentLinksChooseSitePageModule;
 }());
 
-//# sourceMappingURL=add.module.js.map
+//# sourceMappingURL=choose-site.module.js.map
 
 /***/ }),
 
-/***/ 2202:
+/***/ 2214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreCommentsAddPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreContentLinksChooseSitePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_app__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_events__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_comments__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_sites__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_delegate__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_helper__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_login_providers_helper__ = __webpack_require__(87);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -98,79 +102,102 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 /**
- * Component that displays a text area for composing a comment.
+ * Page to display the list of sites to choose one to perform a content link action.
  */
-var CoreCommentsAddPage = /** @class */ (function () {
-    function CoreCommentsAddPage(params, viewCtrl, appProvider, domUtils, commentsProvider, eventsProvider, sitesProvider) {
-        this.viewCtrl = viewCtrl;
-        this.appProvider = appProvider;
-        this.domUtils = domUtils;
-        this.commentsProvider = commentsProvider;
-        this.eventsProvider = eventsProvider;
+var CoreContentLinksChooseSitePage = /** @class */ (function () {
+    function CoreContentLinksChooseSitePage(navCtrl, navParams, contentLinksDelegate, sitesProvider, domUtils, translate, contentLinksHelper, loginHelper) {
+        this.navCtrl = navCtrl;
+        this.contentLinksDelegate = contentLinksDelegate;
         this.sitesProvider = sitesProvider;
-        this.area = '';
-        this.content = '';
-        this.processing = false;
-        this.contextLevel = params.get('contextLevel');
-        this.instanceId = params.get('instanceId');
-        this.componentName = params.get('componentName');
-        this.itemId = params.get('itemId');
-        this.area = params.get('area') || '';
-        this.content = params.get('content') || '';
+        this.domUtils = domUtils;
+        this.translate = translate;
+        this.contentLinksHelper = contentLinksHelper;
+        this.loginHelper = loginHelper;
+        this.url = navParams.get('url');
     }
     /**
-     * Send the comment or store it offline.
-     *
-     * @param e Event.
+     * Component being initialized.
      */
-    CoreCommentsAddPage.prototype.addComment = function (e) {
+    CoreContentLinksChooseSitePage.prototype.ngOnInit = function () {
         var _this = this;
-        e.preventDefault();
-        e.stopPropagation();
-        this.appProvider.closeKeyboard();
-        var loadingModal = this.domUtils.showModalLoading('core.sending', true);
-        // Freeze the add comment button.
-        this.processing = true;
-        this.commentsProvider.addComment(this.content, this.contextLevel, this.instanceId, this.componentName, this.itemId, this.area).then(function (commentsResponse) {
-            _this.domUtils.triggerFormSubmittedEvent(_this.formElement, !!commentsResponse, _this.sitesProvider.getCurrentSiteId());
-            _this.viewCtrl.dismiss({ comments: commentsResponse }).finally(function () {
-                _this.domUtils.showToast(commentsResponse ? 'core.comments.eventcommentcreated' : 'core.datastoredoffline', true, 3000);
-            });
+        if (!this.url) {
+            return this.leaveView();
+        }
+        // Check if it's the root URL.
+        this.sitesProvider.isStoredRootURL(this.url).then(function (data) {
+            if (data.site) {
+                // It's the root URL.
+                _this.isRootURL = true;
+                return data.siteIds;
+            }
+            else if (data.siteIds.length) {
+                // Not root URL, but the URL belongs to at least 1 site. Check if there is any action to treat the link.
+                return _this.contentLinksDelegate.getActionsFor(_this.url).then(function (actions) {
+                    _this.action = _this.contentLinksHelper.getFirstValidAction(actions);
+                    if (!_this.action) {
+                        return Promise.reject(_this.translate.instant('core.contentlinks.errornoactions'));
+                    }
+                    return _this.action.sites;
+                });
+            }
+            else {
+                // No sites to treat the URL.
+                return Promise.reject(_this.translate.instant('core.contentlinks.errornosites'));
+            }
+        }).then(function (siteIds) {
+            // Get the sites that can perform the action.
+            return _this.sitesProvider.getSites(siteIds);
+        }).then(function (sites) {
+            _this.sites = sites;
         }).catch(function (error) {
-            _this.domUtils.showErrorModal(error);
-            _this.processing = false;
+            _this.domUtils.showErrorModalDefault(error, 'core.contentlinks.errornosites', true);
+            _this.leaveView();
         }).finally(function () {
-            loadingModal.dismiss();
+            _this.loaded = true;
         });
     };
     /**
-     * Close modal.
+     * Cancel.
      */
-    CoreCommentsAddPage.prototype.closeModal = function () {
-        this.domUtils.triggerFormCancelledEvent(this.formElement, this.sitesProvider.getCurrentSiteId());
-        this.viewCtrl.dismiss();
+    CoreContentLinksChooseSitePage.prototype.cancel = function () {
+        this.leaveView();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('commentForm'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], CoreCommentsAddPage.prototype, "formElement", void 0);
-    CoreCommentsAddPage = __decorate([
+    /**
+     * Perform the action on a certain site.
+     *
+     * @param siteId Site ID.
+     */
+    CoreContentLinksChooseSitePage.prototype.siteClicked = function (siteId) {
+        if (this.isRootURL) {
+            this.loginHelper.redirect('', {}, siteId);
+        }
+        else {
+            this.action.action(siteId, this.navCtrl);
+        }
+    };
+    /**
+     * Cancel and leave the view.
+     */
+    CoreContentLinksChooseSitePage.prototype.leaveView = function () {
+        var _this = this;
+        this.sitesProvider.logout().finally(function () {
+            _this.navCtrl.setRoot('CoreLoginSitesPage');
+        });
+    };
+    CoreContentLinksChooseSitePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-comments-add',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/comments/pages/add/add.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.comments.addcomment\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <form name="itemEdit" (ngSubmit)="addComment($event)" #commentForm>\n        <ion-item>\n            <ion-textarea placeholder="{{ \'core.comments.addcomment\' | translate }}" rows="5" [(ngModel)]="content" name="content" required="required"></ion-textarea>\n        </ion-item>\n        <div padding>\n            <button ion-button block type="submit" [disabled]="processing || content.length < 1">\n                {{ \'core.comments.savecomment\' | translate }}\n            </button>\n        </div>\n    </form>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/comments/pages/add/add.html"*/,
+            selector: 'page-core-content-links-choose-site',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/contentlinks/pages/choose-site/choose-site.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.contentlinks.chooseaccount\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <core-loading [hideUntil]="loaded">\n        <ion-list>\n            <ion-item text-wrap>\n                <p class="item-heading">{{ \'core.contentlinks.chooseaccounttoopenlink\' | translate }}</p>\n                <p>{{ url }}</p>\n            </ion-item>\n            <a ion-item *ngFor="let site of sites" (click)="siteClicked(site.id)" detail-none>\n                <ion-avatar item-start>\n                    <img [src]="site.avatar" core-external-content [siteId]="site.id" alt="{{ \'core.pictureof\' | translate:{$a: site.fullname} }}" role="presentation" onError="this.src=\'assets/img/user-avatar.png\'">\n                </ion-avatar>\n                <h2>{{site.fullName}}</h2>\n                <p><core-format-text [text]="site.siteName" clean="true" [siteId]="site.id"></core-format-text></p>\n                <p>{{site.siteUrl}}</p>\n            </a>\n            <ion-item>\n                <button ion-button block (click)="cancel()">{{ \'core.login.cancel\' | translate }}</button>\n            </ion-item>\n        </ion-list>\n    </core-loading>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/contentlinks/pages/choose-site/choose-site.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_app__["a" /* CoreAppProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_comments__["a" /* CoreCommentsProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_events__["a" /* CoreEventsProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_sites__["a" /* CoreSitesProvider */]])
-    ], CoreCommentsAddPage);
-    return CoreCommentsAddPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_5__providers_delegate__["a" /* CoreContentLinksDelegate */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_helper__["a" /* CoreContentLinksHelperProvider */], __WEBPACK_IMPORTED_MODULE_7__core_login_providers_helper__["a" /* CoreLoginHelperProvider */]])
+    ], CoreContentLinksChooseSitePage);
+    return CoreContentLinksChooseSitePage;
 }());
 
-//# sourceMappingURL=add.js.map
+//# sourceMappingURL=choose-site.js.map
 
 /***/ })
 

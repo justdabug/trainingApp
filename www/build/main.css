@@ -7606,6 +7606,7 @@ ion-app.app-root .toolbar core-format-text {
   }
   body.scheme-auto ion-app.app-root ion-action-sheet .action-sheet-container .action-sheet-group .action-sheet-button.action-sheet-selected {
     color: #004c9f;
+    background-color: #3a3a3a;
   }
   body.scheme-auto ion-app.app-root ion-action-sheet .action-sheet-container .action-sheet-group .action-sheet-button.activated {
     background-color: #3a3a3a;
@@ -9244,7 +9245,7 @@ ion-app.app-root .toolbar core-format-text {
   body.scheme-auto ion-app.app-root ion-loading .loading-wrapper .card-header .icon-ios-danger,
   body.scheme-auto ion-app.app-root ion-loading .loading-wrapper .card-content .icon-md-danger,
   body.scheme-auto ion-app.app-root ion-loading .loading-wrapper .card-content .icon-ios-danger {
-    color: #f5d8db;
+    color: #d56471;
   }
   body.scheme-auto ion-app.app-root .ion-page .core-tabs-bar .icon-md-light,
   body.scheme-auto ion-app.app-root .ion-page .core-tabs-bar .icon-ios-light,
@@ -10830,6 +10831,7 @@ body.scheme-dark ion-app.app-root ion-action-sheet .action-sheet-container .acti
 
 body.scheme-dark ion-app.app-root ion-action-sheet .action-sheet-container .action-sheet-group .action-sheet-button.action-sheet-selected {
   color: #004c9f;
+  background-color: #3a3a3a;
 }
 
 body.scheme-dark ion-app.app-root ion-action-sheet .action-sheet-container .action-sheet-group .action-sheet-button.activated {
@@ -12477,7 +12479,7 @@ body.scheme-dark ion-app.app-root ion-loading .loading-wrapper .card-header .ico
 body.scheme-dark ion-app.app-root ion-loading .loading-wrapper .card-header .icon-ios-danger,
 body.scheme-dark ion-app.app-root ion-loading .loading-wrapper .card-content .icon-md-danger,
 body.scheme-dark ion-app.app-root ion-loading .loading-wrapper .card-content .icon-ios-danger {
-  color: #f5d8db;
+  color: #d56471;
 }
 
 body.scheme-dark ion-app.app-root .ion-page .core-tabs-bar .icon-md-light,
@@ -45530,6 +45532,39 @@ ion-app.app-root.ios addon-block-activitymodules .core-module-icon {
   height: 24px;
 }
 
+.addon-block-activity-results core-block-pre-rendered ion-item.core-block-content table.grades {
+  text-align: left;
+  text-align: start;
+  width: 100%;
+}
+
+.addon-block-activity-results core-block-pre-rendered ion-item.core-block-content table.grades .number {
+  text-align: left;
+  text-align: start;
+  width: 10%;
+}
+
+.addon-block-activity-results core-block-pre-rendered ion-item.core-block-content table.grades .name {
+  text-align: left;
+  text-align: start;
+  width: 77%;
+}
+
+.addon-block-activity-results core-block-pre-rendered ion-item.core-block-content table.grades .grade {
+  text-align: right;
+  text-align: end;
+}
+
+.addon-block-activity-results core-block-pre-rendered ion-item.core-block-content table.grades caption {
+  text-align: left;
+  text-align: start;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  color: #626262;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .addon-block-badges core-block-pre-rendered .core-block-content ul.badges {
   list-style: none;
   -webkit-padding-start: 0;
@@ -46845,6 +46880,30 @@ ion-app.app-root page-addon-messages-discussion.ion-page .item.addon-message.add
   margin-bottom: 0;
 }
 
+ion-app.app-root page-addon-messages-discussion.ion-page .has-fab .scroll-content {
+  padding-bottom: 0;
+}
+
+ion-app.app-root page-addon-messages-discussion.ion-page ion-fab button {
+  overflow: visible;
+  position: relative;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-app.app-root page-addon-messages-discussion.ion-page ion-fab button .core-discussion-messages-badge {
+  position: absolute;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #004c9f;
+  display: block;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  right: -6px;
+  top: -6px;
+}
+
 ion-app.app-root page-addon-messages-discussion.ion-page .toolbar-title {
   padding: 0;
   display: -webkit-box;
@@ -47550,6 +47609,30 @@ ion-app.app-root page-addon-mod-chat-chat.ion-page .item.addon-message.addon-mes
   margin-bottom: 0;
 }
 
+ion-app.app-root page-addon-mod-chat-chat.ion-page .has-fab .scroll-content {
+  padding-bottom: 0;
+}
+
+ion-app.app-root page-addon-mod-chat-chat.ion-page ion-fab button {
+  overflow: visible;
+  position: relative;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-app.app-root page-addon-mod-chat-chat.ion-page ion-fab button .core-discussion-messages-badge {
+  position: absolute;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #004c9f;
+  display: block;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  right: -6px;
+  top: -6px;
+}
+
 ion-app.app-root page-addon-mod-chat-chat.ion-page .addon-mod-chat-notice {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -47846,6 +47929,30 @@ ion-app.app-root page-addon-mod-chat-session-messages.ion-page .item.addon-messa
 ion-app.app-root page-addon-mod-chat-session-messages.ion-page .item.addon-message.addon-message-mine + .item.addon-message.addon-message-no-user.addon-message-mine h2,
 ion-app.app-root page-addon-mod-chat-session-messages.ion-page .item.addon-message.addon-message-not-mine + .item.addon-message.addon-message-no-user.addon-message-not-mine h2 {
   margin-bottom: 0;
+}
+
+ion-app.app-root page-addon-mod-chat-session-messages.ion-page .has-fab .scroll-content {
+  padding-bottom: 0;
+}
+
+ion-app.app-root page-addon-mod-chat-session-messages.ion-page ion-fab button {
+  overflow: visible;
+  position: relative;
+  -webkit-box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+}
+
+ion-app.app-root page-addon-mod-chat-session-messages.ion-page ion-fab button .core-discussion-messages-badge {
+  position: absolute;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: #004c9f;
+  display: block;
+  line-height: 20px;
+  height: 20px;
+  width: 20px;
+  right: -6px;
+  top: -6px;
 }
 
 ion-app.app-root page-addon-mod-chat-session-messages.ion-page .addon-mod-chat-notice {
@@ -49644,27 +49751,6 @@ ion-app.app-root .button-no-uppercase {
   text-transform: none;
 }
 
-@media (min-width: 576px) {
-  ion-app.app-root .core-center-view .scroll-content {
-    display: -webkit-box !important;
-    display: -webkit-flex !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -webkit-align-content: center !important;
-    -ms-flex-line-pack: center !important;
-    align-content: center !important;
-    -webkit-box-align: center !important;
-    -webkit-align-items: center !important;
-    -ms-flex-align: center !important;
-    align-items: center !important;
-  }
-  ion-app.app-root .core-center-view .scroll-content > * {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 600px;
-  }
-}
-
 @media (max-width: 767px) {
   ion-app.app-root .hidden-phone {
     display: none !important;
@@ -50557,21 +50643,23 @@ ion-app.app-root .action-sheet-group {
   overflow: auto;
 }
 
-ion-app.app-root .action-sheet-wrapper .action-sheet-button.action-sheet-cancel {
+ion-app.app-root ion-action-sheet .action-sheet-wrapper .action-sheet-container .action-sheet-button.action-sheet-cancel {
   color: #cb3d4d;
 }
 
 @media (prefers-color-scheme: dark) {
-  body.scheme-auto ion-app.app-root .action-sheet-wrapper .action-sheet-button.action-sheet-cancel {
-    color: #f5d8db;
+  body.scheme-auto ion-app.app-root ion-action-sheet .action-sheet-wrapper .action-sheet-container .action-sheet-button.action-sheet-cancel {
+    color: #d56471;
+    background-color: #3a3a3a;
   }
 }
 
-body.scheme-dark ion-app.app-root .action-sheet-wrapper .action-sheet-button.action-sheet-cancel {
-  color: #f5d8db;
+body.scheme-dark ion-app.app-root ion-action-sheet .action-sheet-wrapper .action-sheet-container .action-sheet-button.action-sheet-cancel {
+  color: #d56471;
+  background-color: #3a3a3a;
 }
 
-ion-app.app-root .action-sheet-wrapper .action-sheet-selected {
+ion-app.app-root ion-action-sheet .action-sheet-wrapper .action-sheet-container .action-sheet-selected {
   color: #004c9f;
 }
 
@@ -53232,6 +53320,22 @@ ion-app.platform-desktop.platform-windows video::-webkit-media-text-track-displa
   }
 }
 
+.core-scanning-qr ion-app.app-root {
+  background-color: transparent;
+}
+
+.core-scanning-qr ion-app.app-root .ion-page {
+  background-color: transparent;
+}
+
+.core-scanning-qr ion-app.app-root ion-content, .core-scanning-qr ion-app.app-root ion-backdrop, .core-scanning-qr ion-app.app-root ion-modal:not(.core-modal-fullscreen), .core-scanning-qr ion-app.app-root core-ion-tabs {
+  display: none;
+}
+
+.core-scanning-qr ion-app.app-root.ios .ion-page.show-page ~ .nav-decor {
+  display: none;
+}
+
 ion-app.app-root.ios .button-ios {
   min-height: 2.8em;
 }
@@ -55074,7 +55178,7 @@ ion-app.app-root core-file > .item.item-block > .item-inner .buttons {
 }
 
 .fa-danger {
-  color: #f5d8db !important;
+  color: #d56471 !important;
 }
 
 .fa-light {
@@ -55278,16 +55382,16 @@ ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar .tab-button .tab-ba
   left: 2px;
 }
 
-ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent {
+ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent, ion-app.app-root core-ion-tabs[tabsplacement="side"].tabbar-hidden .tabcontent {
   width: 100%;
 }
 
-ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab {
+ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab, ion-app.app-root core-ion-tabs[tabsplacement="side"].tabbar-hidden .tabcontent core-ion-tab {
   top: 0;
   bottom: 0;
 }
 
-[dir="ltr"] ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab, [dir="rtl"] ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab {
+[dir="ltr"] ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab, [dir="ltr"] ion-app.app-root core-ion-tabs[tabsplacement="side"].tabbar-hidden .tabcontent core-ion-tab, [dir="rtl"] ion-app.app-root core-ion-tabs[tabsplacement="side"] .tabbar[hidden] + .tabcontent core-ion-tab, [dir="rtl"] ion-app.app-root core-ion-tabs[tabsplacement="side"].tabbar-hidden .tabcontent core-ion-tab {
   left: 0;
   right: 0;
 }
@@ -58323,17 +58427,20 @@ ion-app.app-root core-h5p-player .core-h5p-placeholder ion-spinner circle {
 ion-app.app-root page-core-login-credentials .scroll-content,
 ion-app.app-root page-core-login-reconnect .scroll-content,
 ion-app.app-root page-core-login-site .scroll-content {
-  background: radial-gradient(white, #e9e9e9);
+  background: #ffffff;
+  color: #3a3a3a;
 }
 
 @media (prefers-color-scheme: dark) {
   body.scheme-auto ion-app.app-root page-core-login-credentials .scroll-content, body.scheme-auto ion-app.app-root page-core-login-reconnect .scroll-content, body.scheme-auto ion-app.app-root page-core-login-site .scroll-content {
-    background: radial-gradient(white, #9e9e9e);
+    background: #3a3a3a;
+    color: #ffffff;
   }
 }
 
 body.scheme-dark ion-app.app-root page-core-login-credentials .scroll-content, body.scheme-dark ion-app.app-root page-core-login-reconnect .scroll-content, body.scheme-dark ion-app.app-root page-core-login-site .scroll-content {
-  background: radial-gradient(white, #9e9e9e);
+  background: #3a3a3a;
+  color: #ffffff;
 }
 
 ion-app.app-root page-core-login-credentials img,
@@ -58342,35 +58449,16 @@ ion-app.app-root page-core-login-site img {
   max-width: 100%;
 }
 
-ion-app.app-root page-core-login-credentials img.login-logo,
-ion-app.app-root page-core-login-reconnect img.login-logo,
-ion-app.app-root page-core-login-site img.login-logo {
-  width: 90%;
-  max-width: 300px;
+ion-app.app-root page-core-login-credentials .core-sitename + .core-siteurl,
+ion-app.app-root page-core-login-reconnect .core-sitename + .core-siteurl,
+ion-app.app-root page-core-login-site .core-sitename + .core-siteurl {
+  margin-top: 0;
 }
 
-ion-app.app-root page-core-login-credentials .box,
-ion-app.app-root page-core-login-reconnect .box,
-ion-app.app-root page-core-login-site .box {
-  padding: 16px;
-  margin: 8px;
-  background: #ffffff;
-  border: 1px solid #dddddd;
-  color: #3a3a3a;
-}
-
-@media (prefers-color-scheme: dark) {
-  body.scheme-auto ion-app.app-root page-core-login-credentials .box, body.scheme-auto ion-app.app-root page-core-login-reconnect .box, body.scheme-auto ion-app.app-root page-core-login-site .box {
-    background: #3a3a3a;
-    border-color: #dddddd;
-    color: #ffffff;
-  }
-}
-
-body.scheme-dark ion-app.app-root page-core-login-credentials .box, body.scheme-dark ion-app.app-root page-core-login-reconnect .box, body.scheme-dark ion-app.app-root page-core-login-site .box {
-  background: #3a3a3a;
-  border-color: #dddddd;
-  color: #ffffff;
+ion-app.app-root page-core-login-credentials .core-sitename,
+ion-app.app-root page-core-login-reconnect .core-sitename,
+ion-app.app-root page-core-login-site .core-sitename {
+  font-size: 1.8rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58396,8 +58484,42 @@ ion-app.app-root page-core-login-site .item-input {
   margin-bottom: 20px;
 }
 
-ion-app.app-root page-core-login-credentials .item-input {
-  margin-bottom: 20px;
+ion-app.app-root page-core-login-credentials ion-list.core-login-forgotten-password,
+ion-app.app-root page-core-login-reconnect ion-list.core-login-forgotten-password,
+ion-app.app-root page-core-login-site ion-list.core-login-forgotten-password {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ion-app.app-root page-core-login-credentials ion-list.core-login-forgotten-password a.item,
+ion-app.app-root page-core-login-reconnect ion-list.core-login-forgotten-password a.item,
+ion-app.app-root page-core-login-site ion-list.core-login-forgotten-password a.item {
+  background: transparent;
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.scheme-auto ion-app.app-root page-core-login-credentials ion-list.core-login-forgotten-password a.item, body.scheme-auto ion-app.app-root page-core-login-reconnect ion-list.core-login-forgotten-password a.item, body.scheme-auto ion-app.app-root page-core-login-site ion-list.core-login-forgotten-password a.item {
+    background: transparent;
+  }
+}
+
+body.scheme-dark ion-app.app-root page-core-login-credentials ion-list.core-login-forgotten-password a.item, body.scheme-dark ion-app.app-root page-core-login-reconnect ion-list.core-login-forgotten-password a.item, body.scheme-dark ion-app.app-root page-core-login-site ion-list.core-login-forgotten-password a.item {
+  background: transparent;
+}
+
+ion-app.app-root page-core-login-credentials .core-login-site-logo,
+ion-app.app-root page-core-login-reconnect .core-login-site-logo,
+ion-app.app-root page-core-login-site .core-login-site-logo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+ion-app.app-root page-core-login-credentials .core-login-site-logo img,
+ion-app.app-root page-core-login-reconnect .core-login-site-logo img,
+ion-app.app-root page-core-login-site .core-login-site-logo img {
+  width: 90%;
+  max-width: 300px;
 }
 
 ion-app.app-root page-core-login-forgotten-password .content {
@@ -58494,8 +58616,8 @@ ion-app.app-root page-core-login-reconnect form .item:first-child {
   padding-right: 0 !important;
 }
 
-ion-app.app-root page-core-login-reconnect .item-input {
-  margin-bottom: 20px;
+ion-app.app-root page-core-login-reconnect .core-login-reconnect-warning {
+  color: #cb3d4d;
 }
 
 ion-app.app-root page-core-login-site .item-input:last-child {
@@ -58510,39 +58632,218 @@ ion-app.app-root page-core-login-site .searchbar-ios .searchbar-input {
   background-color: rgba(0, 0, 0, 0.08);
 }
 
-ion-app.app-root page-core-login-site .core-site-error {
-  background: #f5d8db;
-  margin-left: 0;
-  margin-right: 0;
-  width: 100%;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-ion-app.app-root page-core-login-site .core-site-error p, ion-app.app-root page-core-login-site .core-site-error ion-card-header {
-  color: #a82d3b;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-ion-app.app-root page-core-login-site .core-site-error ion-card-header {
-  font-weight: bold;
-}
-
-ion-app.app-root page-core-login-site .core-login-need-help {
+ion-app.app-root page-core-login-site .core-login-need-help.item {
+  background: transparent;
   text-decoration: underline;
 }
 
-page-core-login-site-error button.button.button-block {
-  margin-bottom: 3rem;
+@media (prefers-color-scheme: dark) {
+  body.scheme-auto ion-app.app-root page-core-login-site .core-login-need-help.item {
+    background: transparent;
+  }
+}
+
+body.scheme-dark ion-app.app-root page-core-login-site .core-login-need-help.item {
+  background: transparent;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-connect {
+  margin-top: 1.4rem;
+}
+
+ion-app.app-root page-core-login-site .item ion-thumbnail {
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 20%;
+  -webkit-box-shadow: 0 0 4px #eee;
+  box-shadow: 0 0 4px #eee;
+  text-align: center;
+}
+
+ion-app.app-root page-core-login-site .item ion-thumbnail img {
+  width: 50px;
+  height: 50px;
+}
+
+ion-app.app-root page-core-login-site .item ion-thumbnail ion-icon {
+  margin: 0 auto;
+  font-size: 40px;
+  line-height: 50px;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-logo,
+ion-app.app-root page-core-login-site .core-login-site-list,
+ion-app.app-root page-core-login-site .core-login-site-list-found {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: all 0.7s ease-in-out;
+  transition: all 0.7s ease-in-out;
+  max-height: 9999px;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-logo.hidden,
+ion-app.app-root page-core-login-site .core-login-site-list.hidden,
+ion-app.app-root page-core-login-site .core-login-site-list-found.hidden {
+  opacity: 0;
+  visibility: hidden;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-list-found.dimmed {
+  pointer-events: none;
+  position: relative;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-list-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+
+[dir="ltr"] ion-app.app-root page-core-login-site .core-login-site-list-loading, [dir="rtl"] ion-app.app-root page-core-login-site .core-login-site-list-loading {
+  left: 0;
+  right: 0;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-list-loading ion-spinner {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+ion-app.app-root page-core-login-site .core-login-site-nolist-loading {
+  text-align: center;
+}
+
+ion-app.app-root page-core-login-site .item.core-login-site-list-title ion-label, ion-app.app-root page-core-login-site .item.core-login-site-list-title ion-label h2.item-heading {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  ion-app.app-root page-core-login-site .scroll-content > * {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  ion-app.app-root page-core-login-site .core-login-site-logo {
+    margin-top: 20%;
+  }
+  ion-app.app-root page-core-login-site.hidden {
+    margin: 0;
+  }
+}
+
+ion-app.app-root page-core-login-site .core-login-entered-site {
+  background-color: #f5f5f5;
+}
+
+ion-app.app-root page-core-login-site .core-login-entered-site ion-thumbnail {
+  -webkit-box-shadow: 0 0 4px #ddd;
+  box-shadow: 0 0 4px #ddd;
+}
+
+ion-app.app-root page-core-login-site .core-login-default-icon {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+ion-app.app-root page-core-login-site .core-login-site-qrcode-separator {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 1.2em;
 }
 
 page-core-login-site-help .content {
   background-color: #ffffff;
+}
+
+page-core-login-site-help .core-login-faqwhatisurlanswer img {
+  max-height: 50px;
+}
+
+page-core-login-site-help .core-login-faqwhereisqrcodeanswer img {
+  max-height: 220px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+page-core-login-site-onboarding .content {
+  background-color: #ffffff;
+}
+
+page-core-login-site-onboarding .core-login-site-logo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+page-core-login-site-onboarding .core-login-site-logo img {
+  width: 90%;
+  max-width: 300px;
+}
+
+page-core-login-site-onboarding h3 {
+  font-size: 1.3em;
+}
+
+page-core-login-site-onboarding .core-login-onboarding-step {
+  padding: 10px 20px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  page-core-login-site-onboarding .core-login-onboarding-step {
+    max-width: 80%;
+  }
+}
+
+page-core-login-site-onboarding .core-login-onboarding-step p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+page-core-login-site-onboarding .core-login-onboarding-step ul {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  list-style-type: none;
+  text-align: left;
+  text-align: start;
+}
+
+[dir="ltr"] page-core-login-site-onboarding .core-login-onboarding-step ul {
+  padding-left: 10px;
+}
+
+[dir="rtl"] page-core-login-site-onboarding .core-login-onboarding-step ul {
+  padding-right: 10px;
+}
+
+page-core-login-site-onboarding .core-login-onboarding-step ul li {
+  margin-bottom: 10px;
+}
+
+page-core-login-site-onboarding .core-login-onboarding-step .button-block {
+  margin-top: 20px;
 }
 
 ion-app.app-root page-core-login-site-policy .card {
@@ -59005,4 +59306,273 @@ ion-app.app-root .core-zoom-pane {
 
 ion-app.app-root .core-zoom-pane img {
   max-width: none;
+}
+
+ion-app.app-root page-core-viewer-text ion-footer {
+  padding: 6px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt {
+  /* Some styles have been copied from ionic alert component. */
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  contain: strict;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt {
+  left: 0;
+  right: 0;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-backdrop {
+  visibility: visible;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .header::after {
+  background: none;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .header .toolbar-background {
+  display: none;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .prompt-button-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .prompt-button-group .prompt-button {
+  z-index: 0;
+  display: block;
+  font-size: 1.4rem;
+  line-height: 20px;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .prompt-button-group .prompt-button, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .prompt-button-group .prompt-button {
+  margin: 0;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-textarea {
+  border: 0;
+  background: inherit;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-textarea::-moz-placeholder {
+  color: #9e9e9e;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-textarea:-ms-input-placeholder {
+  color: #9e9e9e;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-textarea::-webkit-input-placeholder {
+  text-indent: 0;
+  color: #9e9e9e;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt ion-textarea, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt ion-textarea {
+  padding: 0 24px 24px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt ion-textarea textarea {
+  margin: 0;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .prompt-message, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .prompt-message {
+  padding: 0 24px 24px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper {
+  z-index: 10;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 320px;
+  max-height: 90%;
+  opacity: 0;
+  contain: content;
+  height: auto;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper page-core-viewer-textarea,
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper ion-content,
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper .fixed-content,
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper .scroll-content {
+  position: relative;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper .fixed-content {
+  display: none;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .modal-wrapper .scroll-content {
+  padding: 0 !important;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group {
+  -webkit-flex-wrap: wrap-reverse;
+  -ms-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group {
+  padding: 8px 8px 8px 24px;
+}
+
+[dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group {
+  padding: 8px 24px 8px 8px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button {
+  text-align: right;
+  text-align: end;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #004c9f;
+  background-color: transparent;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button {
+  border-radius: 2px;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button {
+  margin: 0 8px 0 0;
+}
+
+[dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button {
+  margin: 0 0 0 8px;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button {
+  padding: 10px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button.activated {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-md .prompt-button-group .prompt-button .button-inner {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group {
+  margin-right: -0.55px;
+}
+
+[dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group {
+  margin-left: -0.55px;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button {
+  overflow: hidden;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-width: 50%;
+  height: 44px;
+  border-top: 0.55px solid #dbdbdf;
+  border-right: 0.55px solid #dbdbdf;
+  font-size: 17px;
+  color: #004c9f;
+  background-color: transparent;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button {
+  margin: 0;
+}
+
+[dir="ltr"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button, [dir="rtl"] ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button {
+  border-radius: 0;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button:last-child {
+  border-right: 0;
+  font-weight: bold;
+}
+
+ion-app.app-root ion-modal.core-modal-prompt .content-ios .prompt-button-group .prompt-button.activated {
+  background-color: #e9e9e9;
+}
+
+ion-app.app-root-md ion-modal.core-modal-prompt .modal-wrapper {
+  max-width: 280px;
+  background-color: #fafafa;
+  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
+}
+
+[dir="ltr"] ion-app.app-root-md ion-modal.core-modal-prompt .modal-wrapper, [dir="rtl"] ion-app.app-root-md ion-modal.core-modal-prompt .modal-wrapper {
+  border-radius: 2px;
+}
+
+ion-app.app-root-md ion-modal.core-modal-prompt .toolbar-content .toolbar-title {
+  color: rgba(0, 0, 0, 0.5);
+  white-space: normal;
+}
+
+ion-app.app-root-ios ion-modal.core-modal-prompt .modal-wrapper {
+  overflow: hidden;
+  max-width: 270px;
+  background-color: #f8f8f8;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+[dir="ltr"] ion-app.app-root-ios ion-modal.core-modal-prompt .modal-wrapper, [dir="rtl"] ion-app.app-root-ios ion-modal.core-modal-prompt .modal-wrapper {
+  border-radius: 13px;
+}
+
+ion-app.app-root-ios ion-modal.core-modal-prompt .toolbar-content .toolbar-title {
+  color: inherit;
+  white-space: normal;
+}
+
+ion-app.app-root-ios ion-modal.core-modal-prompt ion-title {
+  padding: 0;
 }

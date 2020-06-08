@@ -1,17 +1,18 @@
 webpackJsonp([15],{
 
-/***/ 2094:
+/***/ 2103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreTagIndexPageModule", function() { return CoreTagIndexPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreUserAboutPageModule", function() { return CoreUserAboutPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__index__ = __webpack_require__(2248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__about__ = __webpack_require__(2259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_components_module__ = __webpack_require__(424);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,40 +38,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreTagIndexPageModule = /** @class */ (function () {
-    function CoreTagIndexPageModule() {
+
+var CoreUserAboutPageModule = /** @class */ (function () {
+    function CoreUserAboutPageModule() {
     }
-    CoreTagIndexPageModule = __decorate([
+    CoreUserAboutPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__index__["a" /* CoreTagIndexPage */]
+                __WEBPACK_IMPORTED_MODULE_3__about__["a" /* CoreUserAboutPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__index__["a" /* CoreTagIndexPage */]),
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_6__components_components_module__["a" /* CoreUserComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__about__["a" /* CoreUserAboutPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], CoreTagIndexPageModule);
-    return CoreTagIndexPageModule;
+    ], CoreUserAboutPageModule);
+    return CoreUserAboutPageModule;
 }());
 
-//# sourceMappingURL=index.module.js.map
+//# sourceMappingURL=about.module.js.map
 
 /***/ }),
 
-/***/ 2248:
+/***/ 2259:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreTagIndexPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreUserAboutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_split_view_split_view__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_user__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_helper__ = __webpack_require__(995);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_events__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_sites__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_utils_text__ = __webpack_require__(10);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -99,124 +104,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Page that displays the tag index.
+ * Page that displays an user about page.
  */
-var CoreTagIndexPage = /** @class */ (function () {
-    function CoreTagIndexPage(navParams, tagProvider, domUtils, tagAreaDelegate) {
-        this.tagProvider = tagProvider;
+var CoreUserAboutPage = /** @class */ (function () {
+    function CoreUserAboutPage(navParams, userProvider, userHelper, domUtils, eventsProvider, sitesProvider, textUtils) {
+        this.userProvider = userProvider;
+        this.userHelper = userHelper;
         this.domUtils = domUtils;
-        this.tagAreaDelegate = tagAreaDelegate;
-        this.loaded = false;
-        this.hasUnsupportedAreas = false;
-        this.tagId = navParams.get('tagId') || 0;
-        this.tagName = navParams.get('tagName') || '';
-        this.collectionId = navParams.get('collectionId');
-        this.areaId = navParams.get('areaId') || 0;
-        this.fromContextId = navParams.get('fromContextId') || 0;
-        this.contextId = navParams.get('contextId') || 0;
-        this.recursive = navParams.get('recursive') || true;
+        this.eventsProvider = eventsProvider;
+        this.sitesProvider = sitesProvider;
+        this.textUtils = textUtils;
+        this.userLoaded = false;
+        this.hasContact = false;
+        this.hasDetails = false;
+        this.user = {};
+        this.userId = navParams.get('userId');
+        this.courseId = navParams.get('courseId');
+        this.siteId = this.sitesProvider.getCurrentSite().getId();
     }
     /**
      * View loaded.
      */
-    CoreTagIndexPage.prototype.ionViewDidLoad = function () {
+    CoreUserAboutPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.fetchData().then(function () {
-            if (_this.splitviewCtrl.isOn() && _this.areas && _this.areas.length > 0) {
-                var area = _this.areas.find(function (area) { return area.id == _this.areaId; });
-                _this.openArea(area || _this.areas[0]);
-            }
-        }).finally(function () {
-            _this.loaded = true;
+        this.fetchUser().finally(function () {
+            _this.userLoaded = true;
         });
     };
     /**
-     * Fetch first page of tag index per area.
-     *
-     * @return Resolved when done.
+     * Fetches the user and updates the view.
      */
-    CoreTagIndexPage.prototype.fetchData = function () {
+    CoreUserAboutPage.prototype.fetchUser = function () {
         var _this = this;
-        return this.tagProvider.getTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive, 0).then(function (areas) {
-            _this.areas = [];
-            _this.hasUnsupportedAreas = false;
-            return Promise.all(areas.map(function (area) {
-                return _this.tagAreaDelegate.parseContent(area.component, area.itemtype, area.content).then(function (items) {
-                    if (!items || !items.length) {
-                        // Tag area not supported, skip.
-                        _this.hasUnsupportedAreas = true;
-                        return null;
-                    }
-                    return {
-                        id: area.ta,
-                        componentName: area.component,
-                        itemType: area.itemtype,
-                        nameKey: _this.tagAreaDelegate.getDisplayNameKey(area.component, area.itemtype),
-                        items: items,
-                        canLoadMore: !!area.nextpageurl,
-                        badge: items && items.length ? items.length + (area.nextpageurl ? '+' : '') : '',
-                    };
-                });
-            })).then(function (areas) {
-                _this.areas = areas.filter(function (area) { return area != null; });
-            });
+        return this.userProvider.getProfile(this.userId, this.courseId).then(function (user) {
+            if (user.address) {
+                user.address = _this.userHelper.formatAddress(user.address, user.city, user.country);
+                user.encodedAddress = _this.textUtils.buildAddressURL(user.address);
+            }
+            _this.hasContact = user.email || user.phone1 || user.phone2 || user.city || user.country || user.address;
+            _this.hasDetails = user.url || user.interests || (user.customfields && user.customfields.length > 0);
+            _this.user = user;
+            _this.title = user.fullname;
         }).catch(function (error) {
-            _this.domUtils.showErrorModalDefault(error, 'Error loading tag index');
+            _this.domUtils.showErrorModalDefault(error, 'core.user.errorloaduser', true);
         });
     };
     /**
-     * Refresh data.
+     * Refresh the user.
      *
      * @param refresher Refresher.
      */
-    CoreTagIndexPage.prototype.refreshData = function (refresher) {
+    CoreUserAboutPage.prototype.refreshUser = function (refresher) {
         var _this = this;
-        this.tagProvider.invalidateTagIndexPerArea(this.tagId, this.tagName, this.collectionId, this.areaId, this.fromContextId, this.contextId, this.recursive).finally(function () {
-            _this.fetchData().finally(function () {
-                refresher.complete();
+        this.userProvider.invalidateUserCache(this.userId).finally(function () {
+            _this.fetchUser().finally(function () {
+                _this.eventsProvider.trigger(__WEBPACK_IMPORTED_MODULE_2__providers_user__["a" /* CoreUserProvider */].PROFILE_REFRESHED, {
+                    courseId: _this.courseId, userId: _this.userId,
+                    user: _this.user
+                }, _this.siteId);
+                refresher && refresher.complete();
             });
         });
     };
-    /**
-     * Navigate to an index area.
-     *
-     * @param area Area.
-     */
-    CoreTagIndexPage.prototype.openArea = function (area) {
-        this.selectedAreaId = area.id;
-        var params = {
-            tagId: this.tagId,
-            tagName: this.tagName,
-            collectionId: this.collectionId,
-            areaId: area.id,
-            fromContextId: this.fromContextId,
-            contextId: this.contextId,
-            recursive: this.recursive,
-            areaNameKey: area.nameKey,
-            componentName: area.component,
-            itemType: area.itemType,
-            items: area.items.slice(),
-            canLoadMore: area.canLoadMore,
-            nextPage: 1
-        };
-        this.splitviewCtrl.push('CoreTagIndexAreaPage', params);
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_3__components_split_view_split_view__["a" /* CoreSplitViewComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_3__components_split_view_split_view__["a" /* CoreSplitViewComponent */])
-    ], CoreTagIndexPage.prototype, "splitviewCtrl", void 0);
-    CoreTagIndexPage = __decorate([
+    CoreUserAboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-tag-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index/index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.tag.tag\' | translate }}: {{ tagName }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<core-split-view>\n    <ion-content>\n        <ion-refresher [enabled]="loaded" (ionRefresh)="refreshData($event)">\n            <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n        </ion-refresher>\n        <core-loading [hideUntil]="loaded">\n            <ion-list>\n                <ion-item text-wrap *ngIf="hasUnsupportedAreas" class="core-warning-item">\n                    <ion-icon item-start name="warning" color="warning"></ion-icon>\n                    {{ \'core.tag.warningareasnotsupported\' | translate }}\n                </ion-item>\n                <a ion-item text-wrap *ngFor="let area of areas" [title]="area.nameKey | translate" (click)="openArea(area)" [class.core-split-item-selected]="area.id == selectedAreaId">\n                    <h2>{{ area.nameKey | translate }}</h2>\n                    <ion-badge item-end *ngIf="area.badge">{{ area.badge }}</ion-badge>\n                </a>\n            </ion-list>\n        </core-loading>\n    </ion-content>\n</core-split-view>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/tag/pages/index/index.html"*/,
+            selector: 'page-core-user-about',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/user/pages/about/about.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="userLoaded" (ionRefresh)="refreshUser($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-loading [hideUntil]="userLoaded">\n        <div *ngIf="user">\n            <ion-item-group *ngIf="hasContact">\n                <ion-item-divider>{{ \'core.user.contact\' | translate}}</ion-item-divider>\n                <ion-item text-wrap *ngIf="user.email">\n                    <h2>{{ \'core.user.email\' | translate }}</h2>\n                    <p><a href="mailto:{{user.email}}" core-link auto-login="no">\n                        {{ user.email }}\n                    </a></p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.phone1">\n                    <h2>{{ \'core.user.phone1\' | translate}}</h2>\n                    <p><a href="tel:{{user.phone1}}" core-link auto-login="no">\n                        {{ user.phone1 }}\n                    </a></p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.phone2">\n                    <h2>{{ \'core.user.phone2\' | translate}}</h2>\n                    <p><a href="tel:{{user.phone2}}" core-link auto-login="no">\n                        {{ user.phone2 }}\n                    </a></p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.address">\n                    <h2>{{ \'core.user.address\' | translate}}</h2>\n                    <p><a [href]="user.encodedAddress" core-link auto-login="no">\n                        {{ user.address }}\n                    </a></p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.city && !user.address">\n                    <h2>{{ \'core.user.city\' | translate}}</h2>\n                    <p>{{ user.city }}</p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.country && !user.address">\n                    <h2>{{ \'core.user.country\' | translate}}</h2>\n                    <p>{{ user.country }}</p>\n                </ion-item>\n            </ion-item-group>\n            <ion-item-group *ngIf="hasDetails">\n                <ion-item-divider>{{ \'core.userdetails\' | translate}}</ion-item-divider>\n                <ion-item text-wrap *ngIf="user.url">\n                    <h2>{{ \'core.user.webpage\' | translate}}</h2>\n                    <p><a href="{{user.url}}" core-link>\n                        {{ user.url }}\n                    </a></p>\n                </ion-item>\n                <ion-item text-wrap *ngIf="user.interests">\n                    <h2>{{ \'core.user.interests\' | translate}}</h2>\n                    <p>{{ user.interests }}</p>\n                </ion-item>\n                <core-user-profile-field *ngFor="let field of user.customfields" [field]="field" contextLevel="course" [contextInstanceId]="courseId" [courseId]="courseId"></core-user-profile-field>\n            </ion-item-group>\n            <ion-item-group *ngIf="user.description">\n                <ion-item-divider>{{ \'core.user.description\' | translate}}</ion-item-divider>\n                <ion-item text-wrap>\n                    <p><core-format-text [text]="user.description" contextLevel="user" [contextInstanceId]="user.id"></core-format-text></p>\n                </ion-item>\n            </ion-item-group>\n        </div>\n        <core-empty-box *ngIf="!user || (!hasContact && !hasDetails && !user.description)" icon="person" [message]=" \'core.user.detailsnotavailable\' | translate"></core-empty-box>\n    </core-loading>'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/user/pages/about/about.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__core_tag_providers_tag__["a" /* CoreTagProvider */], __WEBPACK_IMPORTED_MODULE_2__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__core_tag_providers_area_delegate__["a" /* CoreTagAreaDelegate */]])
-    ], CoreTagIndexPage);
-    return CoreTagIndexPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_user__["a" /* CoreUserProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_helper__["a" /* CoreUserHelperProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_utils_dom__["a" /* CoreDomUtilsProvider */], __WEBPACK_IMPORTED_MODULE_5__providers_events__["b" /* CoreEventsProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_utils_text__["b" /* CoreTextUtilsProvider */]])
+    ], CoreUserAboutPage);
+    return CoreUserAboutPage;
 }());
 
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=about.js.map
 
 /***/ })
 

@@ -1,17 +1,17 @@
 webpackJsonp([37],{
 
-/***/ 2070:
+/***/ 2080:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreLoginReconnectPageModule", function() { return CoreLoginReconnectPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreLoginSiteOnboardingPageModule", function() { return CoreLoginSiteOnboardingPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reconnect__ = __webpack_require__(2224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__site_onboarding__ = __webpack_require__(2236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(13);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,42 +37,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreLoginReconnectPageModule = /** @class */ (function () {
-    function CoreLoginReconnectPageModule() {
+var CoreLoginSiteOnboardingPageModule = /** @class */ (function () {
+    function CoreLoginSiteOnboardingPageModule() {
     }
-    CoreLoginReconnectPageModule = __decorate([
+    CoreLoginSiteOnboardingPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__reconnect__["a" /* CoreLoginReconnectPage */]
+                __WEBPACK_IMPORTED_MODULE_2__site_onboarding__["a" /* CoreLoginSiteOnboardingPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* CoreComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_5__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__reconnect__["a" /* CoreLoginReconnectPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__site_onboarding__["a" /* CoreLoginSiteOnboardingPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild(),
             ]
         })
-    ], CoreLoginReconnectPageModule);
-    return CoreLoginReconnectPageModule;
+    ], CoreLoginSiteOnboardingPageModule);
+    return CoreLoginSiteOnboardingPageModule;
 }());
 
-//# sourceMappingURL=reconnect.module.js.map
+//# sourceMappingURL=site-onboarding.module.js.map
 
 /***/ }),
 
-/***/ 2224:
+/***/ 2236:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreLoginReconnectPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreLoginSiteOnboardingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_app__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_events__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_utils_dom__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_helper__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_config__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_helper__ = __webpack_require__(87);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -100,185 +97,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 /**
- * Page to enter the user password to reconnect to a site.
+ * Component that displays onboarding help regarding the CoreLoginSitePage.
  */
-var CoreLoginReconnectPage = /** @class */ (function () {
-    function CoreLoginReconnectPage(navCtrl, navParams, fb, appProvider, sitesProvider, loginHelper, domUtils, eventsProvider) {
-        this.navCtrl = navCtrl;
-        this.appProvider = appProvider;
-        this.sitesProvider = sitesProvider;
-        this.loginHelper = loginHelper;
-        this.domUtils = domUtils;
-        this.eventsProvider = eventsProvider;
-        this.showForgottenPassword = true;
-        this.showSiteAvatar = false;
-        this.isOAuth = false;
-        var currentSite = this.sitesProvider.getCurrentSite();
-        this.infoSiteUrl = navParams.get('infoSiteUrl');
-        this.pageName = navParams.get('pageName');
-        this.pageParams = navParams.get('pageParams');
-        this.siteConfig = navParams.get('siteConfig');
-        this.siteUrl = navParams.get('siteUrl');
-        this.siteId = navParams.get('siteId');
-        this.isLoggedOut = currentSite && currentSite.isLoggedOut();
-        this.credForm = fb.group({
-            password: ['', __WEBPACK_IMPORTED_MODULE_7__angular_forms__["h" /* Validators */].required]
-        });
+var CoreLoginSiteOnboardingPage = /** @class */ (function () {
+    function CoreLoginSiteOnboardingPage(viewCtrl) {
+        this.viewCtrl = viewCtrl;
+        this.step = 0;
     }
     /**
-     * View loaded.
-     */
-    CoreLoginReconnectPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        if (this.siteConfig) {
-            this.getDataFromConfig(this.siteConfig);
-        }
-        this.sitesProvider.getSite(this.siteId).then(function (site) {
-            _this.site = {
-                id: site.id,
-                fullname: site.infos.fullname,
-                avatar: site.infos.userpictureurl
-            };
-            _this.username = site.infos.username;
-            _this.siteUrl = site.infos.siteurl;
-            _this.siteName = site.getSiteName();
-            // If login was OAuth we should only reach this page if the OAuth method ID has changed.
-            _this.isOAuth = site.isOAuth();
-            // Show logo instead of avatar if it's a fixed site.
-            _this.showSiteAvatar = _this.site.avatar && !_this.loginHelper.getFixedSites();
-            return site.getPublicConfig().then(function (config) {
-                return _this.sitesProvider.checkRequiredMinimumVersion(config).then(function () {
-                    // Check logoURL if user avatar is not set.
-                    if (_this.site.avatar.startsWith(site.infos.siteurl + '/theme/image.php')) {
-                        _this.showSiteAvatar = false;
-                        _this.logoUrl = _this.loginHelper.getLogoUrl(config);
-                    }
-                    _this.getDataFromConfig(_this.siteConfig);
-                }).catch(function () {
-                    _this.cancel();
-                });
-            }).catch(function () {
-                // Ignore errors.
-            });
-        }).catch(function () {
-            // Shouldn't happen. Just leave the view.
-            _this.cancel();
-        });
-    };
-    /**
-     * Get some data (like identity providers) from the site config.
+     * Go to next step.
      *
-     * @param config Config to use.
+     * @param e Click event.
      */
-    CoreLoginReconnectPage.prototype.getDataFromConfig = function (config) {
-        var disabledFeatures = this.loginHelper.getDisabledFeatures(config);
-        this.identityProviders = this.loginHelper.getValidIdentityProviders(config, disabledFeatures);
-        this.showForgottenPassword = !this.loginHelper.isForgottenPasswordDisabled(config);
-    };
-    /**
-     * Cancel reconnect.
-     *
-     * @param e Event.
-     */
-    CoreLoginReconnectPage.prototype.cancel = function (e) {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        this.sitesProvider.logout();
-    };
-    /**
-     * Tries to authenticate the user.
-     *
-     * @param e Event.
-     */
-    CoreLoginReconnectPage.prototype.login = function (e) {
-        var _this = this;
-        e.preventDefault();
+    CoreLoginSiteOnboardingPage.prototype.next = function (e) {
         e.stopPropagation();
-        this.appProvider.closeKeyboard();
-        // Get input data.
-        var siteUrl = this.siteUrl, username = this.username, password = this.credForm.value.password;
-        if (!password) {
-            this.domUtils.showErrorModal('core.login.passwordrequired', true);
-            return;
-        }
-        if (!this.appProvider.isOnline()) {
-            this.domUtils.showErrorModal('core.networkerrormsg', true);
-            return;
-        }
-        var modal = this.domUtils.showModalLoading();
-        // Start the authentication process.
-        this.sitesProvider.getUserToken(siteUrl, username, password).then(function (data) {
-            return _this.sitesProvider.updateSiteToken(_this.infoSiteUrl, username, data.token, data.privateToken).then(function () {
-                _this.domUtils.triggerFormSubmittedEvent(_this.formElement, true);
-                // Update site info too because functions might have changed (e.g. unisntall local_mobile).
-                return _this.sitesProvider.updateSiteInfoByUrl(_this.infoSiteUrl, username).then(function () {
-                    // Reset fields so the data is not in the view anymore.
-                    _this.credForm.controls['password'].reset();
-                    // Go to the site initial page.
-                    return _this.loginHelper.goToSiteInitialPage(_this.navCtrl, _this.pageName, _this.pageParams);
-                }).catch(function (error) {
-                    if (error.loggedout) {
-                        _this.loginHelper.treatUserTokenError(siteUrl, error, username, password);
-                    }
-                    else {
-                        _this.domUtils.showErrorModalDefault(error, 'core.login.errorupdatesite', true);
-                    }
-                    // Error, go back to login page.
-                    _this.cancel();
-                });
-            });
-        }).catch(function (error) {
-            _this.loginHelper.treatUserTokenError(siteUrl, error, username, password);
-            if (error.loggedout) {
-                _this.cancel();
-            }
-        }).finally(function () {
-            modal.dismiss();
-        });
+        this.step++;
     };
     /**
-     * Forgotten password button clicked.
-     */
-    CoreLoginReconnectPage.prototype.forgottenPassword = function () {
-        this.loginHelper.forgottenPasswordClicked(this.navCtrl, this.siteUrl, this.credForm.value.username, this.siteConfig);
-    };
-    /**
-     * An OAuth button was clicked.
+     * Go to previous step.
      *
-     * @param provider The provider that was clicked.
+     * @param e Click event.
      */
-    CoreLoginReconnectPage.prototype.oauthClicked = function (provider) {
-        if (!this.loginHelper.openBrowserForOAuthLogin(this.siteUrl, provider, this.siteConfig.launchurl)) {
-            this.domUtils.showErrorModal('Invalid data.');
+    CoreLoginSiteOnboardingPage.prototype.previous = function (e) {
+        e.stopPropagation();
+        if (this.step == 0) {
+            this.viewCtrl.dismiss();
+        }
+        else {
+            this.step--;
         }
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])('reconnectForm'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], CoreLoginReconnectPage.prototype, "formElement", void 0);
-    CoreLoginReconnectPage = __decorate([
+    /**
+     * Close modal.
+     *
+     * @param e Click event.
+     */
+    CoreLoginSiteOnboardingPage.prototype.skip = function (e) {
+        e.stopPropagation();
+        this.saveOnboardingDone();
+        this.viewCtrl.dismiss();
+    };
+    /**
+     * Create a site.
+     *
+     * @param e Click event.
+     */
+    CoreLoginSiteOnboardingPage.prototype.gotoWeb = function (e) {
+        e.stopPropagation();
+        this.saveOnboardingDone();
+        __WEBPACK_IMPORTED_MODULE_2__providers_utils_utils__["a" /* CoreUtils */].instance.openInBrowser('https://moodle.com/getstarted/');
+        this.viewCtrl.dismiss();
+    };
+    /**
+     * Saves the onboarding has finished.
+     */
+    CoreLoginSiteOnboardingPage.prototype.saveOnboardingDone = function () {
+        __WEBPACK_IMPORTED_MODULE_3__providers_config__["a" /* CoreConfig */].instance.set(__WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* CoreLoginHelperProvider */].ONBOARDING_DONE, 1);
+    };
+    CoreLoginSiteOnboardingPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-login-reconnect',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/reconnect/reconnect.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.login.reconnect\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content class="core-center-view">\n    <div class="box">\n        <div *ngIf="site" text-wrap text-center margin-bottom [ngClass]="{\'item-avatar-center\': showSiteAvatar}">\n            <ng-container *ngIf="showSiteAvatar">\n                <ion-avatar>\n                    <!-- Show user avatar. -->\n                    <img [src]="site.avatar" class="avatar" core-external-content [siteId]="site.id" alt="{{ \'core.pictureof\' | translate:{$a: site.fullname} }}" role="presentation" onError="this.src=\'assets/img/user-avatar.png\'">\n                </ion-avatar>\n            </ng-container>\n\n            <ng-container *ngIf="!showSiteAvatar">\n                <!-- Show site logo or a default image. -->\n                <img *ngIf="logoUrl" [src]="logoUrl" core-external-content [siteId]="site.id" role="presentation">\n                <img *ngIf="!logoUrl" src="assets/img/login_logo.png" class="login-logo" role="presentation">\n            </ng-container>\n\n            <!-- If no sitename show big siteurl. -->\n            <p *ngIf="!siteName" class="item-heading core-siteurl">{{siteUrl}}</p>\n            <!-- If sitename, show big sitename and small siteurl. -->\n            <p *ngIf="siteName" class="item-heading core-sitename"><core-format-text [text]="siteName" [filter]="false"></core-format-text></p>\n            <p *ngIf="siteName" class="core-siteurl">{{siteUrl}}</p>\n\n            <p *ngIf="!isLoggedOut">\n                <ion-icon padding name="alert"></ion-icon> {{ \'core.login.reconnectdescription\' | translate }}\n            </p>\n        </div>\n        <form ion-list *ngIf="!isOAuth" [formGroup]="credForm" (ngSubmit)="login($event)" class="core-login-form" #reconnectForm>\n            <ion-item text-wrap class="core-username">\n                <p>{{username}}</p>\n            </ion-item>\n            <ion-item margin-bottom>\n                <core-show-password item-content [name]="\'password\'">\n                    <ion-input class="core-ioninput-password" name="password" type="password" placeholder="{{ \'core.login.password\' | translate }}" formControlName="password" [clearOnEdit]="false"></ion-input>\n                </core-show-password>\n            </ion-item>\n            <ion-grid no-padding>\n                <ion-row>\n                    <ion-col>\n                        <a ion-button block color="light" (click)="cancel($event)">{{ \'core.login.cancel\' | translate }}</a>\n                    </ion-col>\n                    <ion-col>\n                        <button ion-button block [disabled]="!credForm.valid">{{ \'core.login.loginbutton\' | translate }}</button>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </form>\n\n        <!-- Forgotten password button. -->\n        <div *ngIf="showForgottenPassword && !isOAuth" padding-top class="core-login-forgotten-password">\n            <button ion-button block text-wrap color="light" (click)="forgottenPassword()">{{ \'core.login.forgotten\' | translate }}</button>\n        </div>\n\n        <!-- Identity providers. -->\n        <ion-list *ngIf="identityProviders && identityProviders.length" padding-top class="core-login-identity-providers">\n            <ion-list-header text-wrap>{{ \'core.login.potentialidps\' | translate }}</ion-list-header>\n            <button ion-item *ngFor="let provider of identityProviders" text-wrap class="core-oauth-icon" (click)="oauthClicked(provider)" title="{{provider.name}}">\n                <img [src]="provider.iconurl" alt="" width="32" height="32" item-start>\n                {{provider.name}}\n            </button>\n        </ion-list>\n\n        <!-- If OAuth, display cancel button since the form isn\'t displayed. -->\n        <ion-list *ngIf="isOAuth">\n            <ion-item>\n                <a ion-button block color="light" (click)="cancel($event)">{{ \'core.login.cancel\' | translate }}</a>\n            </ion-item>\n        </ion-list>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/reconnect/reconnect.html"*/,
+            selector: 'page-core-login-site-onboarding',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/site-onboarding/site-onboarding.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-buttons step>\n            <button ion-button icon-only (click)="previous($event)" [attr.aria-label]="\'core.back\' | translate">\n                <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-buttons end>\n            <button ion-button (click)="skip($event)" [attr.aria-label]="\'core.skip\' | translate">\n                {{\'core.skip\' | translate}}\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <div>\n        <div text-center padding class="core-login-site-logo">\n            <img src="assets/img/login_logo.png" class="avatar-full login-logo" role="presentation">\n        </div>\n\n        <h3 class="core-login-onboarding-step">\n            {{\'core.login.onboardingwelcome\' | translate}}\n        </h3>\n\n        <div *ngIf="step == 0" class="core-login-onboarding-step">\n            <a ion-button block (click)="skip($event)" margin-bottom color="light">{{\'core.login.onboardingimalearner\' | translate}}</a>\n            <a ion-button block (click)="next($event)" margin-bottom color="light">{{\'core.login.onboardingimaneducator\' | translate}}</a>\n        </div>\n\n        <div *ngIf="step == 1" class="core-login-onboarding-step">\n            <p class="core-login-onboarding-text">\n                {{ \'core.login.onboardingtoconnect\' | translate }}\n            </p>\n            <a ion-button block (click)="skip($event)" margin-bottom color="light">{{ \'core.login.onboardingialreadyhaveasite\' | translate }}</a>\n            <a ion-button block (click)="next($event)" margin-bottom>{{ \'core.login.onboardingineedasite\' | translate }}</a>\n        </div>\n\n        <div *ngIf="step == 2" class="core-login-onboarding-step">\n            <ul class="core-login-onboarding-text">\n                <li><core-icon name="fa-check-circle-o"></core-icon> {{ \'core.login.onboardingcreatemanagecourses\' | translate }}</li>\n                <li><core-icon name="fa-check-circle-o"></core-icon> {{ \'core.login.onboardingenrolmanagestudents\' | translate }}</li>\n                <li><core-icon name="fa-check-circle-o"></core-icon> {{ \'core.login.onboardingprovidefeedback\' | translate }}</li>\n            </ul>\n\n            <a ion-button block (click)="gotoWeb($event)" margin-bottom>{{ \'core.login.onboardinggetstarted\' | translate }}</a>\n        </div>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/site-onboarding/site-onboarding.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_7__angular_forms__["a" /* FormBuilder */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_app__["a" /* CoreAppProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_sites__["a" /* CoreSitesProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_helper__["a" /* CoreLoginHelperProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_utils_dom__["a" /* CoreDomUtilsProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_events__["a" /* CoreEventsProvider */]])
-    ], CoreLoginReconnectPage);
-    return CoreLoginReconnectPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */]])
+    ], CoreLoginSiteOnboardingPage);
+    return CoreLoginSiteOnboardingPage;
 }());
 
-//# sourceMappingURL=reconnect.js.map
+//# sourceMappingURL=site-onboarding.js.map
 
 /***/ })
 

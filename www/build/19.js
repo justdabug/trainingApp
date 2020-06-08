@@ -1,17 +1,17 @@
 webpackJsonp([19],{
 
-/***/ 2089:
+/***/ 2099:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreSiteHomeIndexPageModule", function() { return CoreSiteHomeIndexPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreSitePluginsPluginPageModule", function() { return CoreSitePluginsPluginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__index__ = __webpack_require__(2243);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(997);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__plugin_page__ = __webpack_require__(2255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_components_module__ = __webpack_require__(1003);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,39 +37,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreSiteHomeIndexPageModule = /** @class */ (function () {
-    function CoreSiteHomeIndexPageModule() {
+/**
+ * Module to lazy load the page.
+ */
+var CoreSitePluginsPluginPageModule = /** @class */ (function () {
+    function CoreSitePluginsPluginPageModule() {
     }
-    CoreSiteHomeIndexPageModule = __decorate([
+    CoreSitePluginsPluginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_4__index__["a" /* CoreSiteHomeIndexPage */],
+                __WEBPACK_IMPORTED_MODULE_4__plugin_page__["a" /* CoreSitePluginsPluginPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreSiteHomeComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__index__["a" /* CoreSiteHomeIndexPage */]),
+                __WEBPACK_IMPORTED_MODULE_5__components_components_module__["a" /* CoreSitePluginsComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__plugin_page__["a" /* CoreSitePluginsPluginPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ]
         })
-    ], CoreSiteHomeIndexPageModule);
-    return CoreSiteHomeIndexPageModule;
+    ], CoreSitePluginsPluginPageModule);
+    return CoreSitePluginsPluginPageModule;
 }());
 
-//# sourceMappingURL=index.module.js.map
+//# sourceMappingURL=plugin-page.module.js.map
 
 /***/ }),
 
-/***/ 2243:
+/***/ 2255:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreSiteHomeIndexPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreSitePluginsPluginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_course_providers_helper__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_index_index__ = __webpack_require__(998);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_plugin_content_plugin_content__ = __webpack_require__(134);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -95,33 +96,81 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 /**
- * Page that displays site home index.
+ * Page to render a site plugin page.
  */
-var CoreSiteHomeIndexPage = /** @class */ (function () {
-    function CoreSiteHomeIndexPage(navParams, navCtrl, courseHelper, sitesProvider) {
-        var module = navParams.get('module'), modParams = navParams.get('modParams');
-        if (module) {
-            courseHelper.openModule(navCtrl, module, sitesProvider.getCurrentSite().getSiteHomeId(), undefined, modParams);
-        }
+var CoreSitePluginsPluginPage = /** @class */ (function () {
+    function CoreSitePluginsPluginPage(params) {
+        this.title = params.get('title');
+        this.component = params.get('component');
+        this.method = params.get('method');
+        this.args = params.get('args');
+        this.initResult = params.get('initResult');
+        this.jsData = params.get('jsData');
+        this.preSets = params.get('preSets');
     }
+    /**
+     * Refresh the data.
+     *
+     * @param refresher Refresher.
+     */
+    CoreSitePluginsPluginPage.prototype.refreshData = function (refresher) {
+        this.content.refreshContent(false).finally(function () {
+            refresher.complete();
+        });
+    };
+    /**
+     * The page is about to enter and become the active page.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewWillEnter = function () {
+        this.content.callComponentFunction('ionViewWillEnter');
+    };
+    /**
+     * The page has fully entered and is now the active page. This event will fire, whether it was the first load or a cached page.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewDidEnter = function () {
+        this.content.callComponentFunction('ionViewDidEnter');
+    };
+    /**
+     * The page is about to leave and no longer be the active page.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewWillLeave = function () {
+        this.content.callComponentFunction('ionViewWillLeave');
+    };
+    /**
+     * The page has finished leaving and is no longer the active page.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewDidLeave = function () {
+        this.content.callComponentFunction('ionViewDidLeave');
+    };
+    /**
+     * The page is about to be destroyed and have its elements removed.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewWillUnload = function () {
+        this.content.callComponentFunction('ionViewWillUnload');
+    };
+    /**
+     * Check if we can leave the page or not.
+     *
+     * @return Resolved if we can leave it, rejected if not.
+     */
+    CoreSitePluginsPluginPage.prototype.ionViewCanLeave = function () {
+        return this.content.callComponentFunction('ionViewCanLeave');
+    };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_4__components_index_index__["a" /* CoreSiteHomeIndexComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_4__components_index_index__["a" /* CoreSiteHomeIndexComponent */])
-    ], CoreSiteHomeIndexPage.prototype, "siteHomeComponent", void 0);
-    CoreSiteHomeIndexPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_plugin_content_plugin_content__["a" /* CoreSitePluginsPluginContentComponent */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_plugin_content_plugin_content__["a" /* CoreSitePluginsPluginContentComponent */])
+    ], CoreSitePluginsPluginPage.prototype, "content", void 0);
+    CoreSitePluginsPluginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-sitehome-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/sitehome/pages/index/index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.sitehome.sitehome\' | translate }}</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="siteHomeComponent && siteHomeComponent.dataLoaded" (ionRefresh)="siteHomeComponent.doRefresh($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-sitehome-index></core-sitehome-index>\n</ion-content>'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/sitehome/pages/index/index.html"*/,
+            selector: 'page-core-site-plugins-plugin',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/plugin-page/plugin-page.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ title | translate }}</ion-title>\n\n        <ion-buttons end>\n            <!-- If the site plugin defines some buttons using core-nav-buttons, they will be added here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-refresher [enabled]="content && content.dataLoaded" (ionRefresh)="refreshData($event)">\n        <ion-refresher-content pullingText="{{ \'core.pulltorefresh\' | translate }}"></ion-refresher-content>\n    </ion-refresher>\n    <core-site-plugins-plugin-content [component]="component" [method]="method" [args]="args" [preSets]="preSets" [initResult]="initResult" [data]="jsData" [pageTitle]="title"></core-site-plugins-plugin-content>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/siteplugins/pages/plugin-page/plugin-page.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__core_course_providers_helper__["a" /* CoreCourseHelperProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_sites__["a" /* CoreSitesProvider */]])
-    ], CoreSiteHomeIndexPage);
-    return CoreSiteHomeIndexPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
+    ], CoreSitePluginsPluginPage);
+    return CoreSitePluginsPluginPage;
 }());
 
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=plugin-page.js.map
 
 /***/ })
 

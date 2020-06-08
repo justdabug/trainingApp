@@ -1,17 +1,17 @@
 webpackJsonp([97],{
 
-/***/ 2006:
+/***/ 2016:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModForumIndexPageModule", function() { return AddonModForumIndexPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddonModForumSortOrderSelectorPagePageModule", function() { return AddonModForumSortOrderSelectorPagePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(991);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(2156);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__sort_order_selector__ = __webpack_require__(2168);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,37 +37,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddonModForumIndexPageModule = /** @class */ (function () {
-    function AddonModForumIndexPageModule() {
+var AddonModForumSortOrderSelectorPagePageModule = /** @class */ (function () {
+    function AddonModForumSortOrderSelectorPagePageModule() {
     }
-    AddonModForumIndexPageModule = __decorate([
+    AddonModForumSortOrderSelectorPagePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModForumIndexPage */],
+                __WEBPACK_IMPORTED_MODULE_5__sort_order_selector__["a" /* AddonModForumSortOrderSelectorPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3__directives_directives_module__["a" /* CoreDirectivesModule */],
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* AddonModForumComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__index__["a" /* AddonModForumIndexPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* CoreComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_5__sort_order_selector__["a" /* AddonModForumSortOrderSelectorPage */]),
                 __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["b" /* TranslateModule */].forChild()
             ],
         })
-    ], AddonModForumIndexPageModule);
-    return AddonModForumIndexPageModule;
+    ], AddonModForumSortOrderSelectorPagePageModule);
+    return AddonModForumSortOrderSelectorPagePageModule;
 }());
 
-//# sourceMappingURL=index.module.js.map
+//# sourceMappingURL=sort-order-selector.module.js.map
 
 /***/ }),
 
-/***/ 2156:
+/***/ 2168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModForumIndexPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddonModForumSortOrderSelectorPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_index__ = __webpack_require__(438);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -92,38 +91,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
- * Page that displays a forum.
+ * Page that displays the sort selector.
  */
-var AddonModForumIndexPage = /** @class */ (function () {
-    function AddonModForumIndexPage(navParams) {
-        this.module = navParams.get('module') || {};
-        this.courseId = navParams.get('courseId');
-        this.title = this.module.name;
+var AddonModForumSortOrderSelectorPage = /** @class */ (function () {
+    function AddonModForumSortOrderSelectorPage(navParams, viewCtrl) {
+        this.viewCtrl = viewCtrl;
+        this.sortOrders = [];
+        this.sortOrders = navParams.get('sortOrders');
+        this.selected = navParams.get('selected');
     }
     /**
-     * Update some data based on the forum instance.
-     *
-     * @param forum Forum instance.
+     * Close the modal.
      */
-    AddonModForumIndexPage.prototype.updateData = function (forum) {
-        this.title = forum.name || this.title;
+    AddonModForumSortOrderSelectorPage.prototype.closeModal = function () {
+        this.viewCtrl.dismiss();
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModForumIndexComponent */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_2__components_index_index__["a" /* AddonModForumIndexComponent */])
-    ], AddonModForumIndexPage.prototype, "forumComponent", void 0);
-    AddonModForumIndexPage = __decorate([
+    /**
+     * Select a sort order.
+     *
+     * @param sortOrder Selected sort order.
+     */
+    AddonModForumSortOrderSelectorPage.prototype.selectSortOrder = function (sortOrder) {
+        this.viewCtrl.dismiss(sortOrder);
+    };
+    AddonModForumSortOrderSelectorPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-addon-mod-forum-index',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/index/index.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title><core-format-text [text]="title" contextLevel="module" [contextInstanceId]="module.id" [courseId]="courseId"></core-format-text></ion-title>\n\n        <ion-buttons end>\n            <!-- The buttons defined by the component will be added in here. -->\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<addon-mod-forum-index [module]="module" [courseId]="courseId" (dataRetrieved)="updateData($event)"></addon-mod-forum-index>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/index/index.html"*/,
+            selector: 'page-addon-mod-forum-sort-order-selector',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/sort-order-selector/sort-order-selector.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.sort\' | translate }}</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeModal()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content>\n    <ion-list id="addon-mod-forum-sort-selector" role="menu" aria-labelledby="addon-mod-forum-sort-order-button">\n        <ng-container *ngFor="let sortOrder of sortOrders">\n            <a ion-item text-wrap (click)="selectSortOrder(sortOrder)" [class.core-primary-selected-item]="selected == sortOrder.value" detail-none role="menuitem" [attr.aria-label]="sortOrder.label | translate">\n                <h2>{{ sortOrder.label | translate }}</h2>\n            </a>\n        </ng-container>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/addon/mod/forum/pages/sort-order-selector/sort-order-selector.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */]])
-    ], AddonModForumIndexPage);
-    return AddonModForumIndexPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */]])
+    ], AddonModForumSortOrderSelectorPage);
+    return AddonModForumSortOrderSelectorPage;
 }());
 
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=sort-order-selector.js.map
 
 /***/ })
 

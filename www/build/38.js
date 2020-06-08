@@ -1,14 +1,16 @@
 webpackJsonp([38],{
 
-/***/ 2072:
+/***/ 2079:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreLoginInitPageModule", function() { return CoreLoginInitPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CoreLoginSiteHelpPageModule", function() { return CoreLoginSiteHelpPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__init__ = __webpack_require__(2226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__site_help__ = __webpack_require__(2235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__ = __webpack_require__(14);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,39 +33,40 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CoreLoginInitPageModule = /** @class */ (function () {
-    function CoreLoginInitPageModule() {
+
+
+var CoreLoginSiteHelpPageModule = /** @class */ (function () {
+    function CoreLoginSiteHelpPageModule() {
     }
-    CoreLoginInitPageModule = __decorate([
+    CoreLoginSiteHelpPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__init__["a" /* CoreLoginInitPage */],
+                __WEBPACK_IMPORTED_MODULE_2__site_help__["a" /* CoreLoginSiteHelpPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__init__["a" /* CoreLoginInitPage */]),
-            ],
+                __WEBPACK_IMPORTED_MODULE_4__directives_directives_module__["a" /* CoreDirectivesModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__site_help__["a" /* CoreLoginSiteHelpPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__ngx_translate_core__["b" /* TranslateModule */].forChild(),
+            ]
         })
-    ], CoreLoginInitPageModule);
-    return CoreLoginInitPageModule;
+    ], CoreLoginSiteHelpPageModule);
+    return CoreLoginSiteHelpPageModule;
 }());
 
-//# sourceMappingURL=init.module.js.map
+//# sourceMappingURL=site-help.module.js.map
 
 /***/ }),
 
-/***/ 2226:
+/***/ 2235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreLoginInitPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CoreLoginSiteHelpPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__ = __webpack_require__(1016);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_app__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_init__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_sites__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_helper__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_helper__ = __webpack_require__(87);
 // (C) Copyright 2015 Moodle Pty Ltd.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -91,90 +94,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 /**
- * Page that displays a "splash screen" while the app is being initialized.
+ * Component that displays some help regarding the CoreLoginSitePage.
  */
-var CoreLoginInitPage = /** @class */ (function () {
-    function CoreLoginInitPage(navCtrl, appProvider, initDelegate, sitesProvider, loginHelper, splashScreen) {
-        this.navCtrl = navCtrl;
-        this.appProvider = appProvider;
-        this.initDelegate = initDelegate;
-        this.sitesProvider = sitesProvider;
-        this.loginHelper = loginHelper;
-        this.splashScreen = splashScreen;
+var CoreLoginSiteHelpPage = /** @class */ (function () {
+    function CoreLoginSiteHelpPage(viewCtrl, translate, utils) {
+        this.viewCtrl = viewCtrl;
+        this.translate = translate;
+        this.utils = utils;
+        this.canScanQR = this.utils.canScanQR() && false; // @todo: Enable it for 3.9 release.
+        this.urlImageHtml = __WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* CoreLoginHelperProvider */].FAQ_URL_IMAGE_HTML;
+        this.qrCodeImageHtml = __WEBPACK_IMPORTED_MODULE_4__providers_helper__["a" /* CoreLoginHelperProvider */].FAQ_QRCODE_IMAGE_HTML;
+        this.setupLinkHtml = '<a href="https://moodle.com/getstarted/" title="' +
+            this.translate.instant('core.login.faqsetupsitelinktitle') + '">https://moodle.com/getstarted/</a>';
     }
     /**
-     * View loaded.
+     * Close help modal.
      */
-    CoreLoginInitPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        // Wait for the app to be ready.
-        this.initDelegate.ready().then(function () {
-            // Check if there was a pending redirect.
-            var redirectData = _this.appProvider.getRedirect();
-            if (redirectData.siteId) {
-                // Unset redirect data.
-                _this.appProvider.storeRedirect('', '', '');
-                // Only accept the redirect if it was stored less than 20 seconds ago.
-                if (Date.now() - redirectData.timemodified < 20000) {
-                    if (redirectData.siteId != __WEBPACK_IMPORTED_MODULE_6__constants__["a" /* CoreConstants */].NO_SITE_ID) {
-                        // The redirect is pointing to a site, load it.
-                        return _this.sitesProvider.loadSite(redirectData.siteId, redirectData.page, redirectData.params)
-                            .then(function (loggedIn) {
-                            if (loggedIn) {
-                                return _this.loginHelper.goToSiteInitialPage(_this.navCtrl, redirectData.page, redirectData.params, { animate: false });
-                            }
-                        }).catch(function () {
-                            // Site doesn't exist.
-                            return _this.loadPage();
-                        });
-                    }
-                    else {
-                        // No site to load, open the page.
-                        return _this.loginHelper.goToNoSitePage(_this.navCtrl, redirectData.page, redirectData.params);
-                    }
-                }
-            }
-            return _this.loadPage();
-        }).then(function () {
-            // If we hide the splash screen now, the init view is still seen for an instant. Wait a bit to make sure it isn't seen.
-            setTimeout(function () {
-                _this.splashScreen.hide();
-            }, 100);
-        });
+    CoreLoginSiteHelpPage.prototype.closeHelp = function () {
+        this.viewCtrl.dismiss();
     };
-    /**
-     * Load the right page.
-     *
-     * @return Promise resolved when done.
-     */
-    CoreLoginInitPage.prototype.loadPage = function () {
-        var _this = this;
-        if (this.sitesProvider.isLoggedIn()) {
-            if (this.loginHelper.isSiteLoggedOut()) {
-                return this.sitesProvider.logout().then(function () {
-                    return _this.loadPage();
-                });
-            }
-            return this.loginHelper.goToSiteInitialPage();
-        }
-        return this.navCtrl.setRoot('CoreLoginSitesPage');
-    };
-    CoreLoginInitPage = __decorate([
+    CoreLoginSiteHelpPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-core-login-init',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/init/init.html"*/'<ion-content>\n    <div class="core-bglogo">\n        <ion-spinner></ion-spinner>\n    </div>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/init/init.html"*/,
+            selector: 'page-core-login-site-help',template:/*ion-inline-start:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/site-help/site-help.html"*/'<ion-header>\n    <ion-navbar core-back-button>\n        <ion-title>{{ \'core.login.help\' | translate }}</ion-title>\n\n        <ion-buttons end>\n            <button ion-button icon-only (click)="closeHelp()" [attr.aria-label]="\'core.close\' | translate">\n                <ion-icon name="close"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item text-wrap>\n            <h2><b>{{ \'core.login.faqwhatisurlquestion\' | translate }}</b></h2>\n        </ion-item>\n        <ion-item text-wrap class="core-login-faqwhatisurlanswer">\n            <div [innerHTML]="\'core.login.faqwhatisurlanswer\' | translate: {$image: urlImageHtml}">\n            </div>\n        </ion-item>\n        <ion-item text-wrap>\n            <h2><b>{{ \'core.login.faqcannotconnectquestion\' | translate }}</b></h2>\n        </ion-item>\n        <ion-item text-wrap>\n            <p>{{ \'core.login.faqcannotconnectanswer\' | translate }} {{ \'core.whoissiteadmin\' | translate }}</p>\n        </ion-item>\n        <ion-item text-wrap>\n            <h2><b>{{ \'core.login.faqsetupsitequestion\' | translate }}</b></h2>\n        </ion-item>\n        <ion-item text-wrap>\n            <p><core-format-text [text]="\'core.login.faqsetupsiteanswer\' | translate:{$link: setupLinkHtml}" [filter]="false"></core-format-text></p>\n        </ion-item>\n        <ion-item text-wrap>\n            <h2><b>{{ \'core.login.faqtestappquestion\' | translate }}</b></h2>\n        </ion-item>\n        <ion-item text-wrap>\n            <p>{{ \'core.login.faqtestappanswer\' | translate }}</p>\n        </ion-item>\n        <ion-item text-wrap *ngIf="canScanQR">\n            <h2><b>{{ \'core.login.faqwhereisqrcode\' | translate }}</b></h2>\n        </ion-item>\n        <ion-item text-wrap *ngIf="canScanQR" class="core-login-faqwhereisqrcodeanswer">\n            <div [innerHTML]="\'core.login.faqwhereisqrcodeanswer\' | translate: {$image: qrCodeImageHtml}">\n            </div>\n        </ion-item>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/justin/Documents/GitHub/trainingApp/src/core/login/pages/site-help/site-help.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__providers_app__["a" /* CoreAppProvider */], __WEBPACK_IMPORTED_MODULE_4__providers_init__["a" /* CoreInitDelegate */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_sites__["a" /* CoreSitesProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_helper__["a" /* CoreLoginHelperProvider */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_splash_screen__["a" /* SplashScreen */]])
-    ], CoreLoginInitPage);
-    return CoreLoginInitPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["G" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_utils_utils__["b" /* CoreUtilsProvider */]])
+    ], CoreLoginSiteHelpPage);
+    return CoreLoginSiteHelpPage;
 }());
 
-//# sourceMappingURL=init.js.map
+//# sourceMappingURL=site-help.js.map
 
 /***/ })
 
