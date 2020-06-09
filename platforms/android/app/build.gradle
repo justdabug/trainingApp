@@ -27,7 +27,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:4.0.0'
     }
 }
 
@@ -101,9 +101,9 @@ ext {
 apply from: "../cordova-android-support-gradle-release/ichthysmobile-cordova-android-support-gradle-release.gradle"
 apply from: "../cordova-plugin-badge/ichthysmobile-badge.gradle"
 apply from: "../cordova-plugin-local-notification/ichthysmobile-localnotification.gradle"
+apply from: "../cordova-plugin-qrscanner/ichthysmobile-qrscanner.gradle"
 apply from: "../cordova-support-google-services/ichthysmobile-build.gradle"
 apply from: "../phonegap-plugin-multidex/ichthysmobile-multidex.gradle"
-apply from: "../cordova-plugin-qrscanner/ichthysmobile-qrscanner.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -299,14 +299,14 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.android.support:support-v4:27.1.0"
-    implementation "com.android.support:support-v4:27.+"
-    implementation "com.android.support:support-v4:26.+"
-    implementation "com.android.support:support-v13:27.+"
+    implementation  "com.android.support:support-v4:27.1.0"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
+    implementation  "com.android.support:support-v4:27.1.0"
+    implementation  "com.android.support:support-annotations:27.1.0"
+    implementation  "com.android.support:support-v4:27.1.0"
+    implementation  "com.android.support:support-v13:27.1.0"
     implementation "me.leolin:ShortcutBadger:1.1.17@aar"
     implementation "com.google.firebase:firebase-messaging:17.0.+"
-    implementation "com.android.support:support-annotations:27.+"
-    implementation "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 
